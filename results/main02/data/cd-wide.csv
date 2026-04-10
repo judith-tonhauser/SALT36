@@ -1,0 +1,609 @@
+rt,participantID,age,gender,language,amE,education,comments,item,qud,utterance,verb,prior,responseFIRST,responseSECOND,responseFIRSTtype,responseSECONDtype
+34074,338,48,female,English,AmE,graduated college,""":""""}",bike,ai,q-stop,stop,lower,0.78,0.81,PRE,notPOST
+79118.19999998808,286,54,male,English,AmE,graduated college,""":""""}",subway,ai,neg-stop,stop,lower,1,1,PRE,notPOST
+33800,226,25,female,English,AmE,graduated college,""":""n/a""}",petshelter,ai,q-stop,stop,higher,0.66,0.69,PRE,notPOST
+37054.70000000298,574,62,female,English,AmE,graduated college,""":""""}",subway,ai,q-know,know,higher,1,1,CC,BEL
+73962.39999997616,115,36,female,English,AmE,graduated college,""":""""}",subway,ai,q-stop,stop,higher,0.93,0.06000000000000005,PRE,notPOST
+76228.09999999963,512,62,male,English,AmE,some college,""":""it was fine""}",bike,ai,q-know,know,lower,0.17,0.19,CC,BEL
+143141.5,28,50,female,English,AmE,hold a higher degree,""":""none""}",subway,ai,q-stop,stop,lower,0.75,0.19999999999999996,PRE,notPOST
+107799.60000014304,259,60,male,English,AmE,graduated college,""":""""}",petshelter,nai,neg-know,know,higher,0,1,BEL,CC
+58745.10000038147,140,64,male,English,AmE,graduated college,""":""""}",bike,ai,q-know,know,lower,0,0,CC,BEL
+44561,56,65,female,English,AmE,some college,""":""""}",bike,nai,neg-stop,stop,higher,0.040000000000000036,0.95,notPOST,PRE
+80321.70000000112,3,34,male,English,AmE,graduated high school,""":""""}",bike,ai,neg-stop,stop,higher,1,0.010000000000000009,PRE,notPOST
+65221.60000002384,497,70,female,English,AmE,graduated college,""":""""}",petshelter,ai,neg-know,know,higher,0.64,0.47,CC,BEL
+80843.09999996424,445,60,female,English,AmE,graduated high school,""":""""}",bike,ai,q-stop,stop,lower,0.01,1,PRE,notPOST
+37227.09999999404,178,39,female,English,AmE,graduated high school,""":""""}",petshelter,nai,q-know,know,lower,0,0,BEL,CC
+84437.30000001192,520,46,male,English,AmE,graduated high school,""":""""}",petshelter,ai,q-stop,stop,lower,0.05,0.99,PRE,notPOST
+46031.5,620,28,female,English,AmE,graduated college,""":""""}",bike,nai,q-know,know,higher,0.66,0.66,BEL,CC
+63279.200000000186,162,35,male,English,AmE,graduated high school,""":""I think this is an interesting concept for a survey. You're trying to judge how people make assumptions based on information they know vs. information they don't.""}",petshelter,nai,neg-know,know,lower,0,1,BEL,CC
+32574.5,339,55,male,English,AmE,graduated college,""":""""}",bike,ai,neg-stop,stop,higher,1,0,PRE,notPOST
+58664.39999997616,593,67,female,English,AmE,graduated college,""":""None""}",bike,nai,q-know,know,lower,1,0.96,BEL,CC
+57345,66,36,female,English,AmE,graduated college,""":""Thank you! I enjoyed participating. I wasn't sure if Charley was able to volunteer due to their allergy.""}",petshelter,ai,neg-stop,stop,lower,0.41,0.5,PRE,notPOST
+48064.09999999404,552,57,female,English,AmE,graduated college,""":""""}",petshelter,nai,neg-stop,stop,higher,0.010000000000000009,1,notPOST,PRE
+70667.99999999988,245,73,female,English,AmE,some college,""":""none""}",petshelter,nai,q-stop,stop,higher,0.24,0.97,notPOST,PRE
+203937.19999998808,94,35,female,English,AmE,hold a higher degree,""":""""}",petshelter,ai,q-stop,stop,lower,0.28,0.94,PRE,notPOST
+51004.59999996424,622,61,female,English,AmE,some college,""":""""}",petshelter,nai,neg-know,know,lower,0,0,BEL,CC
+49523,297,42,male,English,AmE,some college,""":""Nothing further. ""}",bike,nai,q-stop,stop,higher,0.51,0.49,notPOST,PRE
+41623,149,35,male,English,AmE,hold a higher degree,""":""The instructions and questions were clear and easy to follow. The scenario was straightforward and the reasoning required was simple and intuitive.""}",subway,nai,neg-stop,stop,higher,0,1,notPOST,PRE
+75561.20000001788,463,32,female,English,AmE,graduated college,""":""""}",subway,ai,neg-know,know,lower,1,0,CC,BEL
+54853.90000000002,306,56,female,English,AmE,graduated college,""":""none""}",subway,nai,neg-know,know,lower,0.13,0.23,BEL,CC
+66290.39999997616,167,62,female,English,AmE,hold a higher degree,""":""""}",petshelter,ai,q-stop,stop,lower,0,1,PRE,notPOST
+50661.89999997616,501,26,male,English,AmE,graduated high school,""":""""}",petshelter,ai,neg-know,know,higher,0.55,0.3,CC,BEL
+51620.59999999404,334,66,female,English,AmE,graduated college,""":""I thought it was an interesting scenario. I think it is slightly more likely that the person biked before receiving a promotion than after although it could go either way because people have a variety of of reasons for wanting to bike to work including getting exercise and/or saving money, and/or environmental concerns. Thank you for the opportunity to participate; I greatly appreciate it!""}",bike,nai,q-stop,stop,lower,0.49,0.64,notPOST,PRE
+42055.69999998808,396,52,female,English,AmE,graduated high school,""":""""}",petshelter,ai,q-know,know,higher,0.91,0.75,CC,BEL
+69590.5,506,34,male,English,AmE,hold a higher degree,""":""""}",bike,ai,neg-know,know,lower,0.85,0.13,CC,BEL
+287962.1999999881,156,71,male,English,AmE,some college,""":""I thought what if the promotion also included a heavier workload. If it did would those promoted have time to bike as opposed to faster transportation. ""}",bike,nai,q-stop,stop,higher,0.27,0.73,notPOST,PRE
+41225.100000000006,110,62,female,English,AmE,graduated high school,""":""""}",petshelter,ai,q-stop,stop,higher,0.78,0.24,PRE,notPOST
+77512.69999999925,170,49,male,English,AmE,some college,""":""""}",bike,nai,neg-know,know,higher,0,0.82,BEL,CC
+59148.09999996424,555,46,female,English,AmE,graduated college,""":""Nothing""}",petshelter,nai,q-know,know,lower,0.82,0.62,BEL,CC
+30691.10000000149,368,24,male,English,AmE,graduated college,""":""""}",subway,nai,neg-stop,stop,higher,0,1,notPOST,PRE
+82638,458,41,male,English,AmE,some college,""":""""}",petshelter,ai,neg-know,know,lower,0,0.78,CC,BEL
+214183.19999999923,567,51,female,English,AmE,hold a higher degree,""":""No comment""}",subway,ai,neg-stop,stop,higher,1,0,PRE,notPOST
+49214.5,104,42,male,English,AmE,some college,""":""none""}",petshelter,ai,q-stop,stop,higher,0.4,0.62,PRE,notPOST
+46033.90000000596,307,49,male,English,AmE,graduated high school,""":""""}",petshelter,nai,neg-know,know,higher,0.51,0.58,BEL,CC
+40411.80000000005,10,29,male,English,AmE,graduated high school,""":""""}",petshelter,ai,neg-know,know,lower,0.13,0.3,CC,BEL
+55167,522,51,female,English,AmE,graduated college,"""}",bike,ai,q-stop,stop,lower,0.92,0.63,PRE,notPOST
+189146.69999998808,187,41,female,English,AmE,hold a higher degree,""":""n/a""}",subway,nai,neg-stop,stop,lower,0,1,notPOST,PRE
+47246.90000000037,319,32,female,English,AmE,some college,""":""""}",bike,nai,q-stop,stop,higher,0.51,0.46,notPOST,PRE
+63360.09999999963,154,42,male,English,AmE,hold a higher degree,""":""n/a""}",subway,ai,neg-know,know,higher,0.9,0.25,CC,BEL
+84596.69999998808,279,50,female,English,AmE,graduated college,""":""The study is interesting""}",subway,ai,neg-know,know,higher,0.58,0.6,CC,BEL
+98670,429,79,male,English,AmE,graduated college,""":""Does it matter whether the bicycles are electric?""}",bike,nai,neg-stop,stop,higher,0,1,notPOST,PRE
+99530.19999998808,420,37,male,English,AmE,graduated college,""":""""}",subway,nai,neg-stop,stop,lower,0.010000000000000009,1,notPOST,PRE
+33437,413,51,male,English,AmE,graduated college,""":""""}",subway,ai,q-know,know,lower,0.18,0,CC,BEL
+38785.29999995232,351,62,male,English,AmE,hold a higher degree,""":""""}",subway,ai,q-know,know,lower,0.2,0.1,CC,BEL
+37343.89999997616,97,52,female,English,AmE,hold a higher degree,""":""""}",bike,ai,neg-stop,stop,lower,1,0,PRE,notPOST
+39051.39999999851,493,34,male,English,AmE,graduated high school,""":""""}",subway,ai,neg-stop,stop,higher,0.67,0.42000000000000004,PRE,notPOST
+118717.30000001192,508,73,female,English,AmE,graduated college,""":""""}",subway,nai,q-know,know,lower,0.53,1,BEL,CC
+188707,392,62,male,English,AmE,some college,""":""""}",petshelter,ai,neg-know,know,higher,0.81,0.47,CC,BEL
+52743.09999996424,117,36,female,English,AmE,graduated college,""":""It's an interesting study but I'll admit that seeing a chart where the last two names had nothing to do with what we were asked threw me off a little bit. (Only because I then assumed I'd also be asked about their opinions, etc.)""}",subway,nai,q-know,know,higher,0.88,1,BEL,CC
+45114.09999999986,223,52,male,English,AmE,graduated college,""":""""}",bike,ai,q-stop,stop,lower,0.17,0.87,PRE,notPOST
+49070.59999990463,476,27,male,English,AmE,graduated college,""":""""}",subway,nai,q-stop,stop,lower,1,0.12,notPOST,PRE
+37277.29999995232,447,27,male,English,AmE,graduated college,""":""The design was reliant on contextual inference rather than explicit data.""}",bike,ai,q-stop,stop,lower,0,1,PRE,notPOST
+49738.20000000298,537,28,male,English,AmE,graduated high school,""":""""}",bike,ai,q-know,know,lower,0.3,0.18,CC,BEL
+76875.69999998808,535,65,female,English,AmE,graduated high school,""":""no""}",subway,ai,neg-know,know,higher,0.58,1,CC,BEL
+46986.5,504,54,female,English,AmE,some college,""":""""}",bike,ai,q-stop,stop,higher,0.49,0.49,PRE,notPOST
+39175.19999998808,573,34,female,English,AmE,some college,""":""thank you""}",petshelter,ai,neg-stop,stop,higher,0.89,0.030000000000000027,PRE,notPOST
+62011.699999809265,138,51,male,English,AmE,graduated college,"""}",subway,nai,q-know,know,higher,0.84,0.89,BEL,CC
+46332,547,52,female,English,AmE,graduated college,""":""""}",subway,ai,q-know,know,higher,0.83,1,CC,BEL
+73096,257,36,male,English,AmE,hold a higher degree,""":""""}",bike,ai,q-stop,stop,lower,0.48,0.64,PRE,notPOST
+40546.10000002384,498,19,male,English,AmE,graduated high school,""":""""}",petshelter,ai,neg-know,know,higher,0.52,0.55,CC,BEL
+61241.19999998808,143,68,female,English,AmE,hold a higher degree,""":""""}",bike,ai,q-stop,stop,higher,0.83,0.15000000000000002,PRE,notPOST
+83334.89999961853,418,42,female,English,AmE,some college,""":""""}",bike,nai,q-know,know,higher,0.49,1,BEL,CC
+49618,131,68,female,English,AmE,graduated high school,""":""I believe my answer was correct because Charley is an environmental activist.""}",subway,ai,q-know,know,higher,0.09,0.12,CC,BEL
+45003.20000000298,70,51,preferNoToSay,English,AmE,some college,""":""none""}",petshelter,nai,q-stop,stop,higher,0.020000000000000018,1,notPOST,PRE
+51410,289,39,female,English,AmE,hold a higher degree,""":""""}",petshelter,nai,neg-know,know,higher,0.16,0.92,BEL,CC
+53609.40000000014,556,55,male,English,AmE,graduated college,""":""""}",subway,nai,neg-stop,stop,higher,0,1,notPOST,PRE
+134982.20000004768,471,32,male,English,AmE,hold a higher degree,""":""""}",petshelter,ai,neg-stop,stop,lower,1,0,PRE,notPOST
+138605.40000009537,275,46,female,English,AmE,hold a higher degree,""":""Everything was good.""}",bike,ai,neg-know,know,lower,0,0,CC,BEL
+96451.39999997616,62,41,male,English,AmE,graduated high school,""":""""}",bike,nai,q-know,know,lower,0.53,1,BEL,CC
+66385,375,37,female,English,AmE,graduated college,""":""""}",bike,ai,q-know,know,lower,1,0.38,CC,BEL
+77858.19999998808,252,45,male,English,AmE,graduated college,""":""Thank you for an interesting study!""}",petshelter,ai,neg-stop,stop,higher,0.95,0.12,PRE,notPOST
+37018.900000572205,293,44,male,English,AmE,hold a higher degree,""":""""}",subway,nai,neg-stop,stop,lower,0,1,notPOST,PRE
+119914,212,56,male,English,AmE,hold a higher degree,""":""None""}",subway,nai,neg-know,know,higher,0.8,0.72,BEL,CC
+84882.5,638,20,female,English,AmE,graduated high school,""":""""}",bike,nai,q-know,know,higher,0.71,0.92,BEL,CC
+55175,333,56,female,English,AmE,hold a higher degree,""":""NA""}",subway,ai,neg-stop,stop,lower,1,0,PRE,notPOST
+74189.19999998808,186,59,female,English,AmE,graduated college,""":""""}",bike,nai,q-stop,stop,lower,0.77,0.2,notPOST,PRE
+59795.199999809265,234,28,female,English,AmE,graduated college,""":""""}",petshelter,nai,q-know,know,higher,0.55,0.51,BEL,CC
+58918.5,397,40,male,English,AmE,graduated college,""":""""}",subway,ai,neg-know,know,higher,1,0.25,CC,BEL
+63307.59999996424,194,46,female,English,AmE,some college,""":""No comment.""}",subway,ai,neg-stop,stop,lower,1,0,PRE,notPOST
+63898.5,166,59,male,English,AmE,graduated college,""":""It seems unreasonable that anyone would bike 20 miles to and from work, especially if it includes city traffic, potential for accidents, and is a professional job (IT). He'd arrive sweaty and tired, and then have to work all day in an office. It just seems unreasonable. ""}",bike,nai,q-stop,stop,lower,1,0,notPOST,PRE
+105147.40000000596,481,49,male,English,AmE,some college,""":""""}",subway,ai,neg-know,know,higher,0.74,0.49,CC,BEL
+77526.69999998808,328,70,female,English,AmE,graduated college,""":""Thank you.  All in your study went well.""}",subway,ai,q-stop,stop,lower,1,0.73,PRE,notPOST
+79814.40000009537,158,50,female,English,AmE,hold a higher degree,""":""na""}",subway,ai,q-stop,stop,lower,0,1,PRE,notPOST
+48753.60000002384,203,30,female,English,AmE,graduated college,""":""""}",subway,ai,neg-stop,stop,higher,0.95,0.050000000000000044,PRE,notPOST
+55505.59999996424,85,47,male,English,AmE,graduated college,""":""nope""}",subway,nai,neg-stop,stop,higher,0,1,notPOST,PRE
+67369,76,40,male,English,AmE,graduated high school,""":""""}",bike,nai,q-know,know,higher,0.51,0.65,BEL,CC
+98115.89999997616,436,59,male,English,AmE,some college,""":""This was an interesting study. Thank you for the opportunity.""}",bike,nai,neg-know,know,lower,1,1,BEL,CC
+60090.30000001192,258,60,female,English,AmE,graduated college,""":""""}",subway,ai,neg-stop,stop,lower,1,0,PRE,notPOST
+60941,457,52,female,English,AmE,some college,""":""nothing to comment on. very straightforward.  I don't know what this experiment proves though.""}",subway,nai,neg-know,know,lower,0.32,1,BEL,CC
+65229.89999997616,55,75,female,English,AmE,some college,""":""""}",subway,ai,neg-know,know,higher,0.41,0.38,CC,BEL
+39730.80000001192,378,67,female,English,AmE,graduated college,""":""""}",petshelter,nai,q-know,know,higher,1,1,BEL,CC
+64638.5,159,68,female,English,AmE,graduated college,""":""Thank you for allowing me to participate!!""}",bike,nai,neg-stop,stop,higher,0.040000000000000036,0.96,notPOST,PRE
+137560.40000000596,434,42,female,English,AmE,some college,""":""""}",bike,nai,neg-know,know,higher,0.11,0.5,BEL,CC
+37515,563,44,male,English,AmE,graduated college,""":""""}",petshelter,ai,neg-stop,stop,lower,1,0,PRE,notPOST
+102998.39999997616,164,77,female,English,AmE,hold a higher degree,""":""""}",bike,ai,neg-know,know,higher,1,0,CC,BEL
+54501.70000000298,455,29,male,English,AmE,hold a higher degree,""":""""}",subway,nai,q-know,know,higher,0.28,0.77,BEL,CC
+109355.89999999944,210,20,female,English,AmE,graduated college,""":""My experience in the study was smooth.""}",bike,ai,neg-know,know,higher,1,0,CC,BEL
+49005.90000000002,569,41,female,English,AmE,some college,""":""""}",petshelter,nai,q-know,know,lower,0.2,0.21,BEL,CC
+88601.60000002384,317,51,male,English,AmE,graduated college,""":""None, thank you.""}",bike,nai,neg-know,know,lower,0,1,BEL,CC
+45326.10000000009,216,43,female,English,AmE,hold a higher degree,""":""N/A""}",subway,nai,neg-stop,stop,lower,0.12,0.91,notPOST,PRE
+38208,599,35,preferNoToSay,English,AmE,hold a higher degree,""":""""}",subway,ai,q-know,know,higher,1,1,CC,BEL
+66462.20000004768,470,23,female,English,AmE,some college,""":""""}",subway,ai,neg-stop,stop,lower,0.22,0.77,PRE,notPOST
+662309.8000000715,220,33,female,English,AmE,hold a higher degree,""":""Good study!""}",subway,nai,q-know,know,lower,0,0,BEL,CC
+137875.40000000037,528,45,male,English,AmE,some college,""":""Listen up, good people. This whole setup smells like a damn surveillance game disguised as concern for pets and promotions. Tracking who knows what about Charley’s pastimes? It’s like sitting in a coffee shop, watching people’s shadows, trying to guess their secrets. You want to figure out whether Sue thinks Charley played hero at the pet shelter before climbing the ladder? That’s a power play, a little mind game. People and their hobbies—sometimes they’re just stories people wanna believe. Maybe Sue believes it 'cause it fits the picture she wants to see: Charley the animal lover, the good guy volunteering before the suit and tie.\n\nBut dive deeper—I’d say don’t get lost in the details of what’s likely or unlikely. What matters is why you’re counting these little belief puzzles. Is it trust? Is it control? Or just knowing the layout of the mindscape in a place where data is king and privacy’s a ghost? There’s a lot going on beneath that surface... Just be careful not to become the guy watching the watchers—'cause sometimes the truth you’re hunting is just a trap waiting to snap shut.\n\nThe pet shelter story? Maybe it’s real. Maybe it’s just a comforting myth for the office. Either way, it’s telling you something—about Charley, about Sue, and about the game you’re all playing. Keep your eyes sharp. Keep your heart colder. Because in this town, everyone’s got their little pretend stories, and the ones who survive know when to believe and when to walk away.\n\nHave a marvelous day!""}",petshelter,nai,q-know,know,higher,1,1,BEL,CC
+65200.40000000596,45,57,female,English,AmE,graduated college,""":""""}",bike,nai,neg-stop,stop,lower,0,1,notPOST,PRE
+38828.19999998808,357,50,male,English,AmE,graduated college,""":""""}",petshelter,nai,neg-stop,stop,lower,0,1,notPOST,PRE
+75160.79999995232,90,64,female,English,AmE,some college,""":""""}",bike,nai,neg-stop,stop,lower,0.32999999999999996,0.89,notPOST,PRE
+65836.10000002384,340,37,female,English,AmE,graduated college,""":""""}",subway,ai,neg-know,know,lower,0.19,0.43,CC,BEL
+76794,106,73,male,English,AmE,graduated high school,""":""thanks for the study""}",subway,ai,neg-know,know,lower,1,0,CC,BEL
+52494.19999998808,431,35,male,English,AmE,graduated college,""":""""}",bike,nai,q-stop,stop,higher,0.49,0.5,notPOST,PRE
+82742.5,287,61,female,English,AmE,hold a higher degree,""":""This was interesting!""}",bike,nai,q-stop,stop,higher,0.13,1,notPOST,PRE
+59644,141,49,female,English,AmE,graduated college,""":""Thank you!""}",petshelter,nai,q-stop,stop,lower,1,1,notPOST,PRE
+47766.89999997616,349,50,male,English,AmE,graduated college,""":""""}",subway,ai,q-stop,stop,lower,0,1,PRE,notPOST
+70255,582,64,male,English,AmE,some college,""":""None, thank you.""}",petshelter,ai,neg-know,know,lower,1,0,CC,BEL
+32008.099999999627,469,37,preferNoToSay,English,AmE,graduated college,""":""""}",bike,ai,neg-stop,stop,lower,0.79,0.16000000000000003,PRE,notPOST
+63394.699999809265,387,35,female,English,AmE,hold a higher degree,""":""""}",bike,ai,q-know,know,higher,1,0.74,CC,BEL
+237251,253,27,male,English,AmE,graduated college,""":""""}",subway,ai,neg-know,know,lower,0.9,0.87,CC,BEL
+31796,607,33,female,English,AmE,graduated college,""":""""}",bike,nai,neg-stop,stop,higher,0,1,notPOST,PRE
+135092,67,43,male,English,AmE,graduated college,""":""""}",subway,nai,q-know,know,higher,0.5,0.5,BEL,CC
+65618.60000014305,419,42,male,English,AmE,graduated college,""":""""}",bike,nai,q-stop,stop,lower,0.6799999999999999,0.93,notPOST,PRE
+53617.5,374,57,female,English,AmE,hold a higher degree,". Thank you for the study.""}",petshelter,nai,q-stop,stop,higher,0.13,1,notPOST,PRE
+79773.30000001192,337,24,male,English,AmE,graduated college,""":""""}",subway,nai,neg-know,know,lower,0.2,0.9,BEL,CC
+47002.5,182,49,female,English,AmE,graduated college,""":""""}",bike,ai,neg-stop,stop,lower,0.96,0.040000000000000036,PRE,notPOST
+115490,551,65,female,English,AmE,graduated college,""":""None""}",petshelter,ai,q-know,know,lower,0.89,0.91,CC,BEL
+405903.8000000119,404,52,female,English,AmE,graduated college,""":""""}",bike,ai,q-know,know,lower,0.15,0.05,CC,BEL
+35945.900000002235,107,36,female,English,AmE,graduated college,""":""""}",subway,ai,q-stop,stop,higher,1,0,PRE,notPOST
+40434.40000000596,626,30,male,English,AmE,graduated college,""":""none""}",subway,nai,q-know,know,lower,1,0.63,BEL,CC
+35946.10000002384,112,40,male,English,AmE,some college,""":""""}",bike,ai,neg-know,know,higher,0.78,0.25,CC,BEL
+64967,111,47,male,English,AmE,some college,""":""none""}",subway,ai,neg-know,know,higher,1,0.35,CC,BEL
+36147,365,59,female,English,AmE,graduated college,""":""thank you""}",petshelter,ai,q-know,know,lower,1,1,CC,BEL
+40808,417,57,female,English,AmE,graduated college,""":""""}",subway,nai,q-stop,stop,lower,1,0,notPOST,PRE
+76865,421,32,female,English,AmE,hold a higher degree," to add.""}",subway,ai,neg-stop,stop,lower,1,0,PRE,notPOST
+106786,398,31,male,English,AmE,some college,""":""""}",petshelter,nai,q-know,know,higher,0.61,0.77,BEL,CC
+99187.30000000076,637,67,female,English,AmE,graduated college,""":""The study went smoothly ""}",bike,ai,neg-stop,stop,lower,0.82,1,PRE,notPOST
+75342.5,621,54,male,English,AmE,some college,""":""This seemed too simple. ""}",subway,nai,neg-stop,stop,lower,0,1,notPOST,PRE
+63892.59999999404,54,77,female,English,AmE,graduated high school,""":""""}",petshelter,ai,q-stop,stop,higher,0.7,0.33999999999999997,PRE,notPOST
+49972.10000002384,479,35,male,English,AmE,graduated college,""":""""}",bike,ai,q-know,know,higher,0.73,0.91,CC,BEL
+65057.30000001192,541,33,male,English,AmE,graduated college,""":""""}",subway,nai,q-know,know,higher,0.95,0.89,BEL,CC
+67081.80000001192,581,38,female,English,AmE,some college,""":""None, thank you.""}",subway,ai,q-know,know,higher,0.78,0.26,CC,BEL
+50826.60000000894,78,47,preferNoToSay,English,AmE,graduated college,""":""very interesting study on language interpretation""}",bike,ai,q-know,know,lower,0.74,0.26,CC,BEL
+41158.70000004768,308,48,female,English,AmE,graduated high school,""":""It was super clear and to the point, thank you""}",petshelter,ai,q-stop,stop,higher,0.73,0.29000000000000004,PRE,notPOST
+70408.59999990463,465,53,female,English,AmE,some college,""":""""}",petshelter,ai,neg-stop,stop,lower,0.07,0.9299999999999999,PRE,notPOST
+63087.89999997616,454,37,preferNoToSay,English,AmE,some college,""":""""}",bike,nai,neg-know,know,lower,0.1,0.92,BEL,CC
+66096.79999995232,403,67,female,English,AmE,graduated college,""":""""}",petshelter,nai,q-know,know,higher,0.95,0.97,BEL,CC
+49090.40000009537,298,46,male,English,AmE,graduated college,""":""""}",petshelter,ai,neg-know,know,lower,0.59,0.44,CC,BEL
+100330,137,31,male,English,AmE,hold a higher degree,""":""""}",bike,nai,neg-stop,stop,lower,0,1,notPOST,PRE
+66279,513,34,female,English,AmE,some college,""":""""}",petshelter,nai,neg-know,know,higher,0.24,0.78,BEL,CC
+57770,243,38,male,English,AmE,graduated college,""":""""}",petshelter,ai,q-know,know,higher,1,1,CC,BEL
+53635.200000000186,65,36,male,English,AmE,graduated high school,""":""Nothing ""}",subway,nai,q-stop,stop,higher,0.18000000000000005,0.88,notPOST,PRE
+47673.89999997616,478,39,female,English,AmE,graduated college,""":""""}",subway,nai,neg-stop,stop,lower,0.18999999999999995,0.84,notPOST,PRE
+32509.899999999907,601,28,female,English,AmE,graduated high school,""":""""}",subway,nai,neg-stop,stop,higher,0,1,notPOST,PRE
+82116,197,29,male,English,AmE,hold a higher degree,""":""""}",bike,ai,neg-stop,stop,higher,0.97,0.06000000000000005,PRE,notPOST
+50005,116,51,female,English,AmE,graduated college,""":""""}",bike,nai,neg-stop,stop,higher,0,1,notPOST,PRE
+36805.60000002384,590,31,male,English,AmE,graduated college,""":""""}",subway,nai,q-know,know,lower,0.13,0.24,BEL,CC
+35651.89999997616,11,46,female,English,AmE,hold a higher degree,""":""n/a""}",bike,nai,q-stop,stop,higher,0.53,1,notPOST,PRE
+163642.20000004768,564,27,male,English,AmE,graduated college,""":""no""}",petshelter,nai,q-stop,stop,lower,0.6799999999999999,0.63,notPOST,PRE
+208069.89999997616,332,35,male,English,AmE,graduated college,""":""Thank you""}",bike,nai,q-know,know,higher,0.61,0.55,BEL,CC
+42450.29999995232,372,52,female,English,AmE,graduated college,""":""""}",petshelter,ai,q-stop,stop,lower,0.28,0.86,PRE,notPOST
+59555,412,74,female,English,AmE,graduated college,""":""""}",bike,nai,neg-stop,stop,lower,0,1,notPOST,PRE
+43888.80000001192,517,34,female,English,AmE,graduated college,""":""""}",bike,ai,neg-stop,stop,lower,1,0,PRE,notPOST
+126998.5,269,80,female,English,AmE,graduated college,""":""None""}",bike,nai,neg-know,know,lower,0.39,0.47,BEL,CC
+54357.89999997616,69,52,female,English,AmE,graduated college,""":""""}",petshelter,nai,neg-know,know,higher,0.42,1,BEL,CC
+52348,133,47,male,English,AmE,graduated college,""":""""}",petshelter,nai,q-know,know,higher,0.49,0.48,BEL,CC
+58196.29999995232,260,47,male,English,AmE,graduated college,""":"" None.""}",petshelter,nai,q-know,know,higher,0.76,1,BEL,CC
+58698.70000000298,468,68,female,English,AmE,graduated college,""":""NONE""}",subway,nai,q-know,know,lower,0.08,0.06,BEL,CC
+60344,96,30,female,English,AmE,some college,""":""""}",petshelter,ai,neg-know,know,higher,1,0.67,CC,BEL
+93476.89999997616,358,48,male,English,AmE,graduated college,""":""""}",bike,nai,neg-know,know,lower,0,1,BEL,CC
+87193.89999997616,606,50,male,English,AmE,some college,""":""""}",bike,ai,q-stop,stop,higher,0.85,0.32999999999999996,PRE,notPOST
+47614,169,55,preferNoToSay,English,AmE,graduated college,""":""""}",bike,ai,neg-know,know,higher,0.51,0.49,CC,BEL
+76214.39999997616,371,42,female,English,AmE,some college," about the study. Thank you for the opportunity to participate!""}",subway,nai,neg-know,know,higher,0.16,0.91,BEL,CC
+36789.99999999999,254,37,female,English,AmE,graduated college,""":""""}",petshelter,nai,neg-stop,stop,higher,0.020000000000000018,0.99,notPOST,PRE
+65432.200000000186,314,58,female,English,AmE,some college,""":""""}",bike,nai,neg-stop,stop,higher,0.010000000000000009,1,notPOST,PRE
+38148,24,54,male,English,AmE,hold a higher degree,""":""""}",bike,ai,q-stop,stop,higher,0.52,0.72,PRE,notPOST
+33808.5,241,51,female,English,AmE,graduated college,""":""""}",petshelter,nai,neg-stop,stop,lower,0,1,notPOST,PRE
+134363.10000002384,285,64,female,English,AmE,graduated college,""":""""}",bike,ai,q-know,know,higher,0.97,0.18,CC,BEL
+42006.09999996424,568,47,non-binary,English,AmE,hold a higher degree,""":""""}",petshelter,ai,q-know,know,higher,1,0.5,CC,BEL
+36358.90000009537,386,25,female,English,AmE,graduated college,""":""""}",bike,ai,neg-know,know,lower,0.56,0.33,CC,BEL
+668772.5,282,42,female,English,AmE,graduated college,""":""""}",bike,ai,neg-stop,stop,lower,0.72,0.25,PRE,notPOST
+65580.19999998808,516,74,male,English,AmE,graduated college,""":""""}",bike,nai,q-stop,stop,lower,0.77,0.25,notPOST,PRE
+36250,360,39,male,English,AmE,some college,""":""N/A""}",bike,nai,q-stop,stop,lower,0.91,0.2,notPOST,PRE
+106321,376,26,male,English,AmE,some college,""":""""}",bike,nai,q-know,know,lower,0.49,0.5,BEL,CC
+97147.90000003576,487,62,female,English,AmE,some college,""":""""}",petshelter,nai,q-know,know,lower,0.11,0.01,BEL,CC
+48903,523,33,female,English,AmE,graduated college,""":""""}",subway,nai,neg-know,know,lower,0.18,0.93,BEL,CC
+62760.20000004768,273,28,male,English,AmE,graduated high school,", thanks.""}",subway,nai,q-know,know,higher,0.69,1,BEL,CC
+98920.19999992847,400,64,male,English,AmE,hold a higher degree,""":""""}",bike,ai,neg-know,know,lower,0.04,0,CC,BEL
+85249.5,271,40,female,English,AmE,graduated college,""":""""}",subway,ai,neg-know,know,higher,1,1,CC,BEL
+50292.60000000894,461,40,male,English,AmE,some college,""":""""}",subway,ai,neg-know,know,lower,0,0.15,CC,BEL
+74332.89999997616,629,49,male,English,AmE,some college,""":""""}",subway,nai,neg-stop,stop,lower,0.050000000000000044,0.98,notPOST,PRE
+44907.60000002384,341,60,female,English,AmE,hold a higher degree,""":""""}",bike,nai,neg-stop,stop,lower,0,1,notPOST,PRE
+54857.70000001788,444,39,male,English,AmE,graduated college,""":""""}",bike,ai,neg-stop,stop,lower,1,0,PRE,notPOST
+63873.39999997616,370,66,female,English,AmE,graduated college,""":""""}",petshelter,ai,q-stop,stop,lower,0,1,PRE,notPOST
+99656.69999998808,451,25,female,English,AmE,graduated college,""":""""}",petshelter,ai,neg-stop,stop,lower,0.92,0.010000000000000009,PRE,notPOST
+101488.29999998212,218,33,female,English,AmE,some college,""":""The instructions were all clear""}",subway,ai,q-stop,stop,lower,0.88,0.88,PRE,notPOST
+56356.89999999851,345,31,female,English,AmE,hold a higher degree,""":""N/A""}",bike,ai,neg-stop,stop,higher,1,0,PRE,notPOST
+43165,105,71,male,English,AmE,some college,""":""thank you""}",petshelter,nai,q-stop,stop,lower,0.75,0.27,notPOST,PRE
+64197.90000009537,30,57,female,English,AmE,graduated college,""":""none""}",bike,ai,neg-stop,stop,lower,1,0.020000000000000018,PRE,notPOST
+93748,214,30,female,English,AmE,graduated college,""":""Good luck with your research!""}",bike,ai,neg-know,know,lower,0,0.01,CC,BEL
+56815.89999997616,213,54,female,English,AmE,graduated college,""":""""}",petshelter,ai,neg-know,know,higher,1,0.77,CC,BEL
+49088.09999999404,502,47,female,English,AmE,graduated college,""":""""}",subway,nai,neg-stop,stop,lower,0,1,notPOST,PRE
+31502.90000000596,239,35,female,English,AmE,some college,""":""""}",bike,ai,q-stop,stop,higher,0.81,0.31000000000000005,PRE,notPOST
+72938.10000002384,575,25,male,English,AmE,graduated high school,""":""""}",bike,nai,q-stop,stop,lower,0.18999999999999995,0.76,notPOST,PRE
+72103.60000002384,262,72,male,English,AmE,graduated high school,""":""""}",bike,ai,q-stop,stop,lower,0.51,0.8200000000000001,PRE,notPOST
+66207.70000004768,71,48,female,English,AmE,graduated college,""":""""}",subway,ai,neg-know,know,lower,0.5,0.52,CC,BEL
+115300.1000000001,505,60,female,English,AmE,graduated college,""":""""}",bike,nai,q-know,know,lower,0,0,BEL,CC
+222260,92,39,male,English,AmE,hold a higher degree,""":""""}",bike,ai,neg-stop,stop,higher,1,0,PRE,notPOST
+67155.69999998808,623,53,female,English,AmE,graduated college,""":""none""}",bike,ai,neg-stop,stop,higher,0.27,0.79,PRE,notPOST
+40810.89999999106,364,32,female,English,AmE,some college,""":""""}",petshelter,ai,q-know,know,lower,0.17,0.89,CC,BEL
+62806.29999995232,496,25,male,English,AmE,hold a higher degree,""":""""}",bike,ai,neg-stop,stop,lower,1,0,PRE,notPOST
+70907,300,23,female,English,AmE,graduated college,""":""""}",petshelter,nai,q-know,know,higher,0.75,0.89,BEL,CC
+62414.5,527,36,male,English,AmE,hold a higher degree,""":""""}",subway,nai,q-stop,stop,higher,0.44999999999999996,0.56,notPOST,PRE
+71706.40000000014,542,36,male,English,AmE,graduated college,""":""""}",petshelter,nai,neg-stop,stop,higher,0.36,0.84,notPOST,PRE
+64384.80000001192,215,67,female,English,AmE,graduated college,""":""""}",subway,nai,q-know,know,lower,0.08,0.04,BEL,CC
+94096.5,531,73,female,English,AmE,graduated high school,""":""""}",petshelter,ai,q-stop,stop,lower,0.91,0.07999999999999996,PRE,notPOST
+87910.5,579,50,male,English,AmE,hold a higher degree,""":""It seems a bit odd to try to evaluate that statement without knowing how the interaction that brought it about unfolded.""}",subway,nai,neg-know,know,lower,0.72,0.55,BEL,CC
+65468.800000000745,125,46,female,English,AmE,graduated college,""":""""}",petshelter,ai,neg-know,know,higher,0.82,0.34,CC,BEL
+46481,526,60,female,English,AmE,hold a higher degree,""":""none""}",subway,nai,neg-know,know,lower,0,1,BEL,CC
+41540,597,57,male,English,AmE,graduated college,""":""it is sometimes hard to know if they actually didn't know or they didn't know because the person did do something.""}",bike,ai,neg-know,know,higher,0.54,0,CC,BEL
+83530.80000001192,296,46,female,English,AmE,some college,""":""""}",petshelter,ai,q-stop,stop,lower,0,1,PRE,notPOST
+36403,126,36,male,English,AmE,graduated college,""":""n/a""}",bike,ai,neg-know,know,higher,0.22,0.22,CC,BEL
+149241.60000002384,165,46,female,English,AmE,graduated college,""":""""}",subway,nai,q-stop,stop,lower,0.85,0,notPOST,PRE
+61434.90000003576,284,55,male,English,AmE,some college,""":""""}",bike,ai,neg-know,know,higher,0.21,0.22,CC,BEL
+46995.19999998808,120,37,male,English,AmE,graduated college,""":""Good Study""}",bike,nai,q-stop,stop,lower,0.27,0.75,notPOST,PRE
+53386,423,55,female,English,AmE,graduated college,""":""""}",subway,nai,neg-know,know,lower,0.04,0.9,BEL,CC
+32493.599999964237,142,27,female,English,AmE,graduated high school,""":""""}",bike,ai,q-stop,stop,higher,1,0.94,PRE,notPOST
+34486.700000047684,175,46,female,English,AmE,graduated high school,""":""""}",bike,ai,neg-know,know,higher,0.73,0.82,CC,BEL
+41932,596,64,male,English,AmE,hold a higher degree,""":""none""}",bike,nai,neg-stop,stop,higher,0,1,notPOST,PRE
+89784.89999961853,81,51,male,English,AmE,graduated high school,""":""""}",petshelter,ai,q-know,know,lower,0,0.5,CC,BEL
+41508,43,64,male,English,AmE,graduated college,""":""""}",bike,nai,neg-stop,stop,higher,0.06999999999999995,0.93,notPOST,PRE
+105399.29999995232,362,55,female,English,AmE,hold a higher degree,""":""""}",petshelter,nai,neg-know,know,lower,0.12,0.84,BEL,CC
+157268.5,250,29,male,English,AmE,graduated college,""":""""}",bike,ai,neg-stop,stop,lower,0.13,0.9,PRE,notPOST
+78611.19999998808,393,66,female,English,AmE,graduated college,""":""""}",subway,ai,q-know,know,lower,0.13,0.11,CC,BEL
+51984,624,56,male,English,AmE,graduated college,""":""""}",bike,ai,q-stop,stop,higher,0.36,0.5800000000000001,PRE,notPOST
+65739,389,46,male,English,AmE,graduated college,""":""""}",bike,nai,q-know,know,higher,0.62,0.62,BEL,CC
+68078.79999995232,295,45,female,English,AmE,graduated college,""":""""}",bike,nai,q-stop,stop,higher,0.78,0.71,notPOST,PRE
+57890.09999999998,348,59,male,English,AmE,graduated college,""":""N/A""}",subway,ai,q-stop,stop,higher,1,0,PRE,notPOST
+134515.2999997139,435,64,female,English,AmE,graduated college,""":""The study was fine but the boxes on the demographic section are very small and hard to read.""}",bike,ai,q-stop,stop,higher,1,1,PRE,notPOST
+101498.90000000002,488,53,male,English,AmE,some college,""":""N/A""}",subway,ai,q-stop,stop,lower,0.1,1,PRE,notPOST
+64500.29999999702,266,51,female,English,AmE,graduated college,""":""""}",subway,nai,q-know,know,lower,0.74,0.82,BEL,CC
+77198.90000000596,68,41,male,English,AmE,graduated college,""":""""}",bike,nai,q-stop,stop,higher,0.27,1,notPOST,PRE
+36927.69999998808,179,27,male,English,AmE,graduated college,""":""no""}",petshelter,nai,q-stop,stop,lower,0.21999999999999997,0.73,notPOST,PRE
+108133.09999999404,173,73,female,English,AmE,some college,". ""}",subway,ai,q-know,know,higher,1,1,CC,BEL
+40045.800000190735,639,65,female,English,AmE,some college,""":""""}",bike,nai,neg-know,know,higher,0.29,0.48,BEL,CC
+38814,48,52,preferNoToSay,English,AmE,some college,""":""""}",subway,ai,q-know,know,higher,0.83,0.62,CC,BEL
+63191.20000000007,122,47,female,English,AmE,some college,""":""""}",subway,ai,q-stop,stop,higher,0.79,0.21999999999999997,PRE,notPOST
+60048.69999999972,539,56,female,English,AmE,some college,""":""Anything is possible I suppose...""}",bike,nai,q-know,know,lower,0.28,0.81,BEL,CC
+66215.3999999999,558,39,male,English,AmE,graduated college,""":""no issues""}",subway,nai,q-know,know,lower,0.48,0.11,BEL,CC
+94893.09999999404,134,65,female,English,AmE,some college,""":""N/A""}",subway,nai,neg-know,know,higher,1,1,BEL,CC
+45775.69999998808,439,39,female,English,AmE,some college,""":""it is different, very interesting.""}",petshelter,ai,q-know,know,lower,0.09,0.32,CC,BEL
+52439.5,150,54,female,English,AmE,graduated high school,""":""""}",bike,nai,q-know,know,lower,0.49,0.61,BEL,CC
+77006.00000000001,60,41,male,English,AmE,graduated college,""":""None ""}",petshelter,nai,q-know,know,higher,0.66,0.66,BEL,CC
+54982.69999998808,330,61,male,English,AmE,some college,""":""""}",petshelter,nai,neg-stop,stop,lower,0,1,notPOST,PRE
+64937.5,433,58,female,English,AmE,hold a higher degree,""":""""}",petshelter,ai,q-stop,stop,higher,0.81,0.42000000000000004,PRE,notPOST
+91843,102,55,female,English,AmE,graduated college,""":""none""}",petshelter,ai,q-know,know,lower,1,0,CC,BEL
+51777,291,29,female,English,AmE,hold a higher degree,""":""""}",petshelter,ai,q-stop,stop,lower,0.5,0.8200000000000001,PRE,notPOST
+109700.2000002861,89,49,male,English,AmE,graduated college,""":""""}",bike,nai,neg-know,know,higher,0.37,0.63,BEL,CC
+73051.89999999106,177,75,female,English,AmE,hold a higher degree,""":""none""}",petshelter,ai,q-know,know,lower,0.37,0.4,CC,BEL
+42360.09999999404,53,51,female,English,AmE,hold a higher degree,""":""""}",bike,nai,neg-know,know,lower,0.01,0,BEL,CC
+49734.40000000596,388,68,male,English,AmE,graduated college,""":""""}",subway,ai,neg-stop,stop,higher,1,0,PRE,notPOST
+57668.09999990463,532,32,male,English,AmE,graduated college,""":""""}",petshelter,ai,neg-know,know,higher,0.99,0.21,CC,BEL
+121154.19999998808,320,39,female,English,AmE,graduated college,""":""""}",petshelter,nai,q-stop,stop,higher,0.22999999999999998,0.79,notPOST,PRE
+44747.89999999991,615,46,male,English,AmE,graduated college,""":""""}",petshelter,nai,q-stop,stop,higher,0.53,0.57,notPOST,PRE
+68778.79999923706,40,38,female,English,AmE,hold a higher degree,""":""""}",petshelter,nai,q-know,know,lower,0.36,0.99,BEL,CC
+62307,36,34,female,English,AmE,hold a higher degree,""":""I'm not clear as to the hypothesis in this study...""}",petshelter,ai,q-stop,stop,lower,0,0.8,PRE,notPOST
+91613.60000002384,577,35,male,English,AmE,graduated college,""":""""}",petshelter,nai,q-stop,stop,lower,0.28,0.73,notPOST,PRE
+61901,58,33,female,English,AmE,graduated college,""":""""}",petshelter,nai,neg-know,know,lower,0,1,BEL,CC
+60804.90000000037,237,74,male,English,AmE,some college,""":""none""}",bike,ai,q-stop,stop,lower,0.89,0.12,PRE,notPOST
+47298.19999998808,464,29,male,English,AmE,hold a higher degree,""":""""}",petshelter,ai,neg-stop,stop,lower,0.8,0.14,PRE,notPOST
+64102.69999998808,534,71,female,English,AmE,graduated college,""":""interesting survey""}",subway,ai,neg-stop,stop,higher,1,0,PRE,notPOST
+57062.39999999851,442,33,male,English,AmE,graduated college,""":""""}",petshelter,nai,q-know,know,lower,0.64,0.73,BEL,CC
+30264,473,26,female,English,AmE,graduated college,""":""NA""}",subway,nai,neg-stop,stop,higher,0.10999999999999999,1,notPOST,PRE
+92926,231,51,female,English,AmE,graduated high school,""":""""}",petshelter,nai,q-stop,stop,higher,0.12,1,notPOST,PRE
+72045,139,49,female,English,AmE,graduated college,""":""""}",petshelter,nai,neg-know,know,lower,0,0,BEL,CC
+37578.79999995232,585,55,male,English,AmE,graduated high school,""":""""}",petshelter,ai,neg-know,know,lower,0.91,0.04,CC,BEL
+46229.89999997616,578,29,male,English,AmE,graduated college,""":""""}",subway,ai,q-stop,stop,lower,0.41,0.78,PRE,notPOST
+62215.900000002235,329,40,male,English,AmE,graduated high school,""":""""}",petshelter,nai,neg-stop,stop,lower,0,0.86,notPOST,PRE
+37961.09999999963,135,46,female,English,AmE,graduated high school,""":""""}",bike,ai,neg-stop,stop,higher,1,0,PRE,notPOST
+46698.39999997616,352,53,male,English,AmE,some college,""":""""}",bike,ai,q-stop,stop,higher,0.31,0.65,PRE,notPOST
+41363.19999999972,525,37,female,English,AmE,graduated college,""":""none""}",subway,ai,q-stop,stop,lower,1,0.97,PRE,notPOST
+44181,322,35,female,English,AmE,graduated college,""":""""}",bike,ai,q-stop,stop,lower,0.79,0.77,PRE,notPOST
+34969,312,34,male,English,AmE,graduated high school,""":""""}",bike,ai,neg-stop,stop,lower,1,0,PRE,notPOST
+47742,602,55,male,English,AmE,graduated college,""":""""}",subway,ai,q-know,know,higher,0.51,0.51,CC,BEL
+69471.39999997616,401,46,male,English,AmE,graduated college,""":""""}",petshelter,ai,neg-stop,stop,lower,1,0,PRE,notPOST
+59612.99999999999,586,37,female,English,AmE,graduated high school,""":""""}",subway,ai,neg-know,know,lower,1,0,CC,BEL
+44733,440,67,male,English,AmE,graduated college,""":""""}",subway,nai,q-know,know,lower,0.52,0.51,BEL,CC
+41349,514,68,female,English,AmE,graduated high school,""":""""}",subway,ai,q-know,know,lower,0,0,CC,BEL
+132045.59999999986,500,72,female,English,AmE,graduated college,""":""n/a""}",petshelter,ai,q-know,know,lower,0,1,CC,BEL
+68269.10000002384,35,60,female,English,AmE,graduated college,""":""""}",petshelter,ai,q-stop,stop,higher,1,0.32999999999999996,PRE,notPOST
+83048.89999997616,195,40,male,English,AmE,graduated college,""":""""}",petshelter,nai,neg-know,know,lower,0.5,0.5,BEL,CC
+88514.80000001192,251,73,female,English,AmE,graduated high school,""":"" no""}",petshelter,nai,neg-stop,stop,higher,0,1,notPOST,PRE
+130333.2000000002,310,31,female,English,AmE,graduated high school,""":""""}",subway,nai,neg-stop,stop,higher,0,1,notPOST,PRE
+42245.09999996424,399,44,male,English,AmE,graduated high school,""":""""}",subway,nai,neg-stop,stop,higher,0,1,notPOST,PRE
+44171.70000004768,409,50,male,English,AmE,graduated college,""":""Thank you for this opportunity.""}",bike,ai,neg-stop,stop,higher,1,0,PRE,notPOST
+61679,499,42,male,English,AmE,hold a higher degree,""":""""}",subway,nai,q-stop,stop,higher,0.38,0.66,notPOST,PRE
+74298,576,55,female,English,AmE,graduated college,""":""""}",bike,ai,neg-know,know,lower,1,0.67,CC,BEL
+85734.29999999981,565,70,male,English,AmE,some college,""":""Even if the question is answered, it will not be a reliable indication of how the list should be completed.""}",subway,nai,q-know,know,lower,0.32,0.13,BEL,CC
+41206.00000000001,14,29,female,English,AmE,graduated college,""":""""}",bike,nai,q-know,know,lower,0.41,0.36,BEL,CC
+67870.40000000596,27,31,male,English,AmE,graduated college,""":""no comment.""}",bike,ai,q-stop,stop,lower,1,1,PRE,notPOST
+74086,228,55,female,English,AmE,hold a higher degree,""":""""}",petshelter,nai,q-know,know,higher,0.69,0.5,BEL,CC
+37710.5,342,58,male,English,AmE,hold a higher degree,""":""""}",petshelter,nai,q-know,know,lower,0.05,0.01,BEL,CC
+88031.19999998808,530,56,female,English,AmE,graduated college,""":""""}",petshelter,nai,neg-know,know,higher,0.66,0.55,BEL,CC
+90967,475,39,female,English,AmE,graduated college,""":""""}",subway,nai,q-know,know,higher,0.23,0.58,BEL,CC
+34161.199999999255,548,36,female,English,AmE,graduated college,""":""""}",petshelter,nai,q-know,know,lower,0.2,0,BEL,CC
+61655.09999999998,264,28,male,English,AmE,graduated high school,""":""""}",petshelter,nai,neg-stop,stop,higher,0,1,notPOST,PRE
+60169.19999998808,37,26,female,English,AmE,hold a higher degree,""":""""}",bike,nai,q-stop,stop,higher,0.31999999999999995,1,notPOST,PRE
+36827.69999998808,129,67,female,English,AmE,hold a higher degree,""":""""}",bike,ai,neg-stop,stop,higher,1,0,PRE,notPOST
+77530.40000003576,305,39,male,English,AmE,graduated high school,""":""""}",bike,ai,q-know,know,lower,0.98,0.51,CC,BEL
+67437.39999997616,247,67,female,English,AmE,graduated college,""":""I have no comment.""}",subway,nai,q-know,know,lower,0,1,BEL,CC
+55482.80000001192,184,35,female,English,AmE,graduated college,""":""""}",bike,nai,q-stop,stop,higher,1,0.98,notPOST,PRE
+45958,61,40,male,English,AmE,graduated college,""":""Nothing to add, thanks""}",subway,nai,neg-know,know,lower,0.25,0.71,BEL,CC
+36081.70000004768,181,26,male,English,AmE,some college,""":""""}",bike,ai,q-know,know,lower,0.81,0.51,CC,BEL
+69040,42,79,female,English,AmE,graduated high school,""":""""}",petshelter,nai,q-know,know,lower,0,0,BEL,CC
+60702.69999998808,491,66,female,English,AmE,hold a higher degree,""":""""}",petshelter,ai,q-know,know,lower,0,0,CC,BEL
+45352.39999985695,51,56,female,English,AmE,graduated college,""":"" none""}",bike,ai,neg-stop,stop,higher,1,0,PRE,notPOST
+245620,64,29,male,English,AmE,some college,""":""""}",subway,ai,q-know,know,higher,1,0.3,CC,BEL
+49497.30000000447,618,31,female,English,AmE,hold a higher degree,""":""""}",subway,nai,q-stop,stop,lower,0.6,0.43,notPOST,PRE
+58068.59999999404,425,41,female,English,AmE,graduated college,""":""""}",petshelter,ai,q-know,know,higher,1,0.75,CC,BEL
+44048.29999999702,335,28,female,English,AmE,graduated college,""":""""}",subway,nai,neg-stop,stop,lower,0,1,notPOST,PRE
+60874.5,9,40,female,English,AmE,graduated college,""":""""}",subway,ai,q-know,know,lower,0.67,0.5,CC,BEL
+66185.1000000001,20,34,female,English,AmE,some college,""":""""}",bike,ai,neg-know,know,lower,1,0,CC,BEL
+30374.5,136,38,male,English,AmE,graduated high school,""":""""}",bike,ai,neg-know,know,lower,1,1,CC,BEL
+62596,583,50,female,English,AmE,graduated college,""":""""}",petshelter,nai,q-stop,stop,lower,1,0,notPOST,PRE
+142744.40000009537,242,42,female,English,AmE,hold a higher degree,""":""""}",petshelter,ai,q-know,know,lower,1,0.6,CC,BEL
+58053.5,495,53,male,English,AmE,some college,""":""""}",petshelter,ai,neg-know,know,higher,0.87,0.95,CC,BEL
+47846.10000038147,610,42,female,English,AmE,graduated college,""":""""}",bike,nai,neg-stop,stop,lower,0.06999999999999995,0.93,notPOST,PRE
+1065467.799999997,315,56,male,English,AmE,graduated college,""":""""}",subway,ai,q-know,know,lower,0.13,0.12,CC,BEL
+68659,270,45,male,English,AmE,some college,""":""""}",petshelter,ai,neg-stop,stop,lower,0.84,0.13,PRE,notPOST
+48575.40000000596,380,33,male,English,AmE,graduated college,""":""""}",subway,nai,neg-stop,stop,higher,0.050000000000000044,0.98,notPOST,PRE
+57542.19999998808,276,36,female,English,AmE,some college,""":""""}",bike,nai,neg-stop,stop,higher,0,1,notPOST,PRE
+65713.60000000894,625,52,preferNoToSay,English,AmE,graduated college,""":""""}",bike,ai,neg-know,know,lower,0.63,0.08,CC,BEL
+44480.89999997616,283,34,female,English,AmE,graduated college,""":""""}",bike,nai,q-stop,stop,higher,0.22999999999999998,1,notPOST,PRE
+38261,343,39,male,English,AmE,graduated college,""":""""}",petshelter,nai,q-know,know,higher,0.79,0.62,BEL,CC
+55660,369,54,male,English,AmE,some college,""":""""}",petshelter,nai,neg-stop,stop,lower,0.10999999999999999,0.68,notPOST,PRE
+97029.9,546,61,female,English,AmE,graduated college,""":""""}",subway,nai,q-know,know,lower,0,0,BEL,CC
+43923.89999999991,630,52,female,English,AmE,graduated college,""":""""}",bike,ai,neg-know,know,higher,0.94,0.02,CC,BEL
+70292,75,48,female,English,AmE,graduated college,""":""""}",bike,ai,neg-know,know,higher,0.61,0.56,CC,BEL
+81429.20000000298,619,48,female,English,AmE,some college,""":""""}",petshelter,ai,q-know,know,lower,0.04,0.07,CC,BEL
+63925,347,57,preferNoToSay,English,AmE,graduated college,""":""None""}",petshelter,ai,q-know,know,lower,0.22,0.27,CC,BEL
+46965.5,240,35,female,English,AmE,graduated high school,""":""""}",bike,ai,q-know,know,lower,0.01,0,CC,BEL
+76769,363,31,male,English,AmE,graduated college,""":""""}",petshelter,nai,q-stop,stop,lower,0.9299999999999999,0.15,notPOST,PRE
+35162,519,47,male,English,AmE,graduated college,""":""""}",bike,nai,q-stop,stop,lower,0.30000000000000004,0.59,notPOST,PRE
+91615,331,57,preferNoToSay,English,AmE,graduated high school,""":""""}",subway,ai,q-stop,stop,higher,1,0.77,PRE,notPOST
+95071,95,33,male,English,AmE,some college,""":""""}",bike,nai,q-stop,stop,higher,0.5900000000000001,0.96,notPOST,PRE
+63691.5,148,32,male,English,AmE,hold a higher degree,""":""""}",bike,nai,q-know,know,lower,0.39,0.43,BEL,CC
+54833.700000000186,230,67,female,English,AmE,graduated college,""":""Great study! Thanks so much...:)""}",subway,nai,neg-know,know,lower,0.04,0.07,BEL,CC
+47622.60000002384,450,45,male,English,AmE,graduated college,""":""20 miles? That is a crazy bike ride every morning""}",bike,ai,q-know,know,lower,0.71,1,CC,BEL
+85285,591,56,female,English,AmE,graduated college,""":""""}",subway,ai,q-know,know,higher,1,0.33,CC,BEL
+37923,485,41,male,English,AmE,graduated college,""":""""}",petshelter,nai,neg-know,know,higher,0.63,0.54,BEL,CC
+53586.89999997616,480,64,female,English,AmE,graduated college,""":""""}",petshelter,ai,q-stop,stop,higher,0.89,0.13,PRE,notPOST
+123020.29999999992,557,37,male,English,AmE,graduated college,""":""I hope the research goes well, thank you.""}",bike,ai,q-know,know,lower,0.18,0.18,CC,BEL
+61941.5,570,63,male,English,AmE,hold a higher degree,""":""""}",bike,ai,q-stop,stop,lower,0.96,0.78,PRE,notPOST
+49123.60000002384,292,41,male,English,AmE,graduated college,""":""""}",bike,ai,neg-know,know,higher,1,0.77,CC,BEL
+56646.30000001192,174,41,female,English,AmE,graduated high school,""":""Enjoyed the study, Thanks!""}",bike,nai,q-stop,stop,lower,1,1,notPOST,PRE
+72760.5,180,61,female,English,AmE,some college,""":""""}",petshelter,nai,q-know,know,higher,0.52,0.47,BEL,CC
+51084.20000000001,382,32,male,English,AmE,some college,""":""No question but hope the data helps you guys!""}",petshelter,ai,neg-know,know,lower,0.87,0.08,CC,BEL
+37829,553,49,male,English,AmE,graduated college,""":""""}",petshelter,ai,neg-know,know,higher,1,0.01,CC,BEL
+89232.5,172,39,female,English,AmE,hold a higher degree,""":""""}",petshelter,nai,neg-stop,stop,higher,0.26,0.77,notPOST,PRE
+56279.79999995232,127,25,female,English,AmE,graduated college,""":""""}",petshelter,nai,neg-know,know,lower,0.17,0.37,BEL,CC
+50867.39999997616,235,29,male,English,AmE,graduated college,""":""""}",petshelter,nai,neg-know,know,lower,0.13,0.36,BEL,CC
+43557,123,36,female,English,AmE,graduated college,""":""NA""}",subway,nai,neg-know,know,lower,0.41,0.29,BEL,CC
+49046.60000002384,80,48,male,English,AmE,hold a higher degree,""":""""}",bike,nai,q-stop,stop,higher,0.51,0.5,notPOST,PRE
+82914,452,24,male,English,AmE,some college,""":""""}",subway,ai,q-know,know,lower,0.06,0.19,CC,BEL
+84245.5,550,49,male,English,AmE,some college,""":""""}",bike,nai,q-know,know,lower,0.81,1,BEL,CC
+49566.70000004768,355,51,male,English,AmE,graduated college,""":""""}",petshelter,ai,q-stop,stop,lower,0,1,PRE,notPOST
+59938.20000004768,366,49,female,English,AmE,graduated college,""":""""}",subway,ai,neg-know,know,higher,1,0.72,CC,BEL
+84388.69999999995,318,64,male,English,AmE,graduated college,""":""""}",bike,nai,neg-stop,stop,lower,0.06999999999999995,1,notPOST,PRE
+80404.20000000019,12,72,female,English,AmE,some college,""":""Thanks!""}",subway,ai,neg-know,know,lower,0.02,0.02,CC,BEL
+77078.30000001192,511,26,male,English,AmE,graduated college,""":""If he is a big germophob I think the promotion has no impact on him taking public transport or not. ""}",subway,ai,q-stop,stop,lower,0.05,0.83,PRE,notPOST
+76325,356,74,female,English,AmE,some college,""":""I had no problem with this survey. It was nice and short.""}",petshelter,ai,q-stop,stop,lower,0,1,PRE,notPOST
+46068.10000002384,486,59,female,English,AmE,graduated college,""":""""}",bike,nai,q-know,know,higher,0.84,0.71,BEL,CC
+42027.5,189,27,female,English,AmE,graduated college,""":""""}",subway,nai,neg-know,know,higher,0.66,1,BEL,CC
+31942.799999952316,460,22,male,English,AmE,some college,""":""""}",petshelter,ai,neg-know,know,lower,0.07,0.16,CC,BEL
+270663,113,56,female,English,AmE,graduated college,""":""""}",subway,ai,q-know,know,lower,0.69,0.66,CC,BEL
+77140.20000000298,256,45,male,English,AmE,graduated college,""":""thanks!""}",petshelter,ai,neg-stop,stop,higher,1,0,PRE,notPOST
+34060.200000000186,227,35,male,English,AmE,graduated college,""":""""}",bike,nai,q-know,know,lower,0.94,0.92,BEL,CC
+44044.69999998808,416,50,male,English,AmE,graduated college,""":""""}",petshelter,nai,neg-know,know,higher,0.26,0.71,BEL,CC
+44878.19999998808,290,47,female,English,AmE,graduated college,""":""""}",petshelter,ai,q-know,know,lower,0,0,CC,BEL
+41372.69999998808,474,29,female,English,AmE,graduated high school,""":""awesome job!""}",bike,ai,q-stop,stop,higher,0,0.050000000000000044,PRE,notPOST
+45729.10000002384,633,60,female,English,AmE,some college,""":""""}",subway,nai,neg-stop,stop,lower,0.8,0.89,notPOST,PRE
+43220.199999809265,23,35,male,English,AmE,graduated high school,""":""This was an interesting study.""}",bike,ai,neg-know,know,lower,1,0,CC,BEL
+62174.20000000298,584,62,female,English,AmE,graduated college,""":""""}",subway,nai,neg-stop,stop,lower,0,1,notPOST,PRE
+47096.10000002384,438,32,female,English,AmE,graduated college,""":""None""}",petshelter,nai,q-stop,stop,lower,0.18999999999999995,0.6,notPOST,PRE
+37775.40000000037,44,35,male,English,AmE,some college,""":""No further comment.""}",subway,ai,q-know,know,lower,0.13,0.12,CC,BEL
+57490.5,503,58,male,English,AmE,graduated college,""":""""}",petshelter,nai,q-know,know,lower,0.2,0,BEL,CC
+33890.799999999814,202,35,female,English,AmE,graduated high school,""":""""}",bike,nai,q-stop,stop,higher,0.35,1,notPOST,PRE
+47741,490,72,male,English,AmE,graduated college,""":""well written""}",subway,ai,q-know,know,higher,1,1,CC,BEL
+39126.59999996424,205,27,female,English,AmE,some college,""":""""}",subway,ai,neg-know,know,higher,0.65,0.75,CC,BEL
+75711.69999980927,309,68,female,English,AmE,some college,""":""It would be hard to know when if the individual volunteered and/or how long they have had the allergies to animals. Were they volunteering at the pet shelter when it was discovered they had the allergies? Based on the information provided, it would be anyone's guess as to if they volunteered. Why nit just ask the individual rather than talking/asking others about it? Total transparency is what so many companies lack.""}",petshelter,ai,q-know,know,lower,0.5,0.5,CC,BEL
+64410,344,46,male,English,AmE,graduated college,""":""""}",subway,ai,q-know,know,higher,0.49,0.53,CC,BEL
+47292.50000000003,200,44,female,English,AmE,graduated college,""":""""}",bike,ai,q-stop,stop,lower,0.14,0.97,PRE,notPOST
+101554.10000000148,34,36,male,English,AmE,some college,""":""Thank you for the opportunity.""}",petshelter,nai,neg-know,know,higher,0.67,0.73,BEL,CC
+42099.09999996424,233,39,female,English,AmE,some college,""":""""}",subway,ai,neg-stop,stop,lower,0.99,0.020000000000000018,PRE,notPOST
+77200,595,43,female,English,AmE,graduated college,""":""""}",subway,nai,neg-stop,stop,lower,0,1,notPOST,PRE
+76781.5,494,51,male,English,AmE,graduated college,""":""""}",subway,nai,neg-stop,stop,higher,0.09999999999999998,0.97,notPOST,PRE
+350153.1999999881,21,63,female,English,AmE,hold a higher degree,""":""This was an insightful study.""}",subway,ai,neg-know,know,lower,0,0,CC,BEL
+35887,119,43,male,English,AmE,graduated college,""":""none at this time""}",bike,ai,neg-stop,stop,higher,1,0,PRE,notPOST
+45078.19999998808,472,42,male,English,AmE,hold a higher degree,""":""""}",bike,ai,neg-stop,stop,lower,0.93,0.050000000000000044,PRE,notPOST
+42018.70000004768,446,42,female,English,AmE,graduated college,""":""none""}",petshelter,ai,q-stop,stop,higher,0.86,0.31000000000000005,PRE,notPOST
+48059.199999999255,635,61,female,English,AmE,hold a higher degree,"""}",subway,ai,q-stop,stop,lower,0.66,0.89,PRE,notPOST
+30764,157,31,male,English,AmE,graduated college,""":""na""}",subway,nai,q-know,know,higher,0.67,0.82,BEL,CC
+42504,414,56,female,English,AmE,some college,""":""""}",petshelter,ai,neg-stop,stop,lower,1,0,PRE,notPOST
+47543.39999985695,33,32,female,English,AmE,graduated high school,""":""""}",petshelter,nai,q-know,know,lower,0.04,0,BEL,CC
+42005.60000002384,301,21,female,English,AmE,graduated high school,""":""""}",petshelter,nai,neg-stop,stop,higher,0,1,notPOST,PRE
+42182,114,36,female,English,AmE,graduated high school,""":""""}",petshelter,ai,q-stop,stop,higher,0.63,0.5,PRE,notPOST
+63463.70000001788,185,53,female,English,AmE,graduated college,""":""""}",subway,ai,q-know,know,higher,0.98,1,CC,BEL
+52303.5,31,25,male,English,AmE,some college,""":""""}",subway,nai,neg-know,know,lower,0.01,0.94,BEL,CC
+42160.39999997616,426,37,female,English,AmE,graduated college,""":""""}",bike,nai,neg-stop,stop,higher,0.08999999999999997,0.97,notPOST,PRE
+74947,190,26,female,English,AmE,graduated college,""":""""}",petshelter,ai,neg-stop,stop,higher,0.95,0.010000000000000009,PRE,notPOST
+42237.90000009537,587,27,male,English,AmE,some college,""":""""}",bike,nai,q-know,know,higher,0.72,0.65,BEL,CC
+53280.39999999991,206,48,female,English,AmE,graduated college,""":""""}",bike,nai,neg-know,know,higher,0,0.56,BEL,CC
+56779.5,353,52,female,English,AmE,graduated college,""":""""}",petshelter,nai,q-stop,stop,lower,0.99,0,notPOST,PRE
+127209.79999995232,354,59,female,English,AmE,some college,""":""""}",subway,nai,neg-know,know,lower,0.5,0.43,BEL,CC
+63864.60000002384,25,47,female,English,AmE,hold a higher degree,""":""""}",petshelter,ai,neg-know,know,higher,1,0,CC,BEL
+34368.800000071526,72,23,female,English,AmE,some college,""":""""}",subway,ai,neg-stop,stop,lower,1,0,PRE,notPOST
+75566.59999996424,99,60,female,English,AmE,graduated college,""":""None.""}",bike,nai,q-stop,stop,lower,0.8,0.23,notPOST,PRE
+38966.79999995232,208,55,female,English,AmE,graduated college,""":""""}",petshelter,nai,q-stop,stop,lower,0.81,0.26,notPOST,PRE
+57549.89999999991,277,27,male,English,AmE,some college,""":""""}",petshelter,ai,neg-stop,stop,lower,1,1,PRE,notPOST
+68549.69999999995,188,29,male,English,AmE,graduated college,""":""""}",bike,nai,q-know,know,lower,0.78,1,BEL,CC
+63964.89999997616,611,54,female,English,AmE,graduated college,"""}",petshelter,nai,neg-know,know,higher,0.74,0.87,BEL,CC
+58953.90000003576,518,49,female,English,AmE,some college,""":""""}",subway,nai,neg-stop,stop,lower,0,1,notPOST,PRE
+52741.199999809265,321,43,female,English,AmE,graduated high school,""":""""}",subway,ai,q-stop,stop,lower,0.27,0.69,PRE,notPOST
+33598.10000000149,316,46,female,English,AmE,graduated high school,""":""""}",subway,ai,neg-stop,stop,lower,0.97,0.06999999999999995,PRE,notPOST
+68403.60000002384,323,28,female,English,AmE,graduated college,""":""""}",subway,nai,q-stop,stop,lower,0.81,0.18,notPOST,PRE
+66030.39999985695,405,59,female,English,AmE,graduated high school,""":""""}",subway,ai,neg-know,know,lower,0.89,0.23,CC,BEL
+58664.5,4,57,female,English,AmE,some college,""":""""}",subway,nai,neg-stop,stop,higher,0,1,notPOST,PRE
+53925,467,43,female,English,AmE,hold a higher degree,".""}",petshelter,ai,neg-stop,stop,higher,1,0,PRE,notPOST
+60161.39999999991,631,26,male,English,AmE,graduated college,""":""""}",petshelter,nai,neg-stop,stop,higher,0.22999999999999998,0.9,notPOST,PRE
+54177.899999999965,390,44,preferNoToSay,English,AmE,hold a higher degree,""":""""}",subway,ai,neg-stop,stop,lower,0.69,0.29000000000000004,PRE,notPOST
+98155.40000000596,83,31,female,English,AmE,some college,""":""""}",subway,nai,neg-know,know,lower,0.2,0.23,BEL,CC
+160961.5,477,29,male,English,AmE,hold a higher degree,""":""The key is the difference in emphasis on the word \""know\"" vs the word \""Sue\"". Hearing the speech is VERY DIFFERENT than reading the text. \nEmphasis on \""Sue\"" implies we're questioning whether Sue knows this truth. \nEmphasis on \""know\"" implies we're questioning whether this is a truth.""}",petshelter,ai,q-know,know,higher,1,0.53,CC,BEL
+115817.59999999404,17,63,female,English,AmE,some college,""":""""}",bike,nai,q-stop,stop,higher,0.22999999999999998,0.79,notPOST,PRE
+51454.20000001788,108,61,male,English,AmE,hold a higher degree,""":""""}",petshelter,ai,q-stop,stop,lower,0.33,0.7,PRE,notPOST
+60836.39999999106,39,30,female,English,AmE,graduated college,""":""""}",petshelter,nai,q-know,know,lower,0,0,BEL,CC
+139502.79999999702,302,59,male,English,AmE,graduated high school,""":""none""}",subway,nai,neg-know,know,higher,0,0.52,BEL,CC
+41066.79999998212,52,54,non-binary,English,AmE,some college,""":""none""}",petshelter,ai,q-know,know,higher,1,0.65,CC,BEL
+96245,124,64,female,English,AmE,graduated high school,""":""""}",petshelter,nai,neg-stop,stop,lower,0.020000000000000018,1,notPOST,PRE
+53360.90000000002,617,40,male,English,AmE,graduated college,""":""""}",subway,ai,q-stop,stop,lower,0.14,0.98,PRE,notPOST
+53445.69999998808,385,38,female,English,AmE,hold a higher degree,""":""n/a""}",petshelter,ai,neg-stop,stop,lower,1,0,PRE,notPOST
+71981,171,30,female,English,AmE,graduated high school,""":""Thank you!""}",subway,ai,q-know,know,higher,0.84,0.18,CC,BEL
+50414.70000004768,204,29,male,English,AmE,graduated high school,""":""""}",subway,nai,q-know,know,lower,0.67,0.68,BEL,CC
+37221.59999996424,88,71,female,English,AmE,some college,""":""""}",bike,ai,neg-stop,stop,higher,0.95,0.12,PRE,notPOST
+47555.10000038147,248,36,male,English,AmE,graduated college,""":""""}",bike,nai,neg-stop,stop,lower,0.08999999999999997,1,notPOST,PRE
+114591.90000009535,59,46,male,English,AmE,graduated college,""":""""}",petshelter,ai,q-stop,stop,lower,0.84,0.83,PRE,notPOST
+47798.5,324,30,male,English,AmE,graduated high school,""":""None come to mind""}",subway,ai,neg-stop,stop,higher,1,0,PRE,notPOST
+90690.5,462,35,female,English,AmE,graduated high school,""":""""}",subway,nai,q-stop,stop,higher,0.020000000000000018,0.92,notPOST,PRE
+57499.10000000894,299,55,female,English,AmE,graduated college,""":""na""}",subway,ai,neg-stop,stop,lower,0.99,0.010000000000000009,PRE,notPOST
+43776.40000000596,91,57,preferNoToSay,English,AmE,graduated college,""":""""}",subway,nai,q-stop,stop,lower,0.98,0.62,notPOST,PRE
+56460.800000190735,437,52,female,English,AmE,some college,""":""""}",petshelter,ai,neg-know,know,lower,0,0,CC,BEL
+42018,87,55,male,English,AmE,graduated college,""":""""}",bike,nai,q-know,know,higher,0.34,0.8,BEL,CC
+71061.19999998808,15,44,male,English,AmE,graduated high school,". Thanks.""}",subway,nai,neg-stop,stop,higher,0.040000000000000036,0.97,notPOST,PRE
+205974.19999998808,32,52,female,English,AmE,some college,""":""na""}",bike,nai,q-stop,stop,lower,0.17000000000000004,0.99,notPOST,PRE
+123081.19999999552,207,52,male,English,AmE,hold a higher degree,""":"" none""}",bike,nai,neg-stop,stop,higher,0,1,notPOST,PRE
+63299,432,38,female,English,AmE,hold a higher degree,""":""""}",bike,nai,neg-know,know,higher,0.15,0.31,BEL,CC
+35534.40000000596,46,62,male,English,AmE,some college,".""}",petshelter,nai,q-stop,stop,lower,1,0,notPOST,PRE
+39018,153,21,female,English,AmE,some college,""":""""}",petshelter,nai,neg-stop,stop,lower,0,1,notPOST,PRE
+78149,246,56,male,English,AmE,graduated college,""":""""}",subway,nai,neg-stop,stop,lower,0.96,0.04,notPOST,PRE
+180449.80000007153,232,42,female,English,AmE,graduated college,""":""""}",petshelter,ai,q-know,know,lower,0.03,0.02,CC,BEL
+51110.69999999553,628,47,male,English,AmE,hold a higher degree,""":""interesting survey - thanks""}",subway,ai,neg-stop,stop,higher,1,0,PRE,notPOST
+65706.59999996424,6,41,male,English,AmE,some college,""":""""}",petshelter,ai,q-know,know,lower,1,0.19,CC,BEL
+30717.300000190735,294,25,female,English,AmE,graduated college,""":""""}",bike,ai,neg-know,know,lower,0.83,0.28,CC,BEL
+67065.09999999963,443,44,female,English,AmE,some college,""":""""}",bike,nai,neg-stop,stop,lower,0,1,notPOST,PRE
+63414.29999995232,132,29,female,English,AmE,hold a higher degree,""":""""}",bike,ai,q-know,know,lower,0,0,CC,BEL
+68455.70000001788,86,33,male,English,AmE,graduated college,""":""""}",petshelter,nai,q-know,know,lower,0.82,0,BEL,CC
+56982.70000000298,507,45,male,English,AmE,some college,""":""""}",petshelter,ai,q-know,know,lower,0.78,0.37,CC,BEL
+89678.59999999404,118,25,male,English,AmE,graduated high school,""":""""}",bike,nai,q-know,know,higher,0.27,1,BEL,CC
+49243,263,29,female,English,AmE,some high school,""":""""}",petshelter,nai,neg-know,know,higher,0.62,1,BEL,CC
+35661.5,492,47,male,English,AmE,graduated college,""":""None""}",subway,ai,q-know,know,lower,0.13,0.15,CC,BEL
+160175,77,43,female,English,AmE,hold a higher degree,""":""""}",subway,ai,neg-stop,stop,lower,1,0,PRE,notPOST
+80727,588,68,male,English,AmE,some college,""":""n/a""}",petshelter,nai,q-stop,stop,lower,1,0,notPOST,PRE
+42926.39999997616,38,32,female,English,AmE,graduated college,""":""""}",petshelter,ai,neg-know,know,higher,0.81,0.39,CC,BEL
+59779,155,31,male,English,AmE,graduated high school,""":""""}",bike,ai,neg-stop,stop,higher,1,0,PRE,notPOST
+47343.20000004768,379,32,male,English,AmE,graduated college,""":""""}",bike,ai,neg-know,know,higher,0.43,0.17,CC,BEL
+31895.69999998808,428,36,female,English,AmE,graduated college,""":""""}",bike,ai,q-know,know,lower,0,0.01,CC,BEL
+35801.40000003576,1,44,female,English,AmE,some college,""":""""}",bike,nai,neg-know,know,higher,0.5,1,BEL,CC
+151079,74,32,female,English,AmE,graduated college,""":""""}",petshelter,ai,q-stop,stop,lower,0,1,PRE,notPOST
+112385.19999992847,5,34,male,English,AmE,some college,""":""""}",bike,nai,q-know,know,lower,0.65,0.9,BEL,CC
+84201,163,51,female,English,AmE,graduated college,""":""""}",bike,ai,neg-know,know,lower,0.88,0.79,CC,BEL
+43371.29999995232,449,28,non-binary,English,AmE,some college,""":""""}",petshelter,nai,neg-stop,stop,higher,0,1,notPOST,PRE
+43771,515,40,preferNoToSay,English,AmE,graduated college,""":""None""}",petshelter,ai,q-stop,stop,higher,1,0.19999999999999996,PRE,notPOST
+54854.20000004768,562,45,female,English,AmE,some college,""":""I mean it wouldn't make sense for someone allergic to volunteer at the shelter, but his assistant said they did. So its strange and I gave it a neutral score.""}",petshelter,nai,neg-stop,stop,lower,0.49,0.5,notPOST,PRE
+34219.90000003576,311,37,male,English,AmE,some college,""":""""}",bike,nai,q-know,know,higher,0.49,0.5,BEL,CC
+62605.80000001192,540,43,preferNoToSay,English,AmE,some college," at this time""}",petshelter,ai,neg-know,know,higher,0.98,1,CC,BEL
+167958.19999998808,549,51,female,English,AmE,some college,""":""""}",bike,nai,q-know,know,lower,0.75,0.77,BEL,CC
+57682,49,43,female,English,AmE,hold a higher degree,""":""""}",subway,nai,q-stop,stop,higher,0.21999999999999997,1,notPOST,PRE
+44104.5,572,51,female,English,AmE,graduated college,""":""""}",bike,nai,q-know,know,higher,0.78,0.8,BEL,CC
+37710,47,32,male,English,AmE,some college,""":""""}",bike,ai,q-know,know,lower,0,0.23,CC,BEL
+58760.69999998808,598,50,female,English,AmE,some college," except \""Best wishes as you continue with your research project.\""""}",subway,nai,q-stop,stop,higher,0.69,0.98,notPOST,PRE
+34026,383,34,male,English,AmE,graduated college,""":""""}",subway,nai,neg-stop,stop,lower,0.49,0.74,notPOST,PRE
+92820.90000003576,109,71,female,English,AmE,hold a higher degree,". Thank you for the opportunity to participate.""}",subway,ai,neg-know,know,lower,0.41,0.37,CC,BEL
+89149.10000002384,489,21,female,English,AmE,graduated high school,""":""""}",petshelter,nai,q-know,know,higher,0.53,0.56,BEL,CC
+50383,201,26,male,English,AmE,graduated high school,""":""""}",bike,nai,neg-know,know,higher,0.01,0.37,BEL,CC
+62061.59999999963,613,41,male,English,AmE,graduated college,""":""The study was clear.  Thank you for the opportunity!""}",subway,nai,q-stop,stop,lower,0.85,0.13,notPOST,PRE
+30204.19999998808,627,33,female,English,AmE,graduated college,""":""""}",bike,ai,neg-know,know,lower,0.7,0.43,CC,BEL
+84378,146,60,female,English,AmE,some college,""":""X""}",petshelter,nai,q-know,know,lower,0.22,0,BEL,CC
+39627,7,40,female,English,AmE,graduated high school,""":""None""}",subway,ai,neg-know,know,higher,0.9,0.24,CC,BEL
+37580.39999961853,391,36,male,English,AmE,graduated college,""":""None! Ty""}",petshelter,ai,q-stop,stop,higher,0.81,0.5,PRE,notPOST
+79990.60000002384,244,65,male,English,AmE,some college,""":""""}",bike,ai,q-know,know,lower,0.15,0.17,CC,BEL
+131408.5,430,27,male,English,AmE,graduated college,""":""i had no issues with the study""}",petshelter,ai,q-stop,stop,lower,0.19,0.81,PRE,notPOST
+64387,168,68,female,English,AmE,some college,""":""""}",subway,ai,neg-stop,stop,higher,0.9,0.14,PRE,notPOST
+34682.5,19,51,female,English,AmE,hold a higher degree,""":""""}",subway,ai,neg-stop,stop,higher,1,0,PRE,notPOST
+32914.79999999999,93,45,male,English,AmE,graduated college,""":""""}",bike,ai,q-stop,stop,higher,0.79,0,PRE,notPOST
+42276,152,33,male,English,AmE,some college,".""}",bike,nai,q-stop,stop,higher,0.51,0.48,notPOST,PRE
+66211.10000014305,192,44,male,English,AmE,graduated high school,""":""""}",petshelter,nai,q-stop,stop,higher,0,0,notPOST,PRE
+161803,609,28,female,English,AmE,hold a higher degree,""":""""}",subway,ai,neg-stop,stop,higher,1,0,PRE,notPOST
+56421,79,50,male,English,AmE,some college,""":""Keep up the good work!""}",subway,ai,q-know,know,higher,1,1,CC,BEL
+49525,261,38,female,English,AmE,graduated college,""":""""}",petshelter,ai,q-stop,stop,lower,0,1,PRE,notPOST
+51942.70000004768,538,40,male,English,AmE,some college,""":""""}",subway,ai,neg-stop,stop,lower,1,0,PRE,notPOST
+54514.60000002384,605,25,male,English,AmE,graduated college,""":""""}",subway,nai,neg-know,know,higher,0.23,0.25,BEL,CC
+112806.89999999852,161,48,female,English,AmE,graduated college," and no issues. Good luck on your research. ""}",petshelter,ai,q-know,know,lower,0.09,0.17,CC,BEL
+66545.5,274,26,preferNoToSay,English,AmE,graduated college,""":""""}",subway,ai,q-know,know,higher,0.63,0.73,CC,BEL
+40625.09999999404,281,65,female,English,AmE,graduated college,""":""""}",bike,ai,q-know,know,higher,0.87,0.91,CC,BEL
+70034.69999998808,217,33,male,English,AmE,graduated college,""":""I initially assumed that whoever asked about Charlie (the germaphobe, I might have the name wrong) was unaware if Charlie rode the subway before being promoted, and the question was simply worded poorly. In hindsight, it's likely the person asking the question knew that Charlie did ride the subway before the promotion. If I realized this earlier, I might have answered differently.""}",subway,nai,q-stop,stop,lower,0.6799999999999999,0.32,notPOST,PRE
+43467.89999997616,544,35,male,English,AmE,hold a higher degree,""":""""}",subway,nai,neg-stop,stop,higher,0.12,1,notPOST,PRE
+97360.10000000056,411,29,female,English,AmE,graduated college,""":""""}",petshelter,nai,q-stop,stop,lower,1,0,notPOST,PRE
+67631,632,38,male,English,AmE,graduated college,""":""""}",bike,ai,q-know,know,lower,0,0,CC,BEL
+50929.20000001788,424,44,female,English,AmE,graduated college,""":""n/a""}",subway,ai,neg-know,know,lower,0.18,0.38,CC,BEL
+45682.69999998808,381,56,male,English,AmE,graduated college,""":""""}",bike,ai,q-stop,stop,higher,0.51,0.5,PRE,notPOST
+62741.59999996424,265,42,male,English,AmE,graduated college,""":""""}",bike,nai,neg-stop,stop,higher,1,0,notPOST,PRE
+53197.70000004768,592,41,male,English,AmE,graduated college,""":""Seemed too simple""}",petshelter,ai,q-know,know,lower,0.81,0.66,CC,BEL
+74027.60000002384,589,25,female,English,AmE,graduated college,""":""""}",petshelter,nai,neg-know,know,higher,0.4,0.74,BEL,CC
+72960,224,36,male,English,AmE,graduated high school,""":""""}",subway,nai,neg-stop,stop,lower,0,1,notPOST,PRE
+74849.40000000037,394,54,female,English,AmE,hold a higher degree,""":""n/a""}",subway,nai,neg-know,know,higher,0.36,0.77,BEL,CC
+31216.5,402,34,female,English,AmE,graduated college,""":""""}",petshelter,ai,neg-know,know,lower,0.01,0,CC,BEL
+52903,147,35,male,English,AmE,some college,""":""""}",petshelter,ai,q-know,know,higher,0.82,0.56,CC,BEL
+159648,483,25,male,English,AmE,graduated college,""":""""}",petshelter,nai,neg-stop,stop,lower,0.06999999999999995,0.21,notPOST,PRE
+46895.79999995232,249,36,female,English,AmE,some high school,""":""""}",bike,nai,q-stop,stop,lower,0.45999999999999996,0.47,notPOST,PRE
+31036.5,26,47,female,English,AmE,graduated college,""":""""}",petshelter,nai,neg-stop,stop,lower,0,1,notPOST,PRE
+76524.5,571,69,male,English,AmE,graduated college,""":""""}",bike,ai,neg-know,know,higher,0.65,0.5,CC,BEL
+88753,422,41,male,English,AmE,some college,""":""n/a""}",petshelter,ai,q-know,know,higher,0.74,0.5,CC,BEL
+75402.69999999553,384,29,male,English,AmE,graduated college,""":""N/A""}",subway,nai,q-stop,stop,higher,0.42000000000000004,0.57,notPOST,PRE
+100884.70000004768,594,39,male,English,AmE,some college,""":""""}",bike,ai,neg-stop,stop,higher,1,0,PRE,notPOST
+36442.80000001192,82,41,male,English,AmE,graduated high school,""":""""}",bike,nai,neg-stop,stop,lower,0,1,notPOST,PRE
+44854.40000003576,634,51,female,English,AmE,hold a higher degree,""":""""}",bike,nai,q-know,know,lower,0.81,0.29,BEL,CC
+74115.60000002384,303,57,female,English,AmE,hold a higher degree,"""}",bike,nai,q-stop,stop,lower,0.28,1,notPOST,PRE
+82359.69999999972,441,51,female,English,AmE,graduated high school,""":""""}",bike,nai,neg-stop,stop,lower,1,1,notPOST,PRE
+67733.40000000596,255,38,female,English,AmE,graduated college,""":""""}",bike,nai,q-stop,stop,higher,0,1,notPOST,PRE
+60594.30000001192,484,64,male,English,AmE,graduated college,""":""""}",petshelter,ai,neg-stop,stop,lower,0.86,0.14,PRE,notPOST
+180701.30000001192,603,33,male,English,AmE,graduated high school,""":""""}",petshelter,nai,q-stop,stop,lower,1,1,notPOST,PRE
+83475.79999999981,608,32,male,English,AmE,graduated high school,""":""N/A""}",petshelter,nai,q-know,know,higher,0.72,0.88,BEL,CC
+51270.59999999404,509,45,preferNoToSay,English,AmE,graduated college,""":""Thanks.""}",petshelter,nai,q-stop,stop,higher,0.48,0.6,notPOST,PRE
+54902,559,25,male,English,AmE,graduated college,""":""""}",bike,nai,q-know,know,higher,0.49,0.76,BEL,CC
+38347,410,61,female,English,AmE,hold a higher degree,""":""""}",subway,nai,q-know,know,higher,0.71,0.82,BEL,CC
+44771.60000000149,225,38,female,English,AmE,hold a higher degree,""":""""}",subway,nai,q-stop,stop,higher,0,1,notPOST,PRE
+118033.79999998212,325,31,male,English,AmE,graduated college,""":""This was simple. ""}",petshelter,ai,q-know,know,higher,1,1,CC,BEL
+30200.40000000596,456,64,female,English,AmE,hold a higher degree,""":""""}",petshelter,nai,q-stop,stop,higher,0.12,0.99,notPOST,PRE
+52630.09999999963,18,55,female,English,AmE,graduated college,""":""""}",subway,ai,q-stop,stop,higher,0.75,0.5,PRE,notPOST
+108790.5,238,58,male,English,AmE,graduated college,""":""20 miles is a long way for daily commutes on a bike.  I used to ride 20 or more miles at a time on my bike but I would probably not want to do that for work due to weather.  I had a bad crash once when it was raining.""}",bike,nai,neg-know,know,lower,0,0.28,BEL,CC
+55831.79999995232,459,30,female,English,AmE,some college,""":""""}",subway,ai,q-stop,stop,higher,0.81,0.33999999999999997,PRE,notPOST
+84443.60000000894,229,61,female,English,AmE,graduated college,""":""The pet shelter question is an interesting twist""}",petshelter,nai,q-stop,stop,higher,0.25,0.8,notPOST,PRE
+71789.20000004768,100,57,female,English,AmE,graduated college,".""}",subway,ai,q-stop,stop,higher,0.82,0.18000000000000005,PRE,notPOST
+73944.19999998808,41,45,female,English,AmE,some college,""":""""}",bike,nai,neg-know,know,higher,0,1,BEL,CC
+74459.09999999404,268,54,male,English,AmE,graduated high school,""":""none""}",bike,ai,q-know,know,higher,1,0.5,CC,BEL
+71447.5,604,62,female,English,AmE,graduated college,""":""""}",subway,nai,neg-know,know,higher,0.49,0.52,BEL,CC
+401611.60000002384,466,34,male,English,AmE,graduated high school,""":""N/A""}",subway,nai,q-stop,stop,lower,0,0.7,notPOST,PRE
+106367.79999998212,288,52,female,English,AmE,hold a higher degree,""":""""}",petshelter,nai,q-stop,stop,higher,0.13,1,notPOST,PRE
+86530.79999995232,313,79,female,English,AmE,some college,""":""thanks for letting me do this study""}",petshelter,ai,neg-stop,stop,higher,1,0,PRE,notPOST
+38403,29,47,female,English,AmE,hold a higher degree,""":""""}",subway,nai,q-stop,stop,lower,0.74,0.69,notPOST,PRE
+100934.60000000148,566,38,female,English,AmE,some college,""":""I liked the set up of this one, it was quite fun""}",bike,ai,q-know,know,higher,0.98,0.18,CC,BEL
+42544.10000000056,199,37,male,English,AmE,some college,""":""NA""}",subway,nai,q-stop,stop,higher,0,1,notPOST,PRE
+92662.5,482,53,male,English,AmE,hold a higher degree,""":""""}",subway,nai,q-know,know,higher,0.51,0.51,BEL,CC
+58870.39999999851,377,27,male,English,AmE,some college,""":""None""}",bike,nai,neg-know,know,higher,0.49,0.65,BEL,CC
+47327.40000000002,2,32,male,English,AmE,graduated high school,""":""Thank you!""}",petshelter,ai,q-know,know,higher,1,0.47,CC,BEL
+80477.09999999776,144,36,female,English,AmE,some college,""":""""}",subway,nai,q-stop,stop,higher,0.07999999999999996,1,notPOST,PRE
+43285.300000071526,448,43,female,English,AmE,graduated college,""":""""}",petshelter,ai,neg-stop,stop,higher,1,0,PRE,notPOST
+82673,278,43,male,English,AmE,graduated high school,""":""""}",petshelter,nai,q-stop,stop,higher,0.13,0.32,notPOST,PRE
+46123,22,34,male,English,AmE,graduated high school,""":""none""}",subway,ai,q-stop,stop,higher,0.69,0.84,PRE,notPOST
+43253,84,71,male,English,AmE,hold a higher degree,""":""""}",subway,nai,q-stop,stop,lower,0.050000000000000044,0.96,notPOST,PRE
+86362.59999999404,453,55,female,English,AmE,hold a higher degree,""":""Grammatically, I think this sentence meant that Charley did volunteer. She is saying that Sue didn't know that he did. ""}",petshelter,ai,neg-know,know,lower,1,0.98,CC,BEL
+88648.10000002384,561,72,female,English,AmE,graduated high school,""":""Thank you""}",bike,ai,q-know,know,higher,0.96,1,CC,BEL
+60950.09999990463,160,26,female,English,AmE,graduated college,""":""""}",subway,nai,q-stop,stop,higher,0.64,0.62,notPOST,PRE
+41385.60000038147,612,29,female,English,AmE,graduated high school,""":""""}",petshelter,ai,neg-stop,stop,higher,0.96,0.06000000000000005,PRE,notPOST
+137405.8999999985,209,41,female,English,AmE,some college,""":""""}",subway,ai,q-stop,stop,higher,0.98,0.06000000000000005,PRE,notPOST
+64783.20000004768,367,48,female,English,AmE,hold a higher degree,""":""""}",petshelter,nai,q-stop,stop,higher,0.14,1,notPOST,PRE
+51640.70000004768,16,56,female,English,AmE,some college,""":""""}",bike,ai,q-know,know,higher,0.74,0.5,CC,BEL
+49445,346,40,female,English,AmE,some college,""":""Thank you! I hope you have an amazing day! ""}",petshelter,ai,neg-stop,stop,higher,1,0,PRE,notPOST
+55685.5,198,48,female,English,AmE,some college,""":""""}",subway,ai,q-stop,stop,higher,0.83,0.14,PRE,notPOST
+50590,407,35,preferNoToSay,English,AmE,hold a higher degree,""":""""}",bike,nai,neg-know,know,lower,0.26,0.77,BEL,CC
+76389,510,66,male,English,AmE,hold a higher degree,""":""Mike is seeking information from a third party about Sue's awareness of Charley's bike practice.  There's no indication that she's not aware, possibly that she's not available to be spoken to directly. ""}",bike,ai,q-know,know,higher,1,0.49,CC,BEL
+58409.39999997616,359,71,female,English,AmE,some college,""":""""}",bike,ai,q-know,know,higher,0.66,0.64,CC,BEL
+62964.60000002384,211,55,male,English,AmE,graduated college,""":""""}",petshelter,ai,q-know,know,higher,0.16,0.37,CC,BEL
+54563.90000009537,408,37,female,English,AmE,graduated college,""":""""}",subway,nai,q-know,know,higher,0.76,0.9,BEL,CC
+33577,395,30,female,English,AmE,hold a higher degree,""":""""}",petshelter,nai,neg-stop,stop,higher,1,1,notPOST,PRE
+138480.30000001192,543,26,female,English,AmE,some college,""":""none""}",bike,ai,q-know,know,higher,1,0.63,CC,BEL
+53208,145,35,female,English,AmE,graduated college,""":""""}",subway,nai,q-stop,stop,higher,0.09999999999999998,0.91,notPOST,PRE
+37367,50,37,male,English,AmE,graduated college,""":""n/a""}",subway,nai,q-stop,stop,lower,0.49,0.49,notPOST,PRE
+70934.39999999851,222,49,female,English,AmE,graduated college,""":""""}",bike,nai,neg-know,know,lower,0.01,0.9,BEL,CC
+61322.90000000596,8,72,female,English,AmE,some college,""":""Easy choice""}",subway,ai,q-stop,stop,higher,1,0,PRE,notPOST
+67122.39999771118,536,35,female,English,AmE,graduated college,""":""""}",bike,ai,q-know,know,higher,0.98,0.6,CC,BEL
+64258,196,34,male,English,AmE,graduated college,""":""""}",subway,ai,q-stop,stop,higher,0.91,0.31000000000000005,PRE,notPOST
+46135,614,42,male,English,AmE,some college,""":""""}",petshelter,ai,neg-stop,stop,higher,1,0,PRE,notPOST
+37161.39999997616,326,37,male,English,AmE,hold a higher degree,""":""""}",subway,nai,neg-know,know,higher,0.37,0.93,BEL,CC
+800177.3999999985,221,40,male,English,AmE,hold a higher degree,""":""""}",subway,nai,q-stop,stop,higher,0.30000000000000004,0.68,notPOST,PRE
+34796.89999997616,350,31,female,English,AmE,graduated college,""":""""}",bike,nai,neg-know,know,lower,0.06,0.91,BEL,CC
+87387,236,63,female,English,AmE,graduated high school,""":""""}",bike,ai,q-know,know,higher,0.57,0.66,CC,BEL
+42732.29999999702,101,43,female,English,AmE,graduated college,""":""""}",petshelter,nai,q-stop,stop,higher,0.36,0.74,notPOST,PRE
+97730.79999995232,193,53,female,English,AmE,graduated high school,""":""""}",petshelter,ai,q-know,know,higher,1,1,CC,BEL
+135361.79999995232,636,41,female,English,AmE,graduated college,""":""""}",petshelter,nai,neg-know,know,lower,0.16,0.31,BEL,CC
+53685,529,41,female,English,AmE,graduated college,""":""""}",bike,nai,neg-know,know,higher,0.12,0.1,BEL,CC
+59390.09999999963,13,27,male,English,AmE,graduated high school,""":""none""}",petshelter,ai,neg-stop,stop,higher,0.99,0.25,PRE,notPOST
+45147,580,43,male,English,AmE,some college,""":""""}",petshelter,ai,neg-stop,stop,higher,1,0.020000000000000018,PRE,notPOST
+75162,98,42,female,English,AmE,hold a higher degree,""":""""}",petshelter,nai,q-stop,stop,higher,0,1,notPOST,PRE

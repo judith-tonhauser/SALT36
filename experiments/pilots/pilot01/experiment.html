@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My experiment</title>
+    <script src="js/jquery-1.11.1.min.js "></script>
+    <script src="jspsych/jspsych.js"></script>
+    <!-- <script src="jspsych/plugin-survey-text.js"></script> -->
+    <script src="jspsych/plugin-survey.js"></script>
+    <script src="jspsych/plugin-html-button-response.js"></script>
+    <script src="jspsych/plugin-survey-multi-select.js"></script>
+    <script src="jspsych/plugin-html-slider-response-JT.js"></script>
+    <script src="jspsych/plugin-html-multi-slider.js"></script>
+   <script src="jspsych/plugin-preload.js"></script>
+      <script src="jspsych/plugin-survey-text.js"></script>
+    <!-- <script src="helpers.js"></script> -->
+    <link  href="jspsych/jspsych.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore.js" type="text/javascript"></script>
+
+  </head>
+  <body></body>
+  <script>
+
+
+// this function shuffles an array
+function shuffle(array) {
+   for (var i = array.length - 1; i > 0; i--) { 
+         // Generate random number 
+       var j = Math.floor(Math.random() * (i + 1));
+       var temp = array[i];
+       array[i] = array[j];
+       array[j] = temp;
+   }
+      
+   return array;
+}
+
+/* Send data data to store script: */
+async function saveData(data){
+  const response = await fetch('/store', {
+    method:  "POST",
+    cache:   "no-cache",
+    headers: {"Content-Type": "text/csv"},
+    body:    data
+  })
+  document.getElementById("jspsych-content").innerHTML = await response.text();
+}
+
+
+// initialise jspsych 
+var jsPsych = initJsPsych({
+  show_progress_bar: true,
+  auto_update_progress_bar: false,
+  on_finish: async function(){
+    var lasttrialdata = jsPsych.data.getLastTrialData();
+    console.log(lasttrialdata);
+    await saveData(jsPsych.data.get().csv());
+    window.location = "https://app.prolific.com/submissions/complete?cc=CGK1HX1B"
+  }
+});
+
+
+/* preload images */
+var preload = {
+  type: jsPsychPreload,
+  images: ['images/bike-know-ai.png', 'images/bike-know-nai.png','images/bike-stop-ai.png', 'images/bike-stop-nai.png','images/subway-know-ai.png', 'images/subway-know-nai.png','images/subway-stop-ai.png', 'images/subway-stop-nai.png','images/petshelter-know-ai.png', 'images/petshelter-know-nai.png','images/petshelter-stop-ai.png', 'images/petshelter-stop-nai.png']
+};
+
+
+/* for the progress bar: create a global count variable that increases by 1 after each trial, and use that to set the progress bar value at the end of each trial */
+var count = 0;
+var n_trials = 3; //1 instructions/consent, 1 trial, 1 demographics
+
+
+/* define the ingredients for the target stimuli */
+
+// contents
+var contents = ["subway","bike","petshelter"]
+
+// quds
+var quds = ['ai','nai']
+
+// priors
+var priors = ['higher','lower']
+
+// utterance types, based on qud (only know- and think-utterances)
+var utteranceTypes = ['neg-know','neg-stop','q-know','q-stop']
+
+// mapping from uttTypes to binary uttType
+var uttTypeBinary = {'neg-know': 'know',
+        'q-know': 'know',
+        'neg-stop': 'stop',
+        'q-stop': 'stop'
+      }
+
+// utterances, based on QUD
+var utterances = {
+  'bike': {'neg-know': "Sue doesn't know that Charley biked to work before he got promoted.", "q-know": "Does Sue know that Charley biked to work before he got promoted?", "neg-stop": "Charley didn't stop biking to work when he got promoted.","q-stop": "Did Charley stop biking to work when he got promoted?"},
+  'subway': {'neg-know': "Sue doesn't know that Charley took the subway to work before he got promoted.", "q-know": "Does Sue know that Charley took the subway to work before he got promoted?", "neg-stop": "Charley didn't stop taking the subway to work when he got promoted.","q-stop": "Did Charley stop taking the subway to work when he got promoted?"},
+  'petshelter': {'neg-know': "Sue doesn't know that Charley volunteered at the pet shelter before he got promoted.", "q-know": "Does Sue know that Charley volunteered at the pet shelter before he got promoted?", "neg-stop": "Charley didn't stop volunteering at the pet shelter when he got promoted.","q-stop": "Did Charley stop volunteering at the pet shelter when he got promoted?"}
+}
+
+
+// Part 1 of context (before image)
+// Part 2 of content (after image)
+
+
+var contextsPart1 = {
+  'bike': 
+    {'know':
+      {'ai': "Mike works as a health officer for an IT company. He is currently working through a list of employees in Sue's department that recently got promoted &mdash; Kate, Tom, Charley, Tatiana, Ricardo &mdash; to identify who biked to work before they got promoted. He keeps track on this list:",
+      'nai': "Mike works as a health officer for an IT company. He is trying to figure out how well the five department heads &mdash; Kate, Tom, Sue, Tatiana, and Ricardo &mdash; know the commuting habits of the head of HR, Charley. Mike keeps track on this list:"},
+    'stop':
+      {'ai': "Mike works as a health officer for an IT company. He is currently working through a list of employees in Sue's department that recently  got promoted &mdash; Kate, Tom, Charley, Tatiana, Ricardo &mdash; to identify who biked to work before they got promoted. He keeps track on this list:",
+      'nai': "Mike works as a health officer for an IT company. He is currently working through a list of employees in Sue's department that recently  got promoted &mdash; Kate, Tom, Charley, Tatiana, Ricardo &mdash; to identify who biked to work after they got promoted. He keeps track on this list:"}},
+   'subway': 
+    {'know':
+      {'ai': "Mike works as a health officer for an IT company. He is currently working through a list of employees in Sue's department that recently got promoted &mdash; Kate, Tom, Charley, Tatiana, Ricardo &mdash; to identify who took the subway to work before they got promoted. He keeps track on this list:",
+      'nai': "Mike works as a health officer for an IT company. He is trying to figure out how well the five department heads &mdash; Kate, Tom, Sue, Tatiana, and Ricardo &mdash; know the commuting habits of the head of HR, Charley. Mike keeps track on this list:"},
+    'stop':
+      {'ai': "Mike works as a health officer for an IT company. He is currently working through a list of employees in Sue's department that recently  got promoted &mdash; Kate, Tom, Charley, Tatiana, Ricardo &mdash; to identify who took the subway to work before they got promoted. He keeps track on this list:",
+      'nai': "Mike works as a health officer for an IT company. He is currently working through a list of employees in Sue's department that recently  got promoted &mdash; Kate, Tom, Charley, Tatiana, Ricardo &mdash; to identify who took the subway to work after they got promoted. He keeps track on this list:"}},
+    'petshelter': 
+    {'know':
+      {'ai': "Mike works as a health officer for an IT company. He is currently working through a list of employees in Sue's department that recently got promoted &mdash; Kate, Tom, Charley, Tatiana, Ricardo &mdash; to identify who volunteered at the pet shelter before they got promoted. He keeps track on this list:",
+      'nai': "Mike works as a health officer for an IT company. He is trying to figure out how well the five department heads &mdash; Kate, Tom, Sue, Tatiana, and Ricardo &mdash; know the pastimes of the head of HR, Charley. Mike keeps track on this list:"},
+    'stop':
+      {'ai': "Mike works as a health officer for an IT company. He is currently working through a list of employees in Sue's department that recently  got promoted &mdash; Kate, Tom, Charley, Tatiana, Ricardo &mdash; to identify who volunteered at the pet shelter before they got promoted. He keeps track on this list:",
+      'nai': "Mike works as a health officer for an IT company. He is currently working through a list of employees in Sue's department that recently  got promoted &mdash; Kate, Tom, Charley, Tatiana, Ricardo &mdash; to identify who volunteered at the pet shelter after they got promoted. He keeps track on this list:"}}
+}
+
+var contextsPart2 = {
+  'bike': 
+    {'neg-know':
+      {'ai': 
+        {'higher': "Next up, he wants to record in the list whether <b>CHARLEY</b>, who lives five blocks away from work, biked to work before he got promoted. Mike's assistant tells him:",
+         'lower': "Next up, he wants to record in the list whether <b>CHARLEY</b>, who lives twenty miles away from work, biked to work before he got promoted. Mike's assistant tells him:"},
+      'nai': 
+        {'higher': "Next up, Mike wants to record in his list whether <b>SUE</b> believes that Charley, who lives five blocks away from work, biked to work before he got promoted. Mike's assistant tells him:",
+         'lower': "Next up, Mike wants to record in his list whether <b>SUE</b> believes that Charley, who lives twenty miles away from work, biked to work before he got promoted. Mike's assistant tells him:"}},
+     'neg-stop':
+      {'ai': 
+        {'higher': "Next up, he wants to record in the list whether Charley, who lives five blocks away from work, biked to work <b>BEFORE</b> he got promoted. Mike's assistant tells him:",
+         'lower': "Next up, he wants to record in the list whether Charley, who lives twenty miles away from work, biked to work <b>BEFORE</b> he got promoted. Mike's assistant tells him:"},
+      'nai': 
+        {'higher': "Next up, he wants to record in the list whether Charley, who lives five blocks away from work, biked to work <b>AFTER</b> he got promoted. Mike's assistant tells him:",
+         'lower': "Next up, he wants to record in the list whether Charley, who lives twenty miles away from work, biked to work <b>AFTER</b> he got promoted. Mike's assistant tells him:"}},
+      'q-know':
+      {'ai': 
+        {'higher': "Next up, he wants to record in the list whether <b>CHARLEY</b>, who lives five blocks away from work, biked to work before he got promoted. Mike's assistant asks him:",
+         'lower': "Next up, he wants to record in the list whether <b>CHARLEY</b>, who lives twenty miles away from work, biked to work before he got promoted. Mike's assistant asks him:"},
+      'nai': 
+        {'higher': "Next up, Mike wants to record in his list whether <b>SUE</b> believes that Charley, who lives five blocks away from work, biked to work before he got promoted. Mike's assistant asks him:",
+         'lower': "Next up, Mike wants to record in his list whether <b>SUE</b> believes that Charley, who lives twenty miles away from work, biked to work before he got promoted. Mike's assistant asks him:"}},
+     'q-stop':
+      {'ai': 
+        {'higher': "Next up, he wants to record in the list whether Charley, who lives five blocks away from work, biked to work <b>BEFORE</b> he got promoted. Mike's assistant asks him:",
+         'lower': "Next up, he wants to record in the list whether Charley, who lives twenty miles away from work, biked to work <b>BEFORE</b> he got promoted. Mike's assistant asks him:"},
+      'nai': 
+        {'higher': "Next up, he wants to record in the list whether Charley, who lives five blocks away from work, biked to work <b>AFTER</b> he got promoted. Mike's assistant asks him:",
+         'lower': "Next up, he wants to record in the list whether Charley, who lives twenty miles away from work, biked to work <b>AFTER</b> he got promoted. Mike's assistant asks him:"}}},
+    'subway': 
+    {'neg-know':
+      {'ai': 
+        {'higher': "Next up, he wants to record in the list whether <b>CHARLEY</b>, who is a climate activist, took the subway to work before he got promoted. Mike's assistant tells him:",
+         'lower': "Next up, he wants to record in the list whether <b>CHARLEY</b>, who is a germaphobe, took the subway to work before he got promoted. Mike's assistant tells him:"},
+      'nai': 
+        {'higher': "Next up, Mike wants to record in his list whether <b>SUE</b> believes that Charley, who is a climate activist, took the subway to work before he got promoted. Mike's assistant tells him:",
+         'lower': "Next up, Mike wants to record in his list whether <b>SUE</b> believes that Charley, who is a germaphobe, took the subway to work before he got promoted. Mike's assistant tells him:"}},
+     'neg-stop':
+      {'ai': 
+        {'higher': "Next up, he wants to record in the list whether Charley, who is a climate activist, took the subway to work <b>BEFORE</b> he got promoted. Mike's assistant tells him:",
+         'lower': "Next up, he wants to record in the list whether Charley, who is a germaphobe, took the subway to work <b>BEFORE</b> he got promoted. Mike's assistant tells him:"},
+      'nai': 
+        {'higher': "Next up, he wants to record in the list whether Charley, who is a climate activist, took the subway to work <b>AFTER</b> he got promoted. Mike's assistant tells him:",
+         'lower': "Next up, he wants to record in the list whether Charley, who is a germaphobe, took the subway to work <b>AFTER</b> he got promoted. Mike's assistant tells him:"}},
+     'q-know':
+      {'ai': 
+        {'higher': "Next up, he wants to record in the list whether <b>CHARLEY</b>, who is a climate activist, took the subway to work before he got promoted. Mike's assistant asks him:",
+         'lower': "Next up, he wants to record in the list whether <b>CHARLEY</b>, who is a germaphobe, took the subway to work before he got promoted. Mike's assistant asks him:"},
+      'nai': 
+        {'higher': "Next up, Mike wants to record in his list whether <b>SUE</b> believes that Charley, who is a climate activist, took the subway to work before he got promoted. Mike's assistant asks him:",
+         'lower': "Next up, Mike wants to record in his list whether <b>SUE</b> believes that Charley, who is a germaphobe, took the subway to work before he got promoted. Mike's assistant asks him:"}},
+     'q-stop':
+      {'ai': 
+        {'higher': "Next up, he wants to record in the list whether Charley, who is a climate activist, took the subway to work <b>BEFORE</b> he got promoted. Mike's assistant asks him:",
+         'lower': "Next up, he wants to record in the list whether Charley, who is a germaphobe, took the subway to work <b>BEFORE</b> he got promoted. Mike's assistant asks him:"},
+      'nai': 
+        {'higher': "Next up, he wants to record in the list whether Charley, who is a climate activist, took the subway to work <b>AFTER</b> he got promoted. Mike's assistant asks him:",
+         'lower': "Next up, he wants to record in the list whether Charley, who is a germaphobe, took the subway to work <b>AFTER</b> he got promoted. Mike's assistant asks him:"}}},
+    'petshelter': 
+    {'neg-know':
+      {'ai': 
+        {'higher': "Next up, he wants to record in the list whether <b>CHARLEY</b>, who loves animals, volunteered at the pet shelter before he got promoted. Mike's assistant tells him:",
+         'lower': "Next up, he wants to record in the list whether <b>CHARLEY</b>, who is allergic to cats and dogs, volunteered at the pet shelter before he got promoted. Mike's assistant tells him:"},
+      'nai': 
+        {'higher': "Next up, Mike wants to record in his list whether <b>SUE</b> believes that Charley, who loves animals, volunteered at the pet shelter before he got promoted. Mike's assistant tells him:",
+         'lower': "Next up, Mike wants to record in his list whether <b>SUE</b> believes that Charley, who is allergic to cats and dogs, volunteered at the pet shelter before he got promoted. Mike's assistant tells him:"}},
+     'neg-stop':
+      {'ai': 
+        {'higher': "Next up, he wants to record in the list whether Charley, who loves animals, volunteered at the pet shelter <b>BEFORE</b> he got promoted. Mike's assistant tells him:",
+         'lower': "Next up, he wants to record in the list whether Charley, who is allergic to cats and dogs, volunteered at the pet shelter <b>BEFORE</b> he got promoted. Mike's assistant tells him:"},
+      'nai': 
+        {'higher': "Next up, he wants to record in the list whether Charley, who loves animals, volunteered at the pet shelter <b>AFTER</b> he got promoted. Mike's assistant tells him:",
+         'lower': "Next up, he wants to record in the list whether Charley, who is allergic to cats and dogs, volunteered at the pet shelter <b>AFTER</b> he got promoted. Mike's assistant tells him:"}},
+      'q-know':
+      {'ai': 
+        {'higher': "Next up, he wants to record in the list whether <b>CHARLEY</b>, who loves animals, volunteered at the pet shelter before he got promoted. Mike's assistant asks him:",
+         'lower': "Next up, he wants to record in the list whether <b>CHARLEY</b>, who is allergic to cats and dogs, volunteered at the pet shelter before he got promoted. Mike's assistant asks him:"},
+      'nai': 
+        {'higher': "Next up, Mike wants to record in his list whether <b>SUE</b> believes that Charley, who loves animals, volunteered at the pet shelter before he got promoted. Mike's assistant asks him:",
+         'lower': "Next up, Mike wants to record in his list whether <b>SUE</b> believes that Charley, who is allergic to cats and dogs, volunteered at the pet shelter before he got promoted. Mike's assistant asks him:"}},
+     'q-stop':
+      {'ai': 
+        {'higher': "Next up, he wants to record in the list whether Charley, who loves animals, volunteered at the pet shelter <b>BEFORE</b> he got promoted. Mike's assistant asks him:",
+         'lower': "Next up, he wants to record in the list whether Charley, who is allergic to cats and dogs, volunteered at the pet shelter <b>BEFORE</b> he got promoted. Mike's assistant asks him:"},
+      'nai': 
+        {'higher': "Next up, he wants to record in the list whether Charley, who loves animals, volunteered at the pet shelter <b>AFTER</b> he got promoted. Mike's assistant asks him:",
+         'lower': "Next up, he wants to record in the list whether Charley, who is allergic to cats and dogs, volunteered at the pet shelter <b>AFTER</b> he got promoted. Mike's assistant asks him:"}}}
+}
+
+/// stopped implementing the changes here
+
+// image depends on content and QUD
+var images = {
+'bike': 
+    {'know': 
+      {'ai': "bike-know-ai",
+      'nai': "bike-know-nai"},
+    'stop':
+      {'ai': "bike-stop-ai",
+      'nai': "bike-stop-nai"}},
+ 'subway': 
+    {'know': 
+      {'ai': "subway-know-ai",
+      'nai': "subway-know-nai"},
+    'stop':
+      {'ai': "subway-stop-ai",
+      'nai': "subway-stop-nai"}}, 
+  'petshelter': 
+    {'know': 
+      {'ai': "petshelter-know-ai",
+      'nai': "petshelter-know-nai"},
+    'stop':
+      {'ai': "petshelter-stop-ai",
+      'nai': "petshelter-stop-nai"}}
+}
+
+// questions for each content, with order of presentation dependent on QUD
+var questions = {
+  'bike': 
+    {'know': 
+      {'ai': "Given what you have read above, how likely is it that Charley biked to work before he got promoted?",
+      'nai': "Given what you have read above, how likely is it that Sue believes that Charley biked to work before he got promoted?"},
+    'stop':
+      {'ai': "Given what you have read above, how likely is it that Charley biked to work before he got promoted?",
+      'nai': "Given what you have read above, how likely is it that Charley biked to work after he got promoted?"}},
+ 'subway': 
+    {'know': 
+      {'ai': "Given what you have read above, how likely is it that Charley took the subway to work before he got promoted?",
+      'nai': "Given what you have read above, how likely is it that Sue believes that Charley took the subway to work before he got promoted?"},
+    'stop':
+      {'ai': "Given what you have read above, how likely is it that Charley took the subway to work before he got promoted?",
+      'nai': "Given what you have read above, how likely is it that Charley took the subway to work after he got promoted?"}}, 
+  'petshelter': 
+    {'know': 
+      {'ai': "Given what you have read above, how likely is it that Charley volunteered at the pet shelter before he got promoted?",
+      'nai': "Given what you have read above, how likely is it that Sue believes that Charley volunteered at the pet shelter before he got promoted?"},
+    'stop':
+      {'ai': "Given what you have read above, how likely is it that Charley volunteered at the pet shelter before he got promoted?",
+      'nai': "Given what you have read above, how likely is it that Charley volunteered at the pet shelter after he got promoted?"}}
+}
+
+// function to get a random utterance type
+function getUttType() {
+    uttType = _.sample(utteranceTypes)
+  return uttType
+}
+
+// function to get a prior
+function getPrior() {
+    prior = _.sample(priors)
+  return prior
+}
+
+// function to get a random content and remove it from array
+function getContent() {
+    content = _.sample(contents)
+  return content
+}
+
+// function to get a random qud and remove it from array
+function getQUD() {
+    qud = _.sample(quds)
+  return qud
+}
+
+// function to map utterance type to binary utterance type
+function getbinType(uttType) {
+    binType = uttTypeBinary[uttType]
+  return binType
+}
+
+// function to get an utteranceType
+function getUtteranceType() {
+    uttType = shuffle(utteranceTypes).shift()
+    return uttType
+}
+
+// function to get an actual utterance
+function getUtterance(content,uttType) {
+    utterance = utterances[content][uttType]
+    return utterance
+}
+
+// function to get the first part of the context, given a content, binary utterance type
+// and qud
+function getContextPart1(content,binType,qud) {
+    contextPart1 = contextsPart1[content][binType][qud]
+    return contextPart1
+}
+
+// function to get the second part of the context, given a content, binary utterance type
+// qud and prior
+function getContextPart2(content,uttType,qud,prior) {
+    contextPart2 = contextsPart2[content][uttType][qud][prior]
+    return contextPart2
+}
+
+
+// function to get the first question, the one that corresponds to the intended QUD
+function getQuestionFIRST(content,binType,qud) {
+    questionFIRST = questions[content][binType][qud]
+    return questionFIRST
+}
+
+// function to get the second question, the one that doesn't correspond to the intended QUD
+function getQuestionSECOND(content,binType,qud) {
+  if (qud == "ai") {
+    return questionSECOND = questions[content][binType]["nai"] } else 
+    { return questionSECOND = questions[content][binType]["ai"] }
+  }
+
+
+// function to get an image, given a content and a qud
+function getImage(content,binType,qud) {
+    image = images[content][binType][qud]
+    return image
+}
+
+// function to make an item
+function makeAnItem() {
+  // get a qud, a prior, a content and an utteranceType
+  var qud = getQUD();
+  var prior = getPrior();
+  var content = getContent();
+  var uttType = getUtteranceType();
+  // get the binary utterance type to get the right context
+  var binType = getbinType(uttType)
+    console.log(content)
+    console.log(qud)
+    console.log(prior)
+  // get the actual utterance, given the content and uttType
+    var utterance = getUtterance(content,uttType);
+    console.log(uttType)
+  // get the two contexts
+    //console.log(utterance)
+    var contextPart1 = getContextPart1(content,binType,qud)
+    var contextPart2 = getContextPart2(content,uttType,qud,prior)
+  // get the questions for that content
+    // questionFIRST is the ai question if QUD = ai
+    // questionSECOND is the nai question if QUD = ai
+    var questionFIRST = getQuestionFIRST(content,binType,qud)
+    var questionSECOND = getQuestionSECOND(content,binType,qud)
+    // console.log(context)
+    // console.log(utterance)
+    // console.log(question)
+    var image = getImage(content,binType,qud)
+    return {
+    "contextPart1": contextPart1, 
+    "contextPart2": contextPart2,
+    "utterance": utterance,
+    "questionFIRST": questionFIRST,
+    "questionSECOND": questionSECOND,
+    "qud": qud,
+    "prior": prior,
+    "content":content,
+    "image": image
+    }
+  }
+
+// make items and push them to array of items
+var items = [];
+// console.log(items)
+
+var stim = makeAnItem()
+items.push(jQuery.extend(true, {}, stim))
+
+// console.log(items)
+
+// this function takes an item as an argument and builds the stimulus to be displayed
+// before the two sliders
+function buildStimulus(item) {
+  return "<p style=\"text-align: center;\">" + item.contextPart1 + "<br><br><img src=\"images/"+item.image+ ".png\" height=\"200\"><br><br>" + item.contextPart2 + "<em> \"" + item.utterance + "\"</em><p>" + "<br> <br><u>First question:</u><br><br>" + item.questionFIRST;
+}
+
+// this function takes an item as argument and builds the stimulus to be displayed in
+// the second slider
+function buildStimulusTWO(item) {
+  // console.log(item)
+  return "<u>Second question:</u><br><br>" + item.questionSECOND;
+}
+
+// initialize array of stimuli with "stimulus" keys and empty values
+// the length is twice the length of the items array (because we need two "stimuli" per item)
+var stimuli = Array.from(Array(2*items.length).keys())
+// console.log(items.length)
+// console.log(stimuli)
+
+// for each item in the array, create a key "stimulus:"
+function createKey(index) {
+  var name = "stimulus:";
+  return name;
+}
+
+// apply the function "createKey" to the array of stimuli
+var stimuli = stimuli.map(createKey);
+
+// console.log(stimuli)
+
+// in the array "stimuli", change each item into a key-value pair {"stimulus:" }
+stimuli = stimuli.map(() => ({ }));
+
+// console.log(stimuli)
+
+// loop through the items to turn them into stimuli that can be displayed
+// for (let i = 0; i < items.length; i++) {
+//    stimuli[i].stimulus = buildStimulus(items[i]);
+// } 
+
+// build the two stimuli from the single item
+// stimuli[0].stimulus = buildStimulus(items[0])
+// stimuli[1].stimulus = buildStimulusTWO(items[0])
+var stimFIRST = buildStimulus(items[0])
+var stimSECOND = buildStimulusTWO(items[0])
+
+// console.log(stimFIRST)
+// console.log(stimSECOND)
+
+
+// generate a condition variable to pass on with the responses
+var condition = items[0];
+
+// add condition info to data
+jsPsych.data.addProperties({
+  condition: condition
+});
+
+/* Now that we have a list of stimuli, we define the experiment trials and screens */
+
+// instruction and consent screen
+var consent_screen = {
+  type: jsPsychHtmlButtonResponse,
+  stimulus: "<h3>Instructions</h3>\
+  <div style='width:500px';> In this experiment, you will read a short text. We will ask you two questions about what you have read. You will give your responses on a slider. <br><br> At the end of the experiment, we will ask you some demographic questions. The experiment will take less than three minutes.<br><br> By clicking on the button below you agree to participate in the experiment, which is conducted by language researchers. You may withdraw at any time. The data collected will be anonymous and confidential. If you have any questions, you may contact the experimenters through Prolific's platform.<br><br></div>",
+  // stimulus: "<h3>Instructions</h3>\
+  // <p style='text-align:left';>In this experiment, you will read a short text and see an image. We will ask you two questions about what you have read. You will give your responses on a slider. </p>\
+  // <p style='text-align:left'>At the end of the experiment, we will ask you some demographic questions. The experiment will take less than two minutes.</p>\
+  // <p style='text-align:left'>By clicking on the button below you agree to participate in the experiment, which is conducted by language researchers. You may withdraw at any time. The data collected will be anonymous and confidential. If you have any questions, you may contact the experimenters through Prolific's platform.</p>",
+  choices: ["Yes, I consent to participate"],
+  on_finish: function(data) {
+              count++;
+              var progress = count/n_trials;
+              jsPsych.setProgressBar(progress);
+            }
+};
+
+// define the botcaptcha trials
+var speaker = shuffle(["James", "John", "Robert", "Michael", "William", "David", "Richard", "Joseph", "Thomas", "Charles"]).shift()
+var listener = shuffle(["Mary", "Patricia", "Jennifer", "Linda", "Elizabeth", "Barbara", "Susan", "Jessica", "Sarah", "Margaret"]).shift()
+var speaker2 = shuffle(["James", "John", "Robert", "Michael", "William", "David", "Richard", "Joseph", "Thomas", "Charles"]).shift()
+var listener2 = shuffle(["Mary", "Patricia", "Jennifer", "Linda", "Elizabeth", "Barbara", "Susan", "Jessica", "Sarah", "Margaret"]).shift()
+
+var text = "<b>Please verify that you are a human by answering this question:</b><br><br><br>" + speaker + ' says to ' + listener + ': "It\'s a beautiful day, isn\'t it?"' + '<br><br> Who is ' + speaker + ' talking to? Write the name into the box.';
+
+var text2 = "<b>Please verify that you are a human by answering this question:</b><br><br><br>" + speaker2 + ' says to ' + listener2 + ': "It\'s a beautiful day, isn\'t it?"' + '<br><br> Who is ' + speaker2 + ' talking to? Write the name into the box.';
+
+var botcaptcha_trial1 = {
+  type: jsPsychSurveyText,
+  questions: [
+    {prompt: text}
+  ],
+  on_finish: function(data){
+    //console.log(data.response.Q0)
+    //console.log(listener)
+// score the text response as correct or incorrect.
+    if (data.response.Q0.toLowerCase() == listener.toLowerCase()){
+       data.correct = true
+       return "<p style='text-align:left'><b>Correct!</b></p>";
+     } else {
+       data.correct = false; 
+    }
+  }
+}
+
+var botcaptcha_trial2 = {
+  type: jsPsychSurveyText,
+  questions: [
+    {prompt: text2}
+  ],
+  on_finish: function(data){
+    // console.log("i'm in botcaptcha_trial2")
+    // console.log(data.response.Q0)
+    // console.log(listener2)
+// score the text response as correct or incorrect.
+    if (data.response.Q0.toLowerCase() == listener2.toLowerCase()){
+       data.correct = true
+       return "<p style='text-align:left'><b>Correct!</b></p>";
+     } else {
+       data.correct = false; 
+    }
+  }
+}
+
+// what to do in case the response was incorrect
+var feedback1IC = {
+  type: jsPsychHtmlButtonResponse,
+  stimulus: "<p style='text-align:left'><b> Incorrect response! Please try again. </b><br><br></p>",
+  choices: ['Return to bot captcha']
+}
+
+var feedback1IC2 = {
+  type: jsPsychHtmlButtonResponse,
+  stimulus: "<p style='text-align:left'><b> Incorrect response again! Please return the experiment. You are not allowed to participate.</b><br><br></p>",
+  choices: []
+}
+
+// feedback, in case the response was correct
+var feedback1C = {
+  type: jsPsychHtmlButtonResponse,
+  stimulus: "<p style='text-align:left'><b> Correct response! You are a human :) </b><br><br></p>",
+  choices: ['Continue to the experiment']
+}
+
+
+// conditional: in case response was incorrect, repeat botcaptcha
+var botcaptcha_conditionalInCorrect1 = {
+  timeline: [feedback1IC, botcaptcha_trial2],
+  conditional_function: function(){
+    // feedback is dynamic, depending on accuracy of last response
+    var last_trial_correct = jsPsych.data.get().last(1).values()[0].correct;
+    // console.log("i'm in the incorrect conditional 1")
+    // console.log(last_trial_correct)
+    if (last_trial_correct){ // if true, so the last trial was correct, carry out feedback "incorrect"
+      return false
+    } else { // else: if last trial was incorrect, don't carry out "incorrect" feedback
+      return true; 
+    }
+  }
+}
+
+// conditional: in case response was incorrect, repeat botcaptcha
+var botcaptcha_conditionalInCorrect2 = {
+  timeline: [feedback1IC2],
+  conditional_function: function(){
+    // feedback is dynamic, depending on accuracy of last response
+    var last_trial_correct = jsPsych.data.get().last(1).values()[0].correct;
+    // console.log("i'm in the incorrect conditional 2")
+    // console.log(last_trial_correct)
+    // console.log(jsPsych.data.get())
+    if (last_trial_correct){ // if true, so the last trial was correct, carry out feedback "incorrect"
+      return false
+    } else { // else: if last trial was incorrect, don't carry out "incorrect" feedback
+      return true; 
+    }
+  }
+}
+
+// conditional: in case response was correct, don't repeat botcaptcha
+var botcaptcha_conditionalCorrect1 = {
+  timeline: [feedback1C],
+  conditional_function: function(){
+    // feedback is dynamic, depending on accuracy of last response
+    var last_trial_correct = jsPsych.data.get().last(1).values()[0].correct;
+    // console.log("i'm in the correct conditional")
+    // console.log(last_trial_correct)
+    if (last_trial_correct){ // if true, so the last trial was correct, carry out feedback "correct"
+      return true
+    } else { // else: if last trial was incorrect, don't carry out "correct" feedback
+      return false;  
+    }
+  }
+}
+
+// a loop is always carried out at least once, a conditional not necessarily
+var botcaptcha_loop1 = {
+    timeline: [botcaptcha_trial1, botcaptcha_conditionalInCorrect1, botcaptcha_conditionalInCorrect2, botcaptcha_conditionalCorrect1],
+    loop_function: function(data){
+    // var last_trial_correct = jsPsych.data.get().last(1).values()[0].correct;
+    // console.log("Response was:"+last_trial_correct) 
+    // console.log("i'm inside the loop now")
+    // console.log(jsPsych.data.get())
+    // console.log(jsPsych.data.get().last(2))
+    // console.log(jsPsych.data.get().last(2).values()[0].correct)
+    // here we have to go back 2 trials, to get at the last response to the practice trial
+    var last_trial_correct = jsPsych.data.get().last(2).values()[0].correct;
+    // console.log(last_trial_correct)
+    if (last_trial_correct){ // if true, so the last trial was correct, carry out feedback "incorrect"
+      return false; // don't repeat the loop if the response was correct
+    } else {
+      return true; // repeat if the response was incorrect
+    }
+    }
+}
+
+
+// definition of a judgment trial with multiple sliders
+var judgment_trial = {
+  type: jsPsychMultipleSlider,
+  require_movement: true,
+  slider_width: "400",
+  questions: [
+    {stimulus: stimFIRST,
+    ticks: ["very unlikely", "very likely"],
+    prompt: "",
+    name: "stimFIRST"},
+    {stimulus: stimSECOND, 
+    ticks: ["very unlikely", "very likely"],
+    prompt: "",
+    name: "stimSECOND"}
+    ]
+};
+
+
+// create all judgment trials 
+var all_judgment_trials = {
+  timeline: [judgment_trial],
+  //timeline_variables: [stimFIRST,stimSECOND],
+  randomize_order: false,
+  on_finish: function(data) {
+         count++;
+         var progress = count/n_trials;
+         jsPsych.setProgressBar(progress);
+      }
+};
+
+// demographic information
+var demographics = {
+  type: jsPsychSurvey,
+  pages: [
+    [
+      {
+        type: 'html',
+        prompt: 'Please answer these demographic questions truthfully. You will be paid no matter what you respond here.',
+      },
+      {
+        type: 'text',
+        prompt: "How old are you?", 
+        name: 'age', 
+        textbox_columns: 3, 
+        required: false
+      }, 
+      {
+        type: 'drop-down',
+        prompt: "What is your gender?",
+        name: 'gender', 
+        // horizontal: true,
+        options: ['female', 'male', 'non-binary', 'prefer not to say'],  
+        required: false,
+      },
+      {
+        type: 'multi-choice',
+        prompt: "Are you a native speaker of English (that is, you spoke English at home as a child)?",
+        name: 'language',
+        columns: 2, 
+        options: ['yes', 'no'], 
+        required: false,
+      },
+      {
+        type: 'multi-choice',
+        prompt: "Are you a speaker of American English (as opposed to, e.g., Indian English)?",
+        name: 'amE', 
+        columns: 2,
+        options: ['yes', 'no'], 
+        required: false,
+      },
+      {
+        type: 'drop-down',
+        prompt: "What is your level of education?",
+        name: 'edu', 
+        // horizontal: true,
+        options: ['some high school', 'graduated high school', 'some college', 'graduated college', 'hold a higher degree'], 
+        required: false,
+      },
+      {
+        type: 'text',
+        prompt: "We are interested in any other comments you might have about this study. Please type them in the box:", 
+        name: 'comments', 
+        textbox_columns: 80, 
+        textbox_rows: 5,
+        required: false
+      }
+    ]
+  ],
+  on_finish: function(data) {
+         count++;
+         var progress = count/n_trials;
+         jsPsych.setProgressBar(progress);
+      }
+}
+
+var data = jsPsych.data.get().filterCustom(function(trial){
+    return (trial.trial_type == "html-keyboard-response")})
+// print the raw values
+//console.log(data.values());
+
+var full_timeline = [
+  botcaptcha_loop1,
+  preload,
+  consent_screen,
+  all_judgment_trials,
+  demographics
+];
+
+jsPsych.run(full_timeline);
+
+  </script>
+</html>

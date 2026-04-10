@@ -1,0 +1,1 @@
+We ran a single experiment first with 576 participants (main01), then we checked to make sure that we had enough observations per condition (roughly ten). This led us to run an additional 60 participants (main02).

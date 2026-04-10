@@ -1,0 +1,315 @@
+\documentclass[11pt,fleqn]{article}
+\usepackage[margin=1in,top=1in,bottom=1in]{geometry}
+\usepackage{tikz}
+\usepackage{ifthen}
+\usepackage{mathtools}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+%\usepackage[dvips]{graphics}
+%\usepackage[table]{xcolor}
+%\usepackage{amssymb}
+\usepackage{float}
+%\usepackage{subfig}
+\usepackage{booktabs}
+\usepackage{makecell}
+\usepackage{subcaption}
+\usepackage{colortbl}
+
+\usepackage[normalem]{ulem}
+
+\usepackage{multicol}
+\usepackage{txfonts}
+\usepackage{amsfonts}
+\usepackage{natbib}
+\usepackage{gb4e}
+\usepackage[all]{xy}
+\usepackage{rotating}
+\usepackage{tipa}
+\usepackage{multirow}
+\usepackage{authblk}
+\usepackage{url}
+\usepackage{pdflscape}
+\usepackage{rotating}
+\usepackage{adjustbox}
+\usepackage{array}
+
+\usepackage{fdsymbol}
+
+
+\def\bad{{\leavevmode\llap{*}}}
+\def\marginal{{\leavevmode\llap{?}}}
+\def\verymarginal{{\leavevmode\llap{??}}}
+\def\swmarginal{{\leavevmode\llap{4}}}
+\def\infelic{{\leavevmode\llap{\#}}}
+
+\definecolor{airforceblue}{rgb}{0.36, 0.54, 0.66}
+%\definecolor{gray}{rgb}{0.36, 0.54, 0.66}
+
+\definecolor{Pink}{RGB}{240,0,120}
+\newcommand{\red}[1]{\textcolor{Pink}{#1}}
+\newcommand{\jd}[1]{\textbf{\textcolor{Pink}{[jd: #1]}}}
+\definecolor{green}{RGB}{0,158,115}
+\definecolor{orange}{RGB}{213,94,0}
+
+\newcommand{\dashrule}[1][black]{%
+  \color{#1}\rule[\dimexpr.5ex-.2pt]{4pt}{.4pt}\xleaders\hbox{\rule{4pt}{0pt}\rule[\dimexpr.5ex-.2pt]{4pt}{.4pt}}\hfill\kern0pt%
+}
+
+\setlength{\parindent}{.3in}
+\setlength{\parskip}{0ex}
+
+\newcommand{\yi}{\'{\symbol{16}}}
+\newcommand{\nasi}{\~{\symbol{16}}}
+\newcommand{\hina}{h\nasi na}
+\newcommand{\ina}{\nasi na}
+
+\newcommand{\foc}{$_{\mbox{\small F}}$}
+
+\hyphenation{par-ti-ci-pa-tion}
+
+\setlength{\bibhang}{0.5in}
+\setlength{\bibsep}{0mm}
+\bibpunct[:]{(}{)}{;}{a}{}{,}
+
+\newcommand{\6}{\mbox{$[\hspace*{-.6mm}[$}} 
+\newcommand{\9}{\mbox{$]\hspace*{-.6mm}]$}}
+\newcommand{\sem}[2]{\6#1\9$^{#2}$}
+\renewcommand{\ni}{\~{\i}}
+
+\newcommand{\citepos}[1]{\citeauthor{#1}'s \citeyear{#1}}
+\newcommand{\citeposs}[1]{\citeauthor{#1}'s}
+\newcommand{\citetpos}[1]{\citeauthor{#1}'s (\citeyear{#1})}
+
+\newcolumntype{R}[2]{%
+    >{\adjustbox{angle=#1,lap=\width-(#2)}\bgroup}%
+    l%
+    <{\egroup}%
+}
+\newcommand*\rot{\multicolumn{1}{R{90}{0em}}}% no optional argument here, please!
+
+\newcommand*\rots{\multicolumn{1}{R{90}{.7em}}}% no optional argument here, please!
+
+% positive coefficients/difference
+\definecolor{purple1}{RGB}{178,24,43}
+\definecolor{purple2}{RGB}{239,138,98} 
+\definecolor{purple3}{RGB}{253,219,199} 
+%\definecolor{yellow4}{RGB}{255,255,204}
+%\definecolor{green1}{RGB}{0, 158, 115} % >.95
+%\definecolor{green2}{RGB}{55, 185, 141} % .85-.95
+%\definecolor{green3}{RGB}{88, 214, 167} % .75-.85
+%\definecolor{green4}{RGB}{119, 242, 194} % <.75
+
+% negative coefficients/difference
+\definecolor{yellow1}{RGB}{33,102,172}
+\definecolor{yellow2}{RGB}{103,169,207}
+\definecolor{yellow3}{RGB}{209,229,240}
+%\definecolor{purple4}{RGB}{236,206,223}
+
+\newcommand{\gcs}[1]{\textcolor{blue}{[gcs: #1]}}
+
+\newcommand{\new}[1]{\textcolor{black}{#1}} % was violet for revised submission
+
+
+%\title{Modeling projection inferences \\ within the Rational Speech Act framework}
+
+%\author[$\bullet$]{Gregory Scontras}
+%\author[$\circ$]{Judith Tonhauser}
+%\affil[$\bullet$]{UC Irvine, Department of Language Science, g.scontras@uci.edu}
+%\affil[$\circ$]{University of Stuttgart, Department of Linguistics, judith.tonhauser@ling.uni-stuttgart.de}
+
+%\renewcommand\Authands{ and }
+
+\newcommand{\jt}[1]{\textbf{\color{blue}JT: #1}}
+
+\usepackage{spverbatim}
+
+\begin{document}
+
+%\maketitle
+%\vspace*{-.5cm}
+
+\noindent
+This document provides the complete set of stimuli for the experiment reported in the Scontras/Hawkins/Tonhauser SALT36 paper. The images for the lists mentioned in the stimuli are given under experiments/main/main01/images.
+
+
+\subsection*{Context before the image, by item, expression and QUD}
+
+\begin{itemize}
+\item  'bike': 
+   \begin{spverbatim} {'know':
+      {'ai': "Mike works as a health officer for an IT company. He is currently working through a list of employees in Sue's department that recently got promoted &mdash; Kate, Tom, Charley, Tatiana, Ricardo &mdash; to identify who biked to work before they got promoted. He keeps track on this list:",
+      'nai': "Mike works as a health officer for an IT company. He is trying to figure out how well the five department heads &mdash; Kate, Tom, Sue, Tatiana, and Ricardo &mdash; know the commuting habits of the head of HR, Charley. Mike keeps track on this list:"},
+    'stop':
+      {'ai': "Mike works as a health officer for an IT company. He is currently working through a list of employees in Sue's department that recently  got promoted &mdash; Kate, Tom, Charley, Tatiana, Ricardo &mdash; to identify who biked to work before they got promoted. He keeps track on this list:",
+      'nai': "Mike works as a health officer for an IT company. He is currently working through a list of employees in Sue's department that recently  got promoted &mdash; Kate, Tom, Charley, Tatiana, Ricardo &mdash; to identify who biked to work after they got promoted. He keeps track on this list:"}},\end{spverbatim}
+\item   'subway': 
+     \begin{spverbatim} 
+     {'know':
+      {'ai': "Mike works as a health officer for an IT company. He is currently working through a list of employees in Sue's department that recently got promoted &mdash; Kate, Tom, Charley, Tatiana, Ricardo &mdash; to identify who took the subway to work before they got promoted. He keeps track on this list:",
+      'nai': "Mike works as a health officer for an IT company. He is trying to figure out how well the five department heads &mdash; Kate, Tom, Sue, Tatiana, and Ricardo &mdash; know the commuting habits of the head of HR, Charley. Mike keeps track on this list:"},
+    'stop':
+      {'ai': "Mike works as a health officer for an IT company. He is currently working through a list of employees in Sue's department that recently  got promoted &mdash; Kate, Tom, Charley, Tatiana, Ricardo &mdash; to identify who took the subway to work before they got promoted. He keeps track on this list:",
+      'nai': "Mike works as a health officer for an IT company. He is currently working through a list of employees in Sue's department that recently  got promoted &mdash; Kate, Tom, Charley, Tatiana, Ricardo &mdash; to identify who took the subway to work after they got promoted. He keeps track on this list:"}},
+      \end{spverbatim}
+\item    'petshelter': 
+ \begin{spverbatim}
+    {'know':
+      {'ai': "Mike works as a health officer for an IT company. He is currently working through a list of employees in Sue's department that recently got promoted &mdash; Kate, Tom, Charley, Tatiana, Ricardo &mdash; to identify who volunteered at the pet shelter before they got promoted. He keeps track on this list:",
+      'nai': "Mike works as a health officer for an IT company. He is trying to figure out how well the five department heads &mdash; Kate, Tom, Sue, Tatiana, and Ricardo &mdash; know the pastimes of the head of HR, Charley. Mike keeps track on this list:"},
+    'stop':
+      {'ai': "Mike works as a health officer for an IT company. He is currently working through a list of employees in Sue's department that recently  got promoted &mdash; Kate, Tom, Charley, Tatiana, Ricardo &mdash; to identify who volunteered at the pet shelter before they got promoted. He keeps track on this list:",
+      'nai': "Mike works as a health officer for an IT company. He is currently working through a list of employees in Sue's department that recently  got promoted &mdash; Kate, Tom, Charley, Tatiana, Ricardo &mdash; to identify who volunteered at the pet shelter after they got promoted. He keeps track on this list:"}}
+      \end{spverbatim}
+\end{itemize}
+
+\subsection*{Context after the image, by item, utterance, QUD and prior}
+
+\begin{itemize}
+\item  'bike': 
+\begin{spverbatim}
+    {'neg-know':
+      {'ai': 
+        {'higher': "Next up, he wants to record in the list whether <b>CHARLEY</b>, who lives five blocks away from work, biked to work before he got promoted. Mike's assistant tells him:",
+         'lower': "Next up, he wants to record in the list whether <b>CHARLEY</b>, who lives twenty miles away from work, biked to work before he got promoted. Mike's assistant tells him:"},
+      'nai': 
+        {'higher': "Next up, Mike wants to record in his list whether <b>SUE</b> believes that Charley, who lives five blocks away from work, biked to work before he got promoted. Mike's assistant tells him:",
+         'lower': "Next up, Mike wants to record in his list whether <b>SUE</b> believes that Charley, who lives twenty miles away from work, biked to work before he got promoted. Mike's assistant tells him:"}},
+     'neg-stop':
+      {'ai': 
+        {'higher': "Next up, he wants to record in the list whether Charley, who lives five blocks away from work, biked to work <b>BEFORE</b> he got promoted. Mike's assistant tells him:",
+         'lower': "Next up, he wants to record in the list whether Charley, who lives twenty miles away from work, biked to work <b>BEFORE</b> he got promoted. Mike's assistant tells him:"},
+      'nai': 
+        {'higher': "Next up, he wants to record in the list whether Charley, who lives five blocks away from work, biked to work <b>AFTER</b> he got promoted. Mike's assistant tells him:",
+         'lower': "Next up, he wants to record in the list whether Charley, who lives twenty miles away from work, biked to work <b>AFTER</b> he got promoted. Mike's assistant tells him:"}},
+      'q-know':
+      {'ai': 
+        {'higher': "Next up, he wants to record in the list whether <b>CHARLEY</b>, who lives five blocks away from work, biked to work before he got promoted. Mike's assistant asks him:",
+         'lower': "Next up, he wants to record in the list whether <b>CHARLEY</b>, who lives twenty miles away from work, biked to work before he got promoted. Mike's assistant asks him:"},
+      'nai': 
+        {'higher': "Next up, Mike wants to record in his list whether <b>SUE</b> believes that Charley, who lives five blocks away from work, biked to work before he got promoted. Mike's assistant asks him:",
+         'lower': "Next up, Mike wants to record in his list whether <b>SUE</b> believes that Charley, who lives twenty miles away from work, biked to work before he got promoted. Mike's assistant asks him:"}},
+     'q-stop':
+      {'ai': 
+        {'higher': "Next up, he wants to record in the list whether Charley, who lives five blocks away from work, biked to work <b>BEFORE</b> he got promoted. Mike's assistant asks him:",
+         'lower': "Next up, he wants to record in the list whether Charley, who lives twenty miles away from work, biked to work <b>BEFORE</b> he got promoted. Mike's assistant asks him:"},
+      'nai': 
+        {'higher': "Next up, he wants to record in the list whether Charley, who lives five blocks away from work, biked to work <b>AFTER</b> he got promoted. Mike's assistant asks him:",
+         'lower': "Next up, he wants to record in the list whether Charley, who lives twenty miles away from work, biked to work <b>AFTER</b> he got promoted. Mike's assistant asks him:"}}},
+         \end{spverbatim}
+ \item 'subway': 
+ \begin{spverbatim}
+    {'neg-know':
+      {'ai': 
+        {'higher': "Next up, he wants to record in the list whether <b>CHARLEY</b>, who is a climate activist, took the subway to work before he got promoted. Mike's assistant tells him:",
+         'lower': "Next up, he wants to record in the list whether <b>CHARLEY</b>, who is a germaphobe, took the subway to work before he got promoted. Mike's assistant tells him:"},
+      'nai': 
+        {'higher': "Next up, Mike wants to record in his list whether <b>SUE</b> believes that Charley, who is a climate activist, took the subway to work before he got promoted. Mike's assistant tells him:",
+         'lower': "Next up, Mike wants to record in his list whether <b>SUE</b> believes that Charley, who is a germaphobe, took the subway to work before he got promoted. Mike's assistant tells him:"}},
+     'neg-stop':
+      {'ai': 
+        {'higher': "Next up, he wants to record in the list whether Charley, who is a climate activist, took the subway to work <b>BEFORE</b> he got promoted. Mike's assistant tells him:",
+         'lower': "Next up, he wants to record in the list whether Charley, who is a germaphobe, took the subway to work <b>BEFORE</b> he got promoted. Mike's assistant tells him:"},
+      'nai': 
+        {'higher': "Next up, he wants to record in the list whether Charley, who is a climate activist, took the subway to work <b>AFTER</b> he got promoted. Mike's assistant tells him:",
+         'lower': "Next up, he wants to record in the list whether Charley, who is a germaphobe, took the subway to work <b>AFTER</b> he got promoted. Mike's assistant tells him:"}},
+     'q-know':
+      {'ai': 
+        {'higher': "Next up, he wants to record in the list whether <b>CHARLEY</b>, who is a climate activist, took the subway to work before he got promoted. Mike's assistant asks him:",
+         'lower': "Next up, he wants to record in the list whether <b>CHARLEY</b>, who is a germaphobe, took the subway to work before he got promoted. Mike's assistant asks him:"},
+      'nai': 
+        {'higher': "Next up, Mike wants to record in his list whether <b>SUE</b> believes that Charley, who is a climate activist, took the subway to work before he got promoted. Mike's assistant asks him:",
+         'lower': "Next up, Mike wants to record in his list whether <b>SUE</b> believes that Charley, who is a germaphobe, took the subway to work before he got promoted. Mike's assistant asks him:"}},
+     'q-stop':
+      {'ai': 
+        {'higher': "Next up, he wants to record in the list whether Charley, who is a climate activist, took the subway to work <b>BEFORE</b> he got promoted. Mike's assistant asks him:",
+         'lower': "Next up, he wants to record in the list whether Charley, who is a germaphobe, took the subway to work <b>BEFORE</b> he got promoted. Mike's assistant asks him:"},
+      'nai': 
+        {'higher': "Next up, he wants to record in the list whether Charley, who is a climate activist, took the subway to work <b>AFTER</b> he got promoted. Mike's assistant asks him:",
+         'lower': "Next up, he wants to record in the list whether Charley, who is a germaphobe, took the subway to work <b>AFTER</b> he got promoted. Mike's assistant asks him:"}}},
+         \end{spverbatim}
+ \item 'petshelter': 
+ \begin{spverbatim}
+    {'neg-know':
+      {'ai': 
+        {'higher': "Next up, he wants to record in the list whether <b>CHARLEY</b>, who loves animals, volunteered at the pet shelter before he got promoted. Mike's assistant tells him:",
+         'lower': "Next up, he wants to record in the list whether <b>CHARLEY</b>, who is allergic to cats and dogs, volunteered at the pet shelter before he got promoted. Mike's assistant tells him:"},
+      'nai': 
+        {'higher': "Next up, Mike wants to record in his list whether <b>SUE</b> believes that Charley, who loves animals, volunteered at the pet shelter before he got promoted. Mike's assistant tells him:",
+         'lower': "Next up, Mike wants to record in his list whether <b>SUE</b> believes that Charley, who is allergic to cats and dogs, volunteered at the pet shelter before he got promoted. Mike's assistant tells him:"}},
+     'neg-stop':
+      {'ai': 
+        {'higher': "Next up, he wants to record in the list whether Charley, who loves animals, volunteered at the pet shelter <b>BEFORE</b> he got promoted. Mike's assistant tells him:",
+         'lower': "Next up, he wants to record in the list whether Charley, who is allergic to cats and dogs, volunteered at the pet shelter <b>BEFORE</b> he got promoted. Mike's assistant tells him:"},
+      'nai': 
+        {'higher': "Next up, he wants to record in the list whether Charley, who loves animals, volunteered at the pet shelter <b>AFTER</b> he got promoted. Mike's assistant tells him:",
+         'lower': "Next up, he wants to record in the list whether Charley, who is allergic to cats and dogs, volunteered at the pet shelter <b>AFTER</b> he got promoted. Mike's assistant tells him:"}},
+      'q-know':
+      {'ai': 
+        {'higher': "Next up, he wants to record in the list whether <b>CHARLEY</b>, who loves animals, volunteered at the pet shelter before he got promoted. Mike's assistant asks him:",
+         'lower': "Next up, he wants to record in the list whether <b>CHARLEY</b>, who is allergic to cats and dogs, volunteered at the pet shelter before he got promoted. Mike's assistant asks him:"},
+      'nai': 
+        {'higher': "Next up, Mike wants to record in his list whether <b>SUE</b> believes that Charley, who loves animals, volunteered at the pet shelter before he got promoted. Mike's assistant asks him:",
+         'lower': "Next up, Mike wants to record in his list whether <b>SUE</b> believes that Charley, who is allergic to cats and dogs, volunteered at the pet shelter before he got promoted. Mike's assistant asks him:"}},
+     'q-stop':
+      {'ai': 
+        {'higher': "Next up, he wants to record in the list whether Charley, who loves animals, volunteered at the pet shelter <b>BEFORE</b> he got promoted. Mike's assistant asks him:",
+         'lower': "Next up, he wants to record in the list whether Charley, who is allergic to cats and dogs, volunteered at the pet shelter <b>BEFORE</b> he got promoted. Mike's assistant asks him:"},
+      'nai': 
+        {'higher': "Next up, he wants to record in the list whether Charley, who loves animals, volunteered at the pet shelter <b>AFTER</b> he got promoted. Mike's assistant asks him:",
+         'lower': "Next up, he wants to record in the list whether Charley, who is allergic to cats and dogs, volunteered at the pet shelter <b>AFTER</b> he got promoted. Mike's assistant asks him:"}}}
+         \end{spverbatim}
+   \end{itemize}
+   
+ \subsection*{Utterances, by item}      
+
+\begin{itemize}
+\item  'bike': 
+\begin{spverbatim}
+{'neg-know': "Sue doesn't know that Charley biked to work before he got promoted.", "q-know": "Does Sue know that Charley biked to work before he got promoted?", "neg-stop": "Charley didn't stop biking to work when he got promoted.","q-stop": "Did Charley stop biking to work when he got promoted?"},
+\end{spverbatim}
+\item 'subway': 
+\begin{spverbatim}
+{'neg-know': "Sue doesn't know that Charley took the subway to work before he got promoted.", "q-know": "Does Sue know that Charley took the subway to work before he got promoted?", "neg-stop": "Charley didn't stop taking the subway to work when he got promoted.","q-stop": "Did Charley stop taking the subway to work when he got promoted?"},
+\end{spverbatim}
+\item 'petshelter': 
+\begin{spverbatim} {'neg-know': "Sue doesn't know that Charley volunteered at the pet shelter before he got promoted.", "q-know": "Does Sue know that Charley volunteered at the pet shelter before he got promoted?", "neg-stop": "Charley didn't stop volunteering at the pet shelter when he got promoted.","q-stop": "Did Charley stop volunteering at the pet shelter when he got promoted?"}
+}
+\end{spverbatim}
+\end{itemize}
+
+\subsection*{Question to the participants, by item, expression and QUD}
+
+\begin{itemize}
+\item  'bike': 
+\begin{spverbatim}
+    {'know': 
+      {'ai': "Given what you have read above, how likely is it that Charley biked to work before he got promoted?",
+      'nai': "Given what you have read above, how likely is it that Sue believes that Charley biked to work before he got promoted?"},
+    'stop':
+      {'ai': "Given what you have read above, how likely is it that Charley biked to work before he got promoted?",
+      'nai': "Given what you have read above, how likely is it that Charley biked to work after he got promoted?"}},
+      \end{spverbatim}
+\item  'subway': 
+\begin{spverbatim}
+    {'know': 
+      {'ai': "Given what you have read above, how likely is it that Charley took the subway to work before he got promoted?",
+      'nai': "Given what you have read above, how likely is it that Sue believes that Charley took the subway to work before he got promoted?"},
+    'stop':
+      {'ai': "Given what you have read above, how likely is it that Charley took the subway to work before he got promoted?",
+      'nai': "Given what you have read above, how likely is it that Charley took the subway to work after he got promoted?"}}, 
+      \end{spverbatim}
+ \item 'petshelter': 
+ \begin{spverbatim}
+    {'know': 
+      {'ai': "Given what you have read above, how likely is it that Charley volunteered at the pet shelter before he got promoted?",
+      'nai': "Given what you have read above, how likely is it that Sue believes that Charley volunteered at the pet shelter before he got promoted?"},
+    'stop':
+      {'ai': "Given what you have read above, how likely is it that Charley volunteered at the pet shelter before he got promoted?",
+      'nai': "Given what you have read above, how likely is it that Charley volunteered at the pet shelter after he got promoted?"}}
+}
+\end{spverbatim}
+\end{itemize}
+ 
+\end{document}
+

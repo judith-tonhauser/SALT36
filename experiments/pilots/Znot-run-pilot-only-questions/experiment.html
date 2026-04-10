@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My experiment</title>
+    <script src="js/jquery-1.11.1.min.js "></script>
+    <script src="jspsych/jspsych.js"></script>
+    <!-- <script src="jspsych/plugin-survey-text.js"></script> -->
+    <script src="jspsych/plugin-survey.js"></script>
+    <script src="jspsych/plugin-html-button-response.js"></script>
+    <script src="jspsych/plugin-survey-multi-select.js"></script>
+    <script src="jspsych/plugin-html-slider-response-JT.js"></script>
+    <script src="jspsych/plugin-html-multi-slider.js"></script>
+   <script src="jspsych/plugin-preload.js"></script>
+      <script src="jspsych/plugin-survey-text.js"></script>
+    <!-- <script src="helpers.js"></script> -->
+    <link  href="jspsych/jspsych.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body></body>
+  <script>
+
+
+// this function shuffles an array
+function shuffle(array) {
+   for (var i = array.length - 1; i > 0; i--) { 
+         // Generate random number 
+       var j = Math.floor(Math.random() * (i + 1));
+       var temp = array[i];
+       array[i] = array[j];
+       array[j] = temp;
+   }
+      
+   return array;
+}
+
+/* Send data data to store script: */
+async function saveData(data){
+  const response = await fetch('/store', {
+    method:  "POST",
+    cache:   "no-cache",
+    headers: {"Content-Type": "text/csv"},
+    body:    data
+  })
+  document.getElementById("jspsych-content").innerHTML = await response.text();
+}
+
+
+// initialise jspsych 
+var jsPsych = initJsPsych({
+  show_progress_bar: true,
+  auto_update_progress_bar: false,
+  on_finish: async function(){
+    var lasttrialdata = jsPsych.data.getLastTrialData();
+    console.log(lasttrialdata);
+    await saveData(jsPsych.data.get().csv());
+    window.location = "https://app.prolific.com/submissions/complete?cc=CGK1HX1B"
+  }
+});
+
+
+/* preload images */
+var preload = {
+  type: jsPsychPreload,
+  images: ['images/charley-ai.png', 'images/charley-nai.png','images/jackson-ai.png', 'images/jackson-nai.png']
+};
+
+
+/* for the progress bar: create a global count variable that increases by 1 after each trial, and use that to set the progress bar value at the end of each trial */
+var count = 0;
+var n_trials = 3; //1 instructions/consent, 1 trial, 1 demographics
+
+
+/* define the ingredients for the target stimuli */
+
+// contents
+var contents = ["charley", "jackson"]
+
+// quds
+var quds = ['ai','nai']
+
+// utterance types, based on qud (only know- and think-utterances)
+var utteranceTypes = {
+  'ai': ['knowQ','thinkQ','simpleQ'],
+  'nai':['knowQ','thinkQ','simpleQ']
+}
+
+// mapping from uttTypes to binary uttType
+var uttTypeBinary = {'simpleQ': 'simple',
+        'thinkQ': 'complex',
+        'knowQ': 'complex'
+      }
+
+// utterances, based on QUD
+var utterances = {
+  'charley': {'ai': {'simpleQ': "Does Charley speak Spanish", "knowQ": "Does Cole know that Charley speaks Spanish", "thinkQ": "Does Cole think that Charley speaks Spanish"},
+              'nai': {'simpleQ': "Does Charley speak Spanish", "knowQ": "Does Cole know that Charley speaks Spanish", "thinkQ": "Does Cole think that Charley speaks Spanish"}},
+  'jackson': {'ai': {'simpleQ': "Did Jackson run ten miles", "knowQ": "Does Cole know that Jackson ran ten miles", "thinkQ": "Does Cole think that Jackson ran ten miles"},
+              'nai': {'simpleQ': "Did Jackson run ten miles", "knowQ": "Does Cole know that Jackson ran ten miles", "thinkQ": "Does Cole think that Jackson ran ten miles"}}
+}
+
+
+// Part 1 of context (before image), depends on content, QUD, and (in ai) on utterance
+// Part 2 of content (after image), depends on content and QUD
+
+
+var contextsPart1 = {
+  'charley': 
+    {'ai': 
+      {'simple': "Sue runs a language school. She's currently working through a list of her teachers — Kate, Tom, Charley, Tatiana, and Riccardo — to identify who speaks Spanish. Sue keeps track on this list:",
+      'complex': "Sue runs a language school. She's currently working through a list of her teachers — Kate, Tom, Charley, Tatiana, and Riccardo — to identify who speaks Spanish. She occasionally consults Cole, who knows some teachers better. Sue keeps track on this list:"},
+    'nai': 
+      {'simple':"Sue runs a language school. She’s trying to figure out how well her five assistants Kate, Tom, Cole, Tatiana, and Riccardo know her remote teacher Charley. Sue keeps track on this list:",
+       'complex':"Sue runs a language school. She’s trying to figure out how well her five assistants Kate, Tom, Cole, Tatiana, and Riccardo know her remote teacher Charley. Sue keeps track on this list:"}
+     },
+  'jackson': 
+    {'ai': 
+      {'simple': "Sue runs a fitness club. She’s currently working through a list of her clients — Kate, Tom, Charley, Tatiana, and Riccardo —  to identify who ran ten miles over the weekend. Here is Sue's list:",
+      'complex': "Sue runs a fitness club. She’s currently working through a list of her clients — Kate, Tom, Charley, Tatiana, and Riccardo —  to identify who ran ten miles over the weekend. She occasionally consults her assistant Cole, who knows some clients better. Here is Sue's list:"},
+    'nai': 
+      {'simple': "Sue runs a fitness club. She’s trying to evaluate how well her five assistants Kate, Tom, Cole, Tatiana, and Riccardo know her client Jackson. Here is Sue's list:",
+       'complex': "Sue runs a fitness club. She’s trying to evaluate how well her five assistants Kate, Tom, Cole, Tatiana, and Riccardo know her client Jackson. Here is Sue's list:"}}
+}
+
+var contextsPart2 = {
+  'charley': 
+    {'ai': "Next up, she wants to record in the list whether <b>CHARLEY</b> speaks Spanish. Sue says to her business partner:",
+    'nai': "Next up, she wants to record in her list whether <b>COLE</b> believes that Charley speaks Spanish. Her business partner tells her:"},
+  'jackson': 
+    {'ai': "Next up, she wants to record in the list whether <b>JACKSON</b> ran ten miles. Sue says to her business partner:",
+    'nai': "Next up, she wants to record in her list whether <b>COLE</b> believes that Jackson ran ten miles. Sue’s business partner tells her:"}
+}
+
+// image depends on content and QUD
+var images = {
+'charley': 
+    {'ai': "charley-ai",
+    'nai': "charley-nai"},
+  'jackson': 
+    {'ai': "jackson-ai",
+    'nai': "jackson-nai"}
+}
+
+// questions for each content, with order of presentation dependent on QUD
+var questions = {
+  'charley': 
+    {'ai': "Given what you have read above, how likely is it that Charley speaks Spanish?",
+    'nai': "Given what you have read above, how likely is it that Cole believes that Charley speaks Spanish?"},
+  'jackson': 
+    {'ai': "Given what you have read above, how likely is it that Jackson ran ten miles?",
+    'nai': "Given what you have read above, how likely is it that Cole believes that Jackson ran ten miles?"}
+}
+
+// function to get a random utterance type
+function getUttType() {
+    uttType = shuffle(utteranceTypes).shift()
+  return uttType
+}
+
+// function to get a random content and remove it from array
+function getContent() {
+    content = shuffle(contents).shift()
+  return content
+}
+
+// function to get a random qud (based on uttType) and remove it from array
+function getQUD() {
+    qud = shuffle(quds).shift()
+  return qud
+}
+
+// function to map utterance type to binary utterance type
+function getbinType(uttType) {
+    binType = uttTypeBinary[uttType]
+  return binType
+}
+
+// function to get an utterance, given a content and a qud
+function getUtteranceType(qud) {
+    uttType = shuffle(utteranceTypes[qud]).shift()
+    return uttType
+}
+
+// function to get an utterance, given a content and a qud
+function getUtterance(content,qud,uttType) {
+    uttType = utterances[content][qud][uttType]
+    return uttType
+}
+
+// function to get a context, given a content, qud and binary utterance type
+function getContextPart1(content,qud,binType) {
+    contextPart1 = contextsPart1[content][qud][binType]
+    return contextPart1
+}
+
+// function to get a context, given a content, qud and binary utterance type
+function getContextPart2(content,qud) {
+    contextPart2 = contextsPart2[content][qud]
+    return contextPart2
+}
+
+// function to get the first question, the one that corresponds to the intended QUD
+function getQuestionFIRST(content,qud) {
+    questionFIRST = questions[content][qud]
+    return questionFIRST
+}
+
+// function to get the second question, the one that doesn't correspond to the intended QUD
+function getQuestionSECOND(content,qud) {
+  if (qud == "ai") {
+    return questionSECOND = questions[content]["nai"] } else 
+    { return questionSECOND = questions[content]["ai"] }
+  }
+
+// function to get an image, given a content and a qud
+function getImage(content,qud) {
+    image = images[content][qud]
+    return image
+}
+
+// function to make an item
+function makeAnItem() {
+  // get a qud (50-50 chance for ai and nai)
+  var qud = getQUD();
+  var content = getContent();
+  // get an utteranceType, based on qud (ai: 6 options, nai: 4 options)
+  var uttType = getUtteranceType(qud)
+  // get the binary utterance type to get the right context
+  var binType = getbinType(uttType)
+    console.log(content)
+    console.log(qud)
+  // get an utterance, given the content and QUD
+    var utterance = getUtterance(content,qud,uttType);
+  // get a context, given the content, QUD, and utterance
+    console.log(utterance)
+    var contextPart1 = getContextPart1(content,qud,binType)
+    var contextPart2 = getContextPart2(content,qud)
+  // get the questions for that content
+    // questionFIRST is the ai question if QUD = ai
+    // questionSECOND is the nai question if QUD = ai
+    var questionFIRST = getQuestionFIRST(content,qud)
+    var questionSECOND = getQuestionSECOND(content,qud)
+    // console.log(context)
+    // console.log(utterance)
+    // console.log(question)
+    var image = getImage(content,qud)
+    return {
+    "contextPart1": contextPart1, 
+    "contextPart2": contextPart2,
+    "utterance": utterance,
+    "questionFIRST": questionFIRST,
+    "questionSECOND": questionSECOND,
+    "qud": qud,
+    "content":content,
+    "image": image
+    }
+  }
+
+// make items and push them to array of items
+var items = [];
+// console.log(items)
+
+var stim = makeAnItem()
+items.push(jQuery.extend(true, {}, stim))
+
+// console.log(items)
+
+// this function takes an item as an argument and builds the stimulus to be displayed
+// before the two sliders
+function buildStimulus(item) {
+  return "<p style=\"text-align: center;\">" + item.contextPart1 + "<br><br><img src=\"images/"+item.image+ ".png\" width=\"400\"><br><br>" + item.contextPart2 + "<em> \"" + item.utterance + "?" + "\"</em><p>" + "<br> <br><u>First question:</u><br><br>" + item.questionFIRST;
+}
+
+// this function takes an item as argument and builds the stimulus to be displayed in
+// the second slider
+function buildStimulusTWO(item) {
+  // console.log(item)
+  return "<u>Second question:</u><br><br>" + item.questionSECOND;
+}
+
+// initialize array of stimuli with "stimulus" keys and empty values
+// the length is twice the length of the items array (because we need two "stimuli" per item)
+var stimuli = Array.from(Array(2*items.length).keys())
+// console.log(items.length)
+// console.log(stimuli)
+
+// for each item in the array, create a key "stimulus:"
+function createKey(index) {
+  var name = "stimulus:";
+  return name;
+}
+
+// apply the function "createKey" to the array of stimuli
+var stimuli = stimuli.map(createKey);
+
+// console.log(stimuli)
+
+// in the array "stimuli", change each item into a key-value pair {"stimulus:" }
+stimuli = stimuli.map(() => ({ }));
+
+// console.log(stimuli)
+
+// loop through the items to turn them into stimuli that can be displayed
+// for (let i = 0; i < items.length; i++) {
+//    stimuli[i].stimulus = buildStimulus(items[i]);
+// } 
+
+// build the two stimuli from the single item
+// stimuli[0].stimulus = buildStimulus(items[0])
+// stimuli[1].stimulus = buildStimulusTWO(items[0])
+var stimFIRST = buildStimulus(items[0])
+var stimSECOND = buildStimulusTWO(items[0])
+
+// console.log(stimFIRST)
+// console.log(stimSECOND)
+
+
+// generate a condition variable to pass on with the responses
+var condition = items[0];
+
+// add condition info to data
+jsPsych.data.addProperties({
+  condition: condition
+});
+
+/* Now that we have a list of stimuli, we define the experiment trials and screens */
+
+// instruction and consent screen
+var consent_screen = {
+  type: jsPsychHtmlButtonResponse,
+  stimulus: "<h3>Instructions</h3>\
+  <div style='width:500px';> In this experiment, you will read a short text. We will ask you two questions about what you have read. You will give your responses on a slider. <br><br> At the end of the experiment, we will ask you some demographic questions. The experiment will take less than two minutes.<br><br> By clicking on the button below you agree to participate in the experiment, which is conducted by language researchers. You may withdraw at any time. The data collected will be anonymous and confidential. If you have any questions, you may contact the experimenters through Prolific's platform.<br><br></div>",
+  // stimulus: "<h3>Instructions</h3>\
+  // <p style='text-align:left';>In this experiment, you will read a short text and see an image. We will ask you two questions about what you have read. You will give your responses on a slider. </p>\
+  // <p style='text-align:left'>At the end of the experiment, we will ask you some demographic questions. The experiment will take less than two minutes.</p>\
+  // <p style='text-align:left'>By clicking on the button below you agree to participate in the experiment, which is conducted by language researchers. You may withdraw at any time. The data collected will be anonymous and confidential. If you have any questions, you may contact the experimenters through Prolific's platform.</p>",
+  choices: ["Yes, I consent to participate"],
+  on_finish: function(data) {
+              count++;
+              var progress = count/n_trials;
+              jsPsych.setProgressBar(progress);
+            }
+};
+
+// define the botcaptcha trials
+var speaker = shuffle(["James", "John", "Robert", "Michael", "William", "David", "Richard", "Joseph", "Thomas", "Charles"]).shift()
+var listener = shuffle(["Mary", "Patricia", "Jennifer", "Linda", "Elizabeth", "Barbara", "Susan", "Jessica", "Sarah", "Margaret"]).shift()
+var speaker2 = shuffle(["James", "John", "Robert", "Michael", "William", "David", "Richard", "Joseph", "Thomas", "Charles"]).shift()
+var listener2 = shuffle(["Mary", "Patricia", "Jennifer", "Linda", "Elizabeth", "Barbara", "Susan", "Jessica", "Sarah", "Margaret"]).shift()
+
+var text = "<b>Please verify that you are a human by answering this question:</b><br><br><br>" + speaker + ' says to ' + listener + ': "It\'s a beautiful day, isn\'t it?"' + '<br><br> Who is ' + speaker + ' talking to? Write the name into the box.';
+
+var text2 = "<b>Please verify that you are a human by answering this question:</b><br><br><br>" + speaker2 + ' says to ' + listener2 + ': "It\'s a beautiful day, isn\'t it?"' + '<br><br> Who is ' + speaker2 + ' talking to? Write the name into the box.';
+
+var botcaptcha_trial1 = {
+  type: jsPsychSurveyText,
+  questions: [
+    {prompt: text}
+  ],
+  on_finish: function(data){
+    console.log(data.response.Q0)
+    console.log(listener)
+// score the text response as correct or incorrect.
+    if (data.response.Q0.toLowerCase() == listener.toLowerCase()){
+       data.correct = true
+       return "<p style='text-align:left'><b>Correct!</b></p>";
+     } else {
+       data.correct = false; 
+    }
+  }
+}
+
+var botcaptcha_trial2 = {
+  type: jsPsychSurveyText,
+  questions: [
+    {prompt: text2}
+  ],
+  on_finish: function(data){
+    console.log("i'm in botcaptcha_trial2")
+    console.log(data.response.Q0)
+    console.log(listener2)
+// score the text response as correct or incorrect.
+    if (data.response.Q0.toLowerCase() == listener2.toLowerCase()){
+       data.correct = true
+       return "<p style='text-align:left'><b>Correct!</b></p>";
+     } else {
+       data.correct = false; 
+    }
+  }
+}
+
+// what to do in case the response was incorrect
+var feedback1IC = {
+  type: jsPsychHtmlButtonResponse,
+  stimulus: "<p style='text-align:left'><b> Incorrect response! Please try again. </b><br><br></p>",
+  choices: ['Return to bot captcha']
+}
+
+var feedback1IC2 = {
+  type: jsPsychHtmlButtonResponse,
+  stimulus: "<p style='text-align:left'><b> Incorrect response again! Please return the experiment. You are not allowed to participate.</b><br><br></p>",
+  choices: []
+}
+
+// feedback, in case the response was correct
+var feedback1C = {
+  type: jsPsychHtmlButtonResponse,
+  stimulus: "<p style='text-align:left'><b> Correct response! You are a human :) </b><br><br></p>",
+  choices: ['Continue to the experiment']
+}
+
+
+// conditional: in case response was incorrect, repeat botcaptcha
+var botcaptcha_conditionalInCorrect1 = {
+  timeline: [feedback1IC, botcaptcha_trial2],
+  conditional_function: function(){
+    // feedback is dynamic, depending on accuracy of last response
+    var last_trial_correct = jsPsych.data.get().last(1).values()[0].correct;
+    // console.log("i'm in the incorrect conditional 1")
+    // console.log(last_trial_correct)
+    if (last_trial_correct){ // if true, so the last trial was correct, carry out feedback "incorrect"
+      return false
+    } else { // else: if last trial was incorrect, don't carry out "incorrect" feedback
+      return true; 
+    }
+  }
+}
+
+// conditional: in case response was incorrect, repeat botcaptcha
+var botcaptcha_conditionalInCorrect2 = {
+  timeline: [feedback1IC2],
+  conditional_function: function(){
+    // feedback is dynamic, depending on accuracy of last response
+    var last_trial_correct = jsPsych.data.get().last(1).values()[0].correct;
+    // console.log("i'm in the incorrect conditional 2")
+    // console.log(last_trial_correct)
+    // console.log(jsPsych.data.get())
+    if (last_trial_correct){ // if true, so the last trial was correct, carry out feedback "incorrect"
+      return false
+    } else { // else: if last trial was incorrect, don't carry out "incorrect" feedback
+      return true; 
+    }
+  }
+}
+
+// conditional: in case response was correct, don't repeat botcaptcha
+var botcaptcha_conditionalCorrect1 = {
+  timeline: [feedback1C],
+  conditional_function: function(){
+    // feedback is dynamic, depending on accuracy of last response
+    var last_trial_correct = jsPsych.data.get().last(1).values()[0].correct;
+    // console.log("i'm in the correct conditional")
+    // console.log(last_trial_correct)
+    if (last_trial_correct){ // if true, so the last trial was correct, carry out feedback "correct"
+      return true
+    } else { // else: if last trial was incorrect, don't carry out "correct" feedback
+      return false;  
+    }
+  }
+}
+
+// a loop is always carried out at least once, a conditional not necessarily
+var botcaptcha_loop1 = {
+    timeline: [botcaptcha_trial1, botcaptcha_conditionalInCorrect1, botcaptcha_conditionalInCorrect2, botcaptcha_conditionalCorrect1],
+    loop_function: function(data){
+    // var last_trial_correct = jsPsych.data.get().last(1).values()[0].correct;
+    // console.log("Response was:"+last_trial_correct) 
+    // console.log("i'm inside the loop now")
+    // console.log(jsPsych.data.get())
+    // console.log(jsPsych.data.get().last(2))
+    // console.log(jsPsych.data.get().last(2).values()[0].correct)
+    // here we have to go back 2 trials, to get at the last response to the practice trial
+    var last_trial_correct = jsPsych.data.get().last(2).values()[0].correct;
+    // console.log(last_trial_correct)
+    if (last_trial_correct){ // if true, so the last trial was correct, carry out feedback "incorrect"
+      return false; // don't repeat the loop if the response was correct
+    } else {
+      return true; // repeat if the response was incorrect
+    }
+    }
+}
+
+
+// definition of a judgment trial with multiple sliders
+var judgment_trial = {
+  type: jsPsychMultipleSlider,
+  require_movement: true,
+  slider_width: "400",
+  questions: [
+    {stimulus: stimFIRST,
+    ticks: ["very unlikely", "very likely"],
+    prompt: "",
+    name: "stimFIRST"},
+    {stimulus: stimSECOND, 
+    ticks: ["very unlikely", "very likely"],
+    prompt: "",
+    name: "stimSECOND"}
+    ]
+};
+
+
+// create all judgment trials 
+var all_judgment_trials = {
+  timeline: [judgment_trial],
+  //timeline_variables: [stimFIRST,stimSECOND],
+  randomize_order: false,
+  on_finish: function(data) {
+         count++;
+         var progress = count/n_trials;
+         jsPsych.setProgressBar(progress);
+      }
+};
+
+// demographic information
+var demographics = {
+  type: jsPsychSurvey,
+  pages: [
+    [
+      {
+        type: 'html',
+        prompt: 'Please answer these demographic questions truthfully. You will be paid no matter what you respond here.',
+      },
+      {
+        type: 'text',
+        prompt: "How old are you?", 
+        name: 'age', 
+        textbox_columns: 3, 
+        required: false
+      }, 
+      {
+        type: 'drop-down',
+        prompt: "What is your gender?",
+        name: 'gender', 
+        horizontal: true,
+        options: ['female', 'male', 'non-binary', 'prefer not to say'],  
+        required: false,
+      },
+      {
+        type: 'multi-choice',
+        prompt: "Are you a native speaker of English (that is, you spoke English at home as a child)?",
+        name: 'language',
+        columns: 2, 
+        options: ['yes', 'no'], 
+        required: false,
+      },
+      {
+        type: 'multi-choice',
+        prompt: "Are you a speaker of American English (as opposed to, e.g., Indian English)?",
+        name: 'amE', 
+        columns: 2,
+        options: ['yes', 'no'], 
+        required: false,
+      },
+      {
+        type: 'drop-down',
+        prompt: "What is your level of education?",
+        name: 'edu', 
+        horizontal: true,
+        options: ['some high school', 'graduated high school', 'some college', 'graduated college', 'hold a higher degree'], 
+        required: false,
+      },
+      {
+        type: 'text',
+        prompt: "We are interested in any other comments you might have about this study. Please type them in the box:", 
+        name: 'comments', 
+        textbox_columns: 80, 
+        textbox_rows: 5,
+        required: false
+      }
+    ]
+  ],
+  on_finish: function(data) {
+         count++;
+         var progress = count/n_trials;
+         jsPsych.setProgressBar(progress);
+      }
+}
+
+var data = jsPsych.data.get().filterCustom(function(trial){
+    return (trial.trial_type == "html-keyboard-response")})
+// print the raw values
+console.log(data.values());
+
+var full_timeline = [
+  botcaptcha_loop1,
+  preload,
+  consent_screen,
+  all_judgment_trials,
+  demographics
+];
+
+jsPsych.run(full_timeline);
+
+  </script>
+</html>

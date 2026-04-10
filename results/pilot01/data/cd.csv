@@ -1,0 +1,21 @@
+participantID,age,gender,language,amE,education,comments,item,qud,utterance,verb,prior,which,response,response_type,environment
+5,43,male,English,AmE,graduated college,""":""I am curious of the results of this study. English being a fickle language; I suspect interpretation of the first question to be mixed, at best, with both responses \""correct.\""""}",petshelter,nai,neg-stop,stop,higher,FIRST,0,notPOST,negation
+5,43,male,English,AmE,graduated college,""":""I am curious of the results of this study. English being a fickle language; I suspect interpretation of the first question to be mixed, at best, with both responses \""correct.\""""}",petshelter,nai,neg-stop,stop,higher,SECOND,1,PRE,negation
+10,42,male,English,AmE,some college,""":""""}",petshelter,ai,q-know,know,higher,FIRST,1,CC,question
+10,42,male,English,AmE,some college,""":""""}",petshelter,ai,q-know,know,higher,SECOND,0,BEL,question
+2,52,female,English,AmE,graduated college,""":""""}",bike,ai,q-stop,stop,lower,FIRST,1,PRE,question
+2,52,female,English,AmE,graduated college,""":""""}",bike,ai,q-stop,stop,lower,SECOND,0,notPOST,question
+6,32,female,English,AmE,graduated college,"""}",bike,ai,q-know,know,higher,FIRST,0.8,CC,question
+6,32,female,English,AmE,graduated college,"""}",bike,ai,q-know,know,higher,SECOND,0.72,BEL,question
+9,62,male,English,AmE,graduated high school,""":""""}",subway,nai,q-stop,stop,lower,FIRST,1,notPOST,question
+9,62,male,English,AmE,graduated high school,""":""""}",subway,nai,q-stop,stop,lower,SECOND,0.24,PRE,question
+7,55,male,English,AmE,some college,""":""This was a unique study and I am glad that I was able to offer my opinions. ""}",petshelter,ai,q-stop,stop,higher,FIRST,1,PRE,question
+7,55,male,English,AmE,some college,""":""This was a unique study and I am glad that I was able to offer my opinions. ""}",petshelter,ai,q-stop,stop,higher,SECOND,1,notPOST,question
+3,44,male,English,AmE,hold a higher degree,""":""""}",subway,ai,neg-know,know,higher,FIRST,0.96,CC,negation
+3,44,male,English,AmE,hold a higher degree,""":""""}",subway,ai,neg-know,know,higher,SECOND,0.52,BEL,negation
+1,62,female,English,AmE,hold a higher degree,""":""none""}",bike,ai,neg-know,know,higher,FIRST,1,CC,negation
+1,62,female,English,AmE,hold a higher degree,""":""none""}",bike,ai,neg-know,know,higher,SECOND,1,BEL,negation
+4,57,female,English,AmE,hold a higher degree,""":""""}",petshelter,ai,q-stop,stop,lower,FIRST,0,PRE,question
+4,57,female,English,AmE,hold a higher degree,""":""""}",petshelter,ai,q-stop,stop,lower,SECOND,0,notPOST,question
+8,57,male,English,AmE,graduated college,""":""""}",subway,ai,q-stop,stop,lower,FIRST,0,PRE,question
+8,57,male,English,AmE,graduated college,""":""""}",subway,ai,q-stop,stop,lower,SECOND,0,notPOST,question
