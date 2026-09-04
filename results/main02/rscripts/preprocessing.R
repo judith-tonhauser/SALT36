@@ -1,3 +1,4 @@
+# SALT36 proceedings paper
 # "stop"/"know" experiment
 # preprocessing
 
@@ -157,6 +158,9 @@ d$responseSECOND = gsub("\\}","",d$responseSECOND) #delete }
 table(d$responseSECOND)
 
 # label response types
+
+# the first slider collects ratings about PRE/CC in the ai condition, 
+# and about POST/BEL in the nai condition
 d$responseFIRSTtype = case_when(d$verb == "stop" & d$qud == "ai" ~ "PRE",
                                 d$verb == "stop" & d$qud == "nai" ~ "POST",
                                 d$verb == "know" & d$qud == "ai" ~ "CC",
@@ -164,14 +168,14 @@ d$responseFIRSTtype = case_when(d$verb == "stop" & d$qud == "ai" ~ "PRE",
                                 TRUE ~ "error")
 table(d$responseFIRSTtype)
 
+# the second slider collects ratings about PRE/CC in the nai condition,
+# and about POST/BEL in the ai condition
 d$responseSECONDtype = case_when(d$verb == "stop" & d$qud == "ai" ~ "POST",
                                 d$verb == "stop" & d$qud == "nai" ~ "PRE",
                                 d$verb == "know" & d$qud == "ai" ~ "BEL",
                                 d$verb == "know" & d$qud == "nai" ~ "CC",
                                 TRUE ~ "error")
 table(d$responseSECONDtype)
-
-
 
 # remove columns not needed
 d = d %>%
@@ -198,6 +202,18 @@ d = d %>%
   mutate(responseFIRSTtype = recode(responseFIRSTtype, "POST" = "notPOST")) %>%
   mutate(responseSECONDtype = recode(responseSECONDtype, "POST" = "notPOST"))
 
+# the recoding of POST to notPOST also requires the recoding of the prior
+# Julian stopped taking the subway when he got promoted
+# POST = Julian took the subway before he got promoted
+# higher = Julian is a climate activist
+# lower = Julian is a germaphobe
+# POST is more likely with higher than with lower
+# notPOST is 1-POST, Julian didn't take the subway before he got promoted
+# which is more likely with lower than with higher
+
+#view(d)
+# can't change this here because it would also change the prior for PRE inferences
+# need to do this below, when the data is in long format, not here, in wide
   
 # participant info
 table(d$age) #19-80 
@@ -297,6 +313,28 @@ d_long$environment = case_when(grepl("q-", d_long$utterance) ~ "question",
                                grepl("neg-", d_long$utterance) ~ "negation",
                                TRUE ~ "error")
 table(d_long$environment)
+
+# change prior for notPOST (see explanation above)
+# view(d_long)
+# when response_type is notPOST, change prior "lower" to "higher" and vice versa
+
+table(d_long$response_type,d_long$prior)
+#          higher lower
+# BEL        148   153
+# CC         148   153
+# notPOST    153   154
+# PRE        153   154
+
+d_long$prior = case_when(d_long$response_type == "notPOST" & d_long$prior == "higher" ~ "lower",
+                         d_long$response_type == "notPOST" & d_long$prior == "lower" ~ "higher",
+                         .default = d_long$prior)
+
+table(d_long$response_type,d_long$prior)
+#          higher lower
+# BEL        148   153
+# CC         148   153
+# notPOST    154   153
+# PRE        153   154
 
 #check number of data points by condition/item combination (we want at least 10)
 d$sum = 1

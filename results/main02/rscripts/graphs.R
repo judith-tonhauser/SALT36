@@ -1,3 +1,4 @@
+# SALT36 proceedings paper
 # "stop"/"know" experiment
 # graphs
 
@@ -35,16 +36,16 @@ means_qud_prior_environment = d %>%
   select(-c(CILow, CIHigh)) %>%
   mutate(qud2 = case_when(qud=="ai" & verb == "know" ~ "CC?",
                           qud=="nai" & verb == "know" ~ "BEL?",
-                          qud=="ai" & verb == "stop" ~ "notPOST?",
-                          qud=="nai" & verb == "stop" ~ "PRE?",
+                          qud=="ai" & verb == "stop" ~ "PRE?",
+                          qud=="nai" & verb == "stop" ~ "notPOST?",
                           TRUE ~ "ERROR"))
 means_qud_prior_environment
 
 d = d %>%
   mutate(qud2 = case_when(qud=="ai" & verb == "know" ~ "CC?",
                           qud=="nai" & verb == "know" ~ "BEL?",
-                          qud=="ai" & verb == "stop" ~ "notPOST?",
-                          qud=="nai" & verb == "stop" ~ "PRE?",
+                          qud=="ai" & verb == "stop" ~ "PRE?",
+                          qud=="nai" & verb == "stop" ~ "notPOST?",
                           TRUE ~ "ERROR"))
 
 ggplot(data=means_qud_prior_environment,aes(x=qud2,y=Mean,fill=prior))+
