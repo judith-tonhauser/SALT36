@@ -63,14 +63,14 @@ table(dg$gender)
 dg$language = case_when(grepl("language\":\"yes", dg$response) ~ "English",
                         grepl("language\":\"no", dg$response) ~ "notSpeakerOfEnglish",
                         grepl("language\":\"\"", dg$response) ~ "noResponse",
-                      TRUE ~ "error") 
+                        TRUE ~ "error") 
 table(dg$language) 
 
 # American English
 dg$amE = case_when(grepl("amE\":\"yes", dg$response) ~ "AmE",
                    grepl("amE\":\"no", dg$response) ~ "notAmE",
                    grepl("amE\":\"\"", dg$response) ~ "noResponse",
-                    TRUE ~ "error")
+                   TRUE ~ "error")
 table(dg$amE)
 
 # education
@@ -85,7 +85,7 @@ table(dg$education)
 # comments
 dg$comments = gsub(".*comments", "", dg$response)
 table(dg$comments)
-                      
+
 # remove response column from demographics data
 dg = dg %>%
   select(-c(response))
@@ -105,35 +105,35 @@ table(d$condition)
 
 # item
 d$item = case_when(grepl("petshelter", d$condition) ~ "petshelter",
-                      grepl("bike", d$condition) ~ "bike",
+                   grepl("bike", d$condition) ~ "bike",
                    grepl("subway", d$condition) ~ "subway",
-                      TRUE ~ "error")
+                   TRUE ~ "error")
 table(d$item)
 
 # qud
 d$qud = case_when(grepl("qud\":\"nai", d$condition) ~ "nai",
-                      grepl("qud\":\"ai", d$condition) ~ "ai",
+                  grepl("qud\":\"ai", d$condition) ~ "ai",
                   TRUE ~ "error")
 table(d$qud)
 
 # utterance
 d$utterance = case_when(grepl("didn't stop", d$condition) ~ "neg-stop",
-                    grepl("doesn't know", d$condition) ~ "neg-know",
-                    grepl("Sue know", d$condition) ~ "q-know",
-                    grepl("Charley stop", d$condition) ~ "q-stop",
-                    TRUE ~ "error")
+                        grepl("doesn't know", d$condition) ~ "neg-know",
+                        grepl("Sue know", d$condition) ~ "q-know",
+                        grepl("Charley stop", d$condition) ~ "q-stop",
+                        TRUE ~ "error")
 table(d$utterance)
 
 # verb
 d$verb = case_when(grepl("stop", d$utterance) ~ "stop",
-                        grepl("know", d$utterance) ~ "know",
-                        TRUE ~ "error")
+                   grepl("know", d$utterance) ~ "know",
+                   TRUE ~ "error")
 table(d$verb)
 
 # prior
 d$prior = case_when(grepl("lower", d$condition) ~ "lower",
-                  grepl("higher", d$condition) ~ "higher",
-                  TRUE ~ "error")
+                    grepl("higher", d$condition) ~ "higher",
+                    TRUE ~ "error")
 table(d$prior)
 
 
@@ -171,10 +171,10 @@ table(d$responseFIRSTtype)
 # the second slider collects ratings about PRE/CC in the nai condition,
 # and about POST/BEL in the ai condition
 d$responseSECONDtype = case_when(d$verb == "stop" & d$qud == "ai" ~ "POST",
-                                d$verb == "stop" & d$qud == "nai" ~ "PRE",
-                                d$verb == "know" & d$qud == "ai" ~ "BEL",
-                                d$verb == "know" & d$qud == "nai" ~ "CC",
-                                TRUE ~ "error")
+                                 d$verb == "stop" & d$qud == "nai" ~ "PRE",
+                                 d$verb == "know" & d$qud == "ai" ~ "BEL",
+                                 d$verb == "know" & d$qud == "nai" ~ "CC",
+                                 TRUE ~ "error")
 table(d$responseSECONDtype)
 
 # remove columns not needed
@@ -202,19 +202,12 @@ d = d %>%
   mutate(responseFIRSTtype = recode(responseFIRSTtype, "POST" = "notPOST")) %>%
   mutate(responseSECONDtype = recode(responseSECONDtype, "POST" = "notPOST"))
 
-# the recoding of POST to notPOST also requires the recoding of the prior
-# Julian stopped taking the subway when he got promoted
-# POST = Julian took the subway before he got promoted
-# higher = Julian is a climate activist
-# lower = Julian is a germaphobe
-# POST is more likely with higher than with lower
-# notPOST is 1-POST, Julian didn't take the subway before he got promoted
-# which is more likely with lower than with higher
+# the recoding of POST to notPOST does not require the recoding of the prior!
+# (contrary to an earlier assumption)
+# that's because: "Julian didn't stop taking the subway to work when he got promoted"
+# notPOST should receive higher ratings when he's a germaphobe (lower prior), meaning
+# that he is not taking the subway to work after he got promoted!
 
-#view(d)
-# can't change this here because it would also change the prior for PRE inferences
-# need to do this below, when the data is in long format, not here, in wide
-  
 # participant info
 table(d$age) #19-80 
 length(which(is.na(d$age))) # 1 missing values
@@ -313,28 +306,6 @@ d_long$environment = case_when(grepl("q-", d_long$utterance) ~ "question",
                                grepl("neg-", d_long$utterance) ~ "negation",
                                TRUE ~ "error")
 table(d_long$environment)
-
-# change prior for notPOST (see explanation above)
-# view(d_long)
-# when response_type is notPOST, change prior "lower" to "higher" and vice versa
-
-table(d_long$response_type,d_long$prior)
-#          higher lower
-# BEL        148   153
-# CC         148   153
-# notPOST    153   154
-# PRE        153   154
-
-d_long$prior = case_when(d_long$response_type == "notPOST" & d_long$prior == "higher" ~ "lower",
-                         d_long$response_type == "notPOST" & d_long$prior == "lower" ~ "higher",
-                         .default = d_long$prior)
-
-table(d_long$response_type,d_long$prior)
-#          higher lower
-# BEL        148   153
-# CC         148   153
-# notPOST    154   153
-# PRE        153   154
 
 #check number of data points by condition/item combination (we want at least 10)
 d$sum = 1

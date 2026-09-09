@@ -1,3 +1,4 @@
+# SALT36 proceedings paper
 # "stop"/"know" experiment
 # analysis
 
@@ -35,9 +36,9 @@ nrow(d2) #608
 m = lmer(response ~ verb*prior*environment*qud + (1|item),data=d2)
 summary(m)
 # reference level: know, question, ai, lower
-# simple effects:
-# CC is more projective in higher than lower (in questions, when ai)
-# CC is more projective in negation than question (when ai, at lower)
+# simple effects: 
+# priorhigher: CC is more projective in higher than lower (in questions, when ai)
+# environmentnegation: CC is more projective in negation than question (when ai, at lower)
 
 # save the model
 saveRDS(m, file = "lme-model.rds")
