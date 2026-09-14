@@ -154,31 +154,7 @@ var pragmaticListener = function(utterance, qudBias, prior) {
   }})
 }
 
-// define some speaker beliefs for easier reference
-var ccTrue = [{BEL: 0, CC: 1},{BEL: 1, CC: 1}]
-var ccFalse = [{BEL: 0, CC: 0},{BEL: 1, CC: 0}]
-var belTrue = [{BEL: 1, CC: 0},{BEL: 1, CC: 1}]
-var belFalse = [{BEL: 0, CC: 0},{BEL: 0, CC: 1}]
-var falseFalse = [{BEL: 0, CC: 0}]
-var trueFalse = [{BEL: 0, CC: 0}]
-var falseTrue = [{BEL: 0, CC: 1}]
-var trueTrue = [{BEL: 1, CC: 1}]
-
-// display("PL interprets _Cole doesn't know that Julian dances salsa_ with QUD mc?:")
-// viz.table(pragmaticListener("neg-know-pos-dance","mc","lower"))
-// viz(pragmaticListener("neg-know-pos-dance","ccQUD","higher"))
-
-// display("PL interprets _Cole doesn't know that Julian dances salsa_ with QUD mc?:")
-// viz.table(pragmaticListener("neg-know-pos-dance","BEL?","higher"))
-
-// display("PL interprets _Cole doesn't know that Julian dances salsa_ with QUD mc?:")
-// viz.table(pragmaticListener("neg-know-pos-dance","BEL?","lower"))
-
-// display("PL interprets _Cole doesn't know that Julian dances salsa_ with QUD cc?:")
-// viz.table(pragmaticListener("neg-know-pos-dance","CC?"))
-
-// display("PL interprets _Cole doesn't know that Julian dances salsa_ with QUD max?:")
-// viz.table(pragmaticListener("neg-know-pos-dance","maxQUD"))
-
-// LL: utterance, CG, QUD
-// viz.table(literalListener("pos-think-pos-dance", ah_beliefFalse, "maxQUD"))
+// Example calls (uncomment one to run with `webppl model.wppl`):
+// pragmaticListener(utterance, qudBias, prior)
+// pragmaticListener("neg-know-pos-dance", "CC?", "higher").print()
+// pragmaticListener("neg-know-pos-dance", "BEL?", "lower").print()

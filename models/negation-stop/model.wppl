@@ -162,29 +162,7 @@ var pragmaticListener = function(utterance, qudBias, prior) {
   }})
 }
 
-
-// print("pos-stop") // Charley stopped smoking
-// viz.table(pragmaticListener("pos-stop","POST?"))
-// viz.table(pragmaticListener("pos-stop","PRE?"))
-
-// print("neg-stop") // Charley didn't stop smoking
-//viz.table(pragmaticListener("neg-stop","POST?","higher"))
-//viz.table(pragmaticListener("neg-stop","POST?","lower"))
-// viz.table(pragmaticListener("neg-stop","PRE?"))
-
-
-// print("pos-pre") // Charley smoked
-// viz.table(pragmaticListener("pos-pre","POST?"))
-// viz.table(pragmaticListener("pos-pre","PRE?"))
-
-// print("neg-pre") // Charley didn't smoke
-// viz.table(pragmaticListener("neg-pre","POST?"))
-// viz.table(pragmaticListener("neg-pre","PRE?"))
-
-// print("neg-post") // Charley doesn't smoke
-// viz.table(pragmaticListener("neg-post","POST?"))
-// viz.table(pragmaticListener("neg-post","PRE?"))
-
-// print("neg-neg-post") // There's no way that Charley doesn't smoke
-// viz.table(pragmaticListener("neg-neg-post","POST?"))
-// viz.table(pragmaticListener("neg-neg-post","PRE?"))
+// Example calls (uncomment one to run with `webppl model.wppl`):
+// pragmaticListener(utterance, qudBias, prior)
+// pragmaticListener("neg-stop", "PRE?", "higher").print()
+// pragmaticListener("neg-stop", "POST?", "lower").print()

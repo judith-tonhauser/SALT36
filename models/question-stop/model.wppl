@@ -216,17 +216,7 @@ var lookupState = function(interrogative,goalBias,prior) {
   }})
 }
 
-// R0("does-cole-know?", {BEL: 1, CC: 1})
-// viz.table(speaker("BEL",[{BEL: 1, CC: 1}, {BEL: 0, CC: 1}]))
-// display(PL("does-cole-know?"))
-// display(PL("does-cole-think?"))
-
-// print("know")
-//viz.table(lookupState("did-cole-stop?"))
-// empirical = 0.6 
-
-// print("think")
-//viz.table(lookupState("did-cole-pre?"))
-
-// print("speak?")
-//viz.table(lookupState("does-cole-notPost?"))
+// Example calls (uncomment one to run with `webppl model.wppl`):
+// lookupState(interrogative, goalBias, prior)
+// lookupState("did-cole-stop?", "PRE", "higher").print()
+// lookupState("did-cole-stop?", "notPOST", "lower").print()

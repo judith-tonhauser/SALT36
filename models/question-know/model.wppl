@@ -279,18 +279,7 @@ var lookupState = function(interrogative,qudBias,prior) {
   }})
 }
 
-// print("know, BEL, higher")
-// print(.75) // target value
-// viz.table(lookupState("does-cole-know?","BEL","higher"))
-
-// print("know, BEL, lower")
-// print(.42) // target value
-// viz.table(lookupState("does-cole-know?","BEL","lower"))
-
-// print("know, CC, higher")
-// print(.86) // target value
-// viz.table(lookupState("does-cole-know?","CC","higher"))
-
-// print("know, CC, lower")
-// print(.34) // target value
-// viz.table(lookupState("does-cole-know?","CC","lower"))
+// Example calls (uncomment one to run with `webppl model.wppl`):
+// lookupState(interrogative, qudBias, prior)
+// lookupState("does-cole-know?", "CC", "higher").print()
+// lookupState("does-cole-know?", "BEL", "lower").print()
