@@ -25,13 +25,14 @@ var worldState = [
 
 var notPOSTweight = 0.5
 
-// uniform state prior because Qing et al didn't manipulate prior
+// values from Scontras & Tonhauser (2025): content is twice as likely
+// to be true than to be false in a higher prior probability context,
+// and twice as likely to be false than to be true in a lower one
 var statePrior = function(prior) {
   var state = prior == "higher" ? 
     categorical({vs: worldState, ps: [2,1,2,1]}) :
     categorical({vs: worldState, ps: [1,2,1,2]})
   return state
-//   uniformDraw(worldState)
 }
 
 // private assumptions

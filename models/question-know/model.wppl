@@ -24,18 +24,13 @@ var worldState = [
 ]
 
 var statePrior = function(prior) {
-  // values from SuB 2025 paper: "content is twice as likely 
+  // values from Scontras & Tonhauser (2025): "content is twice as likely 
   // to be true than to be false in a higher prior probability 
   // context, and twice as likely to be false than to be true 
   // in a lower prior probability context"
-  //   //   uniformDraw(worldState)
     var state = prior == "higher" ? categorical([2,1,2,1],worldState) :
     categorical([1,2,1,2],worldState)
     return state
-  // var BELval = flip(0.5) ? 1 : 0// BEL baserate
-  // var CCweight = prior == "higher" ? 0.69 : 0.25
-  // var CCval = flip(CCweight) ? 1 : 0// CC baserate
-  // return {BEL: BELval, CC: CCval} // bias against {0,0} state
 }
 
 // private assumptions

@@ -19,7 +19,7 @@ var utterancePrior = function() {
 }
 
 // cost: simple utterance is less costly than complex utterance
-// comes from unfit Meaning paper
+// as in Scontras & Tonhauser (2026)
 var cost = function(utterance) {
   var splitutt = utterance.split('-')
   var predicate = splitutt[1]
@@ -37,7 +37,7 @@ var worldState = [
 ]
 
 var statePrior = function(prior) {
-  // values from SuB 2025 paper: "content is twice as likely 
+  // values from Scontras & Tonhauser (2025): "content is twice as likely 
   // to be true than to be false in a higher prior probability 
   // context, and twice as likely to be false than to be true 
   // in a lower prior probability context"
@@ -48,7 +48,7 @@ var statePrior = function(prior) {
 }
 
 // qudPriorLookup returns qud based on qudBias
-// values come from Meaning paper (unfit model)
+// values from Scontras & Tonhauser (2026)
 var qudPriorLookup = function(qudBias) {
     qudBias == "BEL?" ? categorical({
     vs: ["ccQUD", "mcQUD"], ps: [1, 100]
@@ -75,7 +75,7 @@ var commonGround = [
 ]
 
 var CGPrior = function() {
-  // values from Meaning paper: "For the private assumptions, we have
+  // values from Scontras & Tonhauser (2026): "For the private assumptions, we have
   // the absence of assumptions twice as likely as assumptions 
   // about the answer to the QUD."
   return categorical({

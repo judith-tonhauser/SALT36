@@ -40,7 +40,7 @@ var worldState = [
 ]
 
 var statePrior = function(prior) {
-  // values from SuB 2025 paper: "content is twice as likely 
+  // values from Scontras & Tonhauser (2025): "content is twice as likely 
   // to be true than to be false in a higher prior probability 
   // context, and twice as likely to be false than to be true 
   // in a lower prior probability context"
@@ -51,7 +51,7 @@ var statePrior = function(prior) {
 }
 
 // qudPriorLookup returns qud based on qudBias
-// values come from Meaning paper (unfit model)
+// values from Scontras & Tonhauser (2026)
 var qudPriorLookup = function(qudBias) {
     qudBias == "PRE?" ? categorical({
     vs: ["POST?", "PRE?"], ps: [1, 100]
@@ -74,7 +74,7 @@ var commonGround = [
   ]
 
 var CGPrior = function() {
-  // values from Meaning paper: "For the private assumptions, we have
+  // values from Scontras & Tonhauser (2026): "For the private assumptions, we have
   // the absence of assumptions twice as likely as assumptions 
   // about the answer to the QUD."
   return categorical({
@@ -84,19 +84,12 @@ var CGPrior = function() {
 }
 
 
-// QUDs (Qing et al had many more QUDs)
+// QUDs (a subset of those in Qing et al. 2016)
 var qudFns = {
   "POST?" : function(state) {return {notPOST: state.notPOST}},
   "PRE?" : function(state) {return {PRE: state.PRE}}
 }
 
-
-// // uniform prior over QUDs (Qing et al had many more QUDs)
-// var qudPrior = function() {
-//   categorical({
-//     vs: ["POST?", "PRE?"], ps: [1, 1]
-//   })
-// }
 
 // meaning function
 var meaning = function(utterance, state) {
