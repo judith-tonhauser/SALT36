@@ -1,0 +1,232 @@
+///fold:
+var KL = function(erpTrue, erpApprox){                       
+  var values = erpTrue.support([]);                          
+  return sum(map(                                            
+    function(value){                                         
+      var scoreP = erpTrue.score(value);                     
+      var scoreQ = erpApprox.score(value);                   
+      var probP = Math.exp(scoreP);                          
+      return probP == 0.0 ? 0.0 : probP * (scoreP - scoreQ); 
+    }, values));                                             
+};   
+
+var stringify = function(x){return JSON.stringify(x)}
+
+///
+
+// states
+
+var worldState = [
+  {notPOST: 1, PRE: 1},
+  {notPOST: 1, PRE: 0},
+  {notPOST: 0, PRE: 1},
+  {notPOST: 0, PRE: 0}
+]
+
+var notPOSTweight = 0.5
+
+// uniform state prior because Qing et al didn't manipulate prior
+var statePrior = function(prior) {
+  var state = prior == "higher" ? 
+    categorical({vs: worldState, ps: [2,1,2,1]}) :
+    categorical({vs: worldState, ps: [1,2,1,2]})
+  return state
+//   uniformDraw(worldState)
+}
+
+// private assumptions
+var PAs = [
+  // no beliefs
+  worldState,
+  // speaker observes notPOST = 0 or  notPOST = 1
+  [{notPOST: 0, PRE: 1}, {notPOST: 0, PRE: 0}],
+  [{notPOST: 1, PRE: 1}, {notPOST: 1, PRE: 0}],
+  // speaker observes pre = 1 or pre = 0
+  [{notPOST: 0, PRE: 1}, {notPOST: 1, PRE: 1}],
+  [{notPOST: 0, PRE: 0}, {notPOST: 1, PRE: 0}]
+]
+
+var PAprior = function() {
+  return categorical({
+    vs: PAs,
+    ps: [4, 2, 2, 2, 2]
+  })
+}
+
+// possible interrogative utterances
+
+var interrogatives = ["did-cole-stop?", "did-cole-pre?", "does-cole-notPost?"];
+
+var interrogativePrior = function(){
+  return categorical({vs: interrogatives, ps: [1,1,1]}) 
+};
+
+// cost (simple interrogative is cheaper than complex one)
+var cost = function(interrogative) {
+  var splitutt = interrogative.split('-')
+  var predicate = splitutt[2]
+  return predicate == "stop?" ? 2 : 1 
+}
+
+// define the meanings of the interrogative utterances
+
+// partitions (return 0 or 1, depending on BEL and CC)
+var PREnotPOSTpartition = function(w) {return w.PRE && w.notPOST}
+var notPOSTpartition = function(w) {return w.notPOST}
+var PREpartition = function(w) {return w.PRE}
+
+// meaning function: the meaning of an interrogative is a partition
+var meaning = function(interrogative){
+  return ((interrogative === "did-cole-stop?") ? PREnotPOSTpartition :
+          (interrogative === "did-cole-pre?") ? PREpartition :
+          (interrogative == "does-cole-notPost?") ? notPOSTpartition: 
+          console.error('unknown interrogative!', interrogative));
+};
+
+// QUDs are speaker goals, that is, what the speaker wants to inquire about
+// BEL: an inquiry about BEL
+// CC: an inquiry about CC
+
+var goals = ["PRE", "notPOST"]
+
+var goalPrior = function(goalBias) {
+  goalBias == "notPOST" ? categorical({
+    vs: goals, ps: [1, 100]
+  }) : categorical({
+    vs: goals, ps: [100, 1]
+  })
+}
+
+// goal functions
+
+var goalLookup = function(goal){
+  return (goal == "PRE" ? PREpartition :
+          goal == "notPOST" ? notPOSTpartition :
+          console.error('unknown goal name', goal));
+};
+
+// this is the distribution of answers determined by
+// the prior over worlds
+
+var answerDistributionPrior = function(goal,prior,PA) {                             
+  var qud = goalLookup(goal);                                              
+  return Infer({method: 'enumerate'}, function(){                            
+    var sampledState = statePrior(prior)
+    var stringPA = stringify(PA)
+    var stringState = stringify(sampledState)
+    condition(stringPA.includes(stringState))
+    return qud(sampledState);                                                
+  });                                                                        
+};                                                                           
+
+// alpha 
+var alpha = 10;
+
+// literal interpreter/answerer/responder
+// LL observes an interrogative and a world
+// returns 'yes' or 'no', depending on which part of the partition
+// the world is in
+
+var literalListener = cache(function(interrogative, world){                                     
+  return Infer({method: 'enumerate'}, function(){                             
+    var partition = meaning(interrogative)
+    // is the world that I'm in, in the 'yes' cell of the partition?
+    var inCell = partition(world)
+//     print(inCell)
+    return inCell ? 'yes' : 'no'
+  });                                                                         
+});  
+
+// speaker/questioner
+// has a question goal (sth they want to find out) and makes private assumption
+// returns a distribution over interrogative utterances based on how likely
+// the speaker is to use that interrogative to address the goal given their
+// private assumptions
+
+var speaker = function(goal,PA,prior) {
+  return Infer({model: function() {
+    var interrogative = interrogativePrior();
+    // LLdistribution
+    // distribution over LL answers to the interrogative, baed on sampled states 
+    var LLdistribution = Infer({model: function(){
+    var sampledState = statePrior(prior)
+      // speaker requires the sampled state to be consisted with their PA 
+    var stringPA = stringify(PA)
+    var stringState = stringify(sampledState)
+    condition(stringPA.includes(stringState))
+      return sample(literalListener(interrogative, sampledState));
+    }})
+    // infGain
+    // calculate information that would be gained about the goal
+    // from a possible answer (compares prior over answers to posterior over
+    // answers via KL divergence; returns size of divergence)
+    var infGain = function(answer){
+      // priorQUDanswers returns prior over answers (currently flat: BEL
+      // is just as likely to be true as it is false; same for CC)
+      var priorQUDanswers = answerDistributionPrior(goal,prior,PA);
+      // posteriorQUDanswers gets distribution over answers from LL
+      var posteriorQUDanswers = Infer({model: function(){
+        var state = statePrior(prior)
+        // speaker requires the sampled state to be consisted with their PA 
+        var stringPA = stringify(PA)
+        var stringState = stringify(state)
+        condition(stringPA.includes(stringState))
+        observe(literalListener(interrogative, state), answer)
+        return goalLookup(goal)(state)
+      }});
+      return KL(posteriorQUDanswers, priorQUDanswers);
+    };
+    // expectation function passes the output of its first argument
+    // into the function denoted by the second argument
+    // so here: sample from the LLdistribution, pass the sample to infGain
+    factor(alpha * (expectation(LLdistribution, infGain) - cost(interrogative)));
+    return interrogative;
+  }});
+};  
+
+// PL observes an interrogative and returns a distribution over PAs based on the
+// utility for the speaker of having uttered that interrogative to inquire about
+// the goal based on the PA
+
+var PL = function(interrogative,goalBias,prior) {
+  Infer({model: function() {
+    var goal = goalPrior(goalBias)
+//     print(goal)
+    var PA = PAprior()
+//     print(PA)
+    observe(speaker(goal,PA,prior), interrogative)
+//     return {goal: goal, PA}
+    return PA
+  }})
+}
+
+// lookupState samples the distribution over PAs returned by the pragmaticListener who
+// observed an interrogative and returns the distribution over CC and BEL
+
+var lookupState = function(interrogative,goalBias,prior) {
+  Infer({model: function() {
+    var PA = sample(PL(interrogative,goalBias,prior))
+    var state = statePrior(prior)
+    var stringPA = stringify(PA)
+    var stringState = stringify(state)
+    condition(stringPA.includes(stringState))
+    var PRE = state.PRE
+    var notPOST = state.notPOST
+    return {PRE,notPOST}
+  }})
+}
+
+// R0("does-cole-know?", {BEL: 1, CC: 1})
+// viz.table(speaker("BEL",[{BEL: 1, CC: 1}, {BEL: 0, CC: 1}]))
+// display(PL("does-cole-know?"))
+// display(PL("does-cole-think?"))
+
+// print("know")
+//viz.table(lookupState("did-cole-stop?"))
+// empirical = 0.6 
+
+// print("think")
+//viz.table(lookupState("did-cole-pre?"))
+
+// print("speak?")
+//viz.table(lookupState("does-cole-notPost?"))

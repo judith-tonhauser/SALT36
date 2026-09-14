@@ -1,0 +1,190 @@
+// higher: 0.95, PREweight = 0.625
+// lower:  0.89, PREweight = 0.4
+
+// helper functions
+var stringify = function(x){return JSON.stringify(x)}
+
+// utterances
+var utterances = [                  
+                  "pos-stop",    // Charley stopped climbing when Sue fell
+                  "neg-stop",    // Charley didn't stop climbing when Sue fell
+                  "pos-pre",     // Charley was climbing before Sue fell
+                  "neg-pre",     // Charley wasn't climbing before Sue fell
+                  "neg-post",    // Charley wasn't climbing after Sue fell     
+                  "neg-neg-post" // There's no way that Charley wasn't climbing after Sue fell
+]  
+
+
+// utterance prior is uniform
+var utterancePrior = function() {
+  uniformDraw(utterances)
+}
+
+// Qing et al 2016: "The prior probability of an utterance depends on the number of content words 
+// (i.e., negation and auxiliaries are excluded) that it has.''
+var cost = function(utterance) {
+  var splitutt = utterance.split('-')
+  var polarity = splitutt[0]
+  var predicate = splitutt[1]
+  return predicate == "stop" ? 2 : // stop utterances have cost 2 (stop climbing)
+         predicate == "neg" ? 3 :   // neg-neg-post has cost 3 (there way climbing)
+         1                         // pos-pre, neg-pre, neg-post utterances have cost 1 (climbing)
+}
+
+// world states
+var worldState = [
+  {PRE: 1, notPOST: 0}, 
+  {PRE: 1, notPOST: 1}, 
+  {PRE: 0, notPOST: 0},
+  {PRE: 0, notPOST: 1}
+]
+
+var statePrior = function(prior) {
+  // values from SuB 2025 paper: "content is twice as likely 
+  // to be true than to be false in a higher prior probability 
+  // context, and twice as likely to be false than to be true 
+  // in a lower prior probability context"
+  var state = prior == "higher" ? 
+    categorical({vs: worldState, ps: [2,1,2,1]}) :
+    categorical({vs: worldState, ps: [1,2,1,2]})
+  return state
+}
+
+// qudPriorLookup returns qud based on qudBias
+// values come from Meaning paper (unfit model)
+var qudPriorLookup = function(qudBias) {
+    qudBias == "PRE?" ? categorical({
+    vs: ["POST?", "PRE?"], ps: [1, 100]
+  }) : categorical({
+    vs: ["POST?", "PRE?"], ps: [100, 1]
+  })
+}
+
+
+// what the speaker privately believes ("Common ground" in Qing et al 2016)
+var commonGround = [
+  // no beliefs
+  worldState,
+  // speaker observes notPOST = 0 or  notPOST = 1
+  [{PRE: 1, notPOST: 0}, {PRE: 0, notPOST: 0}],
+  [{PRE: 1, notPOST: 1}, {PRE: 0, notPOST: 1}],
+  // speaker observes pre = 1 or pre = 0
+  [{PRE: 1, notPOST: 0}, {PRE: 1, notPOST: 1}],
+  [{PRE: 0, notPOST: 0}, {PRE: 0, notPOST: 1}]
+  ]
+
+var CGPrior = function() {
+  // values from Meaning paper: "For the private assumptions, we have
+  // the absence of assumptions twice as likely as assumptions 
+  // about the answer to the QUD."
+  return categorical({
+    vs: commonGround,
+    ps: [4, 2, 2, 2, 2]
+  })
+}
+
+
+// QUDs (Qing et al had many more QUDs)
+var qudFns = {
+  "POST?" : function(state) {return {notPOST: state.notPOST}},
+  "PRE?" : function(state) {return {PRE: state.PRE}}
+}
+
+
+// // uniform prior over QUDs (Qing et al had many more QUDs)
+// var qudPrior = function() {
+//   categorical({
+//     vs: ["POST?", "PRE?"], ps: [1, 1]
+//   })
+// }
+
+// meaning function
+var meaning = function(utterance, state) {
+    // Charley stopped climbing/didn't stop climbing when Sue fell
+    utterance == "pos-stop" ? state.PRE == 1 && state.notPOST == 1 :
+    utterance == "neg-stop" ? false == (state.PRE == 1 && state.notPOST == 1) :
+    // Charley was/wasn't climbing before Sue fell
+    utterance == "pos-pre" ? state.PRE == 1 :
+    utterance == "neg-pre" ? false == (state.PRE == 1) :
+    // Charley wasn't climbing after Sue fell/There's no way that C wasn't climbing after Sue fell
+    utterance == "neg-post" ? false == (state.notPOST == 0) :
+    utterance == "neg-neg-post" ? false == (false == (state.notPOST == 0)) :
+    true
+  }
+
+//  literal listener
+var literalListener = function(utterance, cg, qud) {
+  Infer({model: function() {
+    var state = uniformDraw(worldState)
+    var qudFn = qudFns[qud]
+    var qudAnswer = qudFn(state)
+    // LL requires the sampled state to be consisted with the cg passed down from the speaker
+    var stringCG = stringify(cg)
+    var stringState = stringify(state)
+    condition(stringCG.includes(stringState))
+    condition(meaning(utterance, state))
+    return qudAnswer
+  }})
+} 
+
+// Speaker optimality parameter
+var alpha = 10
+
+// speaker
+var speaker = function(state, cg, qud) {
+  Infer({model: function() {
+    var utterance = uniformDraw(utterances)
+    var qudFn = qudFns[qud]
+    var qudAnswer = qudFn(state)
+    condition(meaning(utterance, state)) // the speaker is always truthful
+    factor(alpha *
+           (literalListener(utterance, cg, qud).score(qudAnswer)
+          - cost(utterance)))
+    return utterance
+  }})
+}
+
+// pragmatic listener (qudBias = PRE? or POST?)
+var pragmaticListener = function(utterance, qudBias, prior) {
+  Infer({model: function() {
+    var state = statePrior(prior)
+    var cg = CGPrior()
+    var qud = qudPriorLookup(qudBias)
+    // the sampled state is consistent with the speaker's beliefs
+    var stringCG = stringify(cg)
+    var stringState = stringify(state)
+    condition(stringCG.includes(stringState))
+    observe(speaker(state, cg, qud), utterance)
+    // return statePrior
+//     return {PRE: state.PRE, notPOST: state.notPOST, cg: cg}
+//     return {state:state, qud:qud}
+    return {PRE: state.PRE, notPOST: state.notPOST}
+  }})
+}
+
+
+// print("pos-stop") // Charley stopped smoking
+// viz.table(pragmaticListener("pos-stop","POST?"))
+// viz.table(pragmaticListener("pos-stop","PRE?"))
+
+// print("neg-stop") // Charley didn't stop smoking
+//viz.table(pragmaticListener("neg-stop","POST?","higher"))
+//viz.table(pragmaticListener("neg-stop","POST?","lower"))
+// viz.table(pragmaticListener("neg-stop","PRE?"))
+
+
+// print("pos-pre") // Charley smoked
+// viz.table(pragmaticListener("pos-pre","POST?"))
+// viz.table(pragmaticListener("pos-pre","PRE?"))
+
+// print("neg-pre") // Charley didn't smoke
+// viz.table(pragmaticListener("neg-pre","POST?"))
+// viz.table(pragmaticListener("neg-pre","PRE?"))
+
+// print("neg-post") // Charley doesn't smoke
+// viz.table(pragmaticListener("neg-post","POST?"))
+// viz.table(pragmaticListener("neg-post","PRE?"))
+
+// print("neg-neg-post") // There's no way that Charley doesn't smoke
+// viz.table(pragmaticListener("neg-neg-post","POST?"))
+// viz.table(pragmaticListener("neg-neg-post","PRE?"))

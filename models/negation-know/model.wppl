@@ -1,0 +1,184 @@
+// helper functions
+var stringify = function(x){return JSON.stringify(x)}
+
+// utterances
+var utterances = ["pos-know-pos-dance", 
+                  "pos-think-pos-dance",
+                  "neg-know-pos-dance", 
+                  "neg-think-pos-dance",
+                  "pos-bare-pos-dance",
+                  "neg-bare-pos-dance"
+                  ]
+
+// higher .74, CCval = flip(0.59)
+// lower .58, CCval = flip(0.41)
+
+// utterance prior is uniform
+var utterancePrior = function() {
+  uniformDraw(utterances)
+}
+
+// cost: simple utterance is less costly than complex utterance
+// comes from unfit Meaning paper
+var cost = function(utterance) {
+  var splitutt = utterance.split('-')
+  var predicate = splitutt[1]
+  return predicate == "bare" ? 1 : 2
+}
+
+// world states
+// BEL: Does the attitude holder believe that the CC is true? 1:yes / 0:no
+// CC: Is the CC true? 1:yes / 0:no
+var worldState = [
+  {BEL: 1, CC: 1}, 
+  {BEL: 1, CC: 0}, 
+  {BEL: 0, CC: 1},
+  {BEL: 0, CC: 0}
+]
+
+var statePrior = function(prior) {
+  // values from SuB 2025 paper: "content is twice as likely 
+  // to be true than to be false in a higher prior probability 
+  // context, and twice as likely to be false than to be true 
+  // in a lower prior probability context"
+  var state = prior == "higher" ? 
+    categorical({vs: worldState, ps: [2,1,2,1]}) :
+    categorical({vs: worldState, ps: [1,2,1,2]})
+  return state
+}
+
+// qudPriorLookup returns qud based on qudBias
+// values come from Meaning paper (unfit model)
+var qudPriorLookup = function(qudBias) {
+    qudBias == "BEL?" ? categorical({
+    vs: ["ccQUD", "mcQUD"], ps: [1, 100]
+  }) : categorical({
+    vs: ["ccQUD", "mcQUD"], ps: [100, 1]
+  })
+}
+
+// what the speaker privately believes ("Common ground" in Qing et al 2016)
+var commonGround = [
+  // no beliefs
+  worldState,
+  // speaker observes dancing = 1 or dancing = 0
+  [{BEL: 1, CC: 1}, {BEL: 0, CC: 1}],
+  [{BEL: 1, CC: 0}, {BEL: 0, CC: 0}],
+  // speaker observes bel = 1 or bel = 0
+  [{BEL: 1, CC: 1}, {BEL: 1, CC: 0}],
+  [{BEL: 0, CC: 1}, {BEL: 0, CC: 0}],
+  // speaker has full belief about both parts
+//   [{BEL: 1, CC: 1}], 
+//   [{BEL: 1, CC: 0}],
+//   [{BEL: 0, CC: 1}],
+//   [{BEL: 0, CC: 0}]
+]
+
+var CGPrior = function() {
+  // values from Meaning paper: "For the private assumptions, we have
+  // the absence of assumptions twice as likely as assumptions 
+  // about the answer to the QUD."
+  return categorical({
+    vs: commonGround,
+    ps: [4, 2, 2, 2, 2] 
+  })
+}
+
+
+// QUDs
+var qudFns = {
+  ccQUD : function(state) {return {CC: state.CC}},
+  mcQUD : function(state) {return {BEL: state.BEL}}
+}
+
+
+// Speaker optimality parameter
+var alpha = 10
+
+// meaning function
+var meaning = function(utterance, state) {
+    utterance == "pos-know-pos-dance" ? state.BEL == 1 && state.CC == 1 :
+    utterance == "pos-think-pos-dance" ? state.BEL == 1 :
+    utterance == "pos-bare-pos-dance" ? state.CC == 1 :
+    // negated versions
+    utterance == "neg-know-pos-dance" ? false == (state.BEL == 1 && state.CC == 1) :
+    utterance == "neg-think-pos-dance" ? false == (state.BEL == 1) :
+    utterance == "neg-bare-pos-dance" ? false == (state.CC == 1) : true
+  }
+
+//  literal listener
+var literalListener = function(utterance, cg, qud) {
+  Infer({model: function() {
+    var state = uniformDraw(worldState)
+    var qudFn = qudFns[qud]
+    var qudAnswer = qudFn(state)
+    // LL requires the sampled state to be consisted with the cg passed down from the speaker
+    var stringCG = stringify(cg)
+    var stringState = stringify(state)
+    condition(stringCG.includes(stringState))
+    condition(meaning(utterance, state))
+    return qudAnswer
+  }})
+} 
+
+// speaker
+var speaker = function(state, cg, qud) {
+  Infer({model: function() {
+    var utterance = uniformDraw(utterances)
+    var qudFn = qudFns[qud]
+    var qudAnswer = qudFn(state)
+    condition(meaning(utterance, state)) // the speaker is always truthful
+    factor(alpha *
+           (literalListener(utterance, cg, qud).score(qudAnswer)
+          - cost(utterance)))
+    return utterance
+  }})
+}
+
+// pragmatic listener
+var pragmaticListener = function(utterance, qudBias, prior) {
+  Infer({model: function() {
+    var state = statePrior(prior)
+    var cg = CGPrior()
+    var qud = qudPriorLookup(qudBias)
+    // the sampled state is consistent with the speaker's beliefs
+    var stringCG = stringify(cg)
+    var stringState = stringify(state)
+    condition(stringCG.includes(stringState))
+    observe(speaker(state, cg, qud), utterance)
+//     return {BEL: state.BEL, CC: state.CC, qud: qud}
+    // return state.BEL
+    return {BEL: state.BEL, CC: state.CC}
+//     return {state: state, cg: cg}
+//     return {state:state, qud:qud}
+  }})
+}
+
+// define some speaker beliefs for easier reference
+var ccTrue = [{BEL: 0, CC: 1},{BEL: 1, CC: 1}]
+var ccFalse = [{BEL: 0, CC: 0},{BEL: 1, CC: 0}]
+var belTrue = [{BEL: 1, CC: 0},{BEL: 1, CC: 1}]
+var belFalse = [{BEL: 0, CC: 0},{BEL: 0, CC: 1}]
+var falseFalse = [{BEL: 0, CC: 0}]
+var trueFalse = [{BEL: 0, CC: 0}]
+var falseTrue = [{BEL: 0, CC: 1}]
+var trueTrue = [{BEL: 1, CC: 1}]
+
+// display("PL interprets _Cole doesn't know that Julian dances salsa_ with QUD mc?:")
+// viz.table(pragmaticListener("neg-know-pos-dance","mc","lower"))
+// viz(pragmaticListener("neg-know-pos-dance","ccQUD","higher"))
+
+// display("PL interprets _Cole doesn't know that Julian dances salsa_ with QUD mc?:")
+// viz.table(pragmaticListener("neg-know-pos-dance","BEL?","higher"))
+
+// display("PL interprets _Cole doesn't know that Julian dances salsa_ with QUD mc?:")
+// viz.table(pragmaticListener("neg-know-pos-dance","BEL?","lower"))
+
+// display("PL interprets _Cole doesn't know that Julian dances salsa_ with QUD cc?:")
+// viz.table(pragmaticListener("neg-know-pos-dance","CC?"))
+
+// display("PL interprets _Cole doesn't know that Julian dances salsa_ with QUD max?:")
+// viz.table(pragmaticListener("neg-know-pos-dance","maxQUD"))
+
+// LL: utterance, CG, QUD
+// viz.table(literalListener("pos-think-pos-dance", ah_beliefFalse, "maxQUD"))
