@@ -4,7 +4,7 @@ WebPPL implementations of the four reasoning-based models in Section 3 of the pa
 
 | Folder | Section | Model |
 |---|---|---|
-| `negation-know` | 3.1 | Negation model for *know* (Scontras & Tonhauser 2026) |
+| `negation-know` | 3.1 | Negation model for *know* (Scontras & Tonhauser 2025) |
 | `negation-stop` | 3.2 | Negation model for *stop* |
 | `question-know` | 3.3 | Question model for *know* |
 | `question-stop` | 3.4 | Question model for *stop* |
