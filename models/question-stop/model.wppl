@@ -1,4 +1,4 @@
-///fold:
+// helper functions
 var KL = function(erpTrue, erpApprox){                       
   var values = erpTrue.support([]);                          
   return sum(map(                                            
@@ -12,8 +12,6 @@ var KL = function(erpTrue, erpApprox){
 
 var stringify = function(x){return JSON.stringify(x)}
 
-///
-
 // states
 
 var worldState = [
@@ -22,8 +20,6 @@ var worldState = [
   {notPOST: 0, PRE: 1},
   {notPOST: 0, PRE: 0}
 ]
-
-var notPOSTweight = 0.5
 
 // values from Scontras & Tonhauser (2025): content is twice as likely
 // to be true than to be false in a higher prior probability context,
@@ -71,7 +67,7 @@ var cost = function(interrogative) {
 
 // define the meanings of the interrogative utterances
 
-// partitions (return 0 or 1, depending on BEL and CC)
+// partitions (return 0 or 1, depending on PRE and notPOST)
 var PREnotPOSTpartition = function(w) {return w.PRE && w.notPOST}
 var notPOSTpartition = function(w) {return w.notPOST}
 var PREpartition = function(w) {return w.PRE}
@@ -85,8 +81,8 @@ var meaning = function(interrogative){
 };
 
 // QUDs are speaker goals, that is, what the speaker wants to inquire about
-// BEL: an inquiry about BEL
-// CC: an inquiry about CC
+// PRE: an inquiry about PRE
+// notPOST: an inquiry about notPOST
 
 var goals = ["PRE", "notPOST"]
 
@@ -133,7 +129,6 @@ var literalListener = cache(function(interrogative, world){
     var partition = meaning(interrogative)
     // is the world that I'm in, in the 'yes' cell of the partition?
     var inCell = partition(world)
-//     print(inCell)
     return inCell ? 'yes' : 'no'
   });                                                                         
 });  
@@ -148,10 +143,10 @@ var speaker = function(goal,PA,prior) {
   return Infer({model: function() {
     var interrogative = interrogativePrior();
     // LLdistribution
-    // distribution over LL answers to the interrogative, baed on sampled states 
+    // distribution over LL answers to the interrogative, based on sampled states 
     var LLdistribution = Infer({model: function(){
     var sampledState = statePrior(prior)
-      // speaker requires the sampled state to be consisted with their PA 
+      // speaker requires the sampled state to be consistent with their PA 
     var stringPA = stringify(PA)
     var stringState = stringify(sampledState)
     condition(stringPA.includes(stringState))
@@ -162,13 +157,12 @@ var speaker = function(goal,PA,prior) {
     // from a possible answer (compares prior over answers to posterior over
     // answers via KL divergence; returns size of divergence)
     var infGain = function(answer){
-      // priorQUDanswers returns prior over answers (currently flat: BEL
-      // is just as likely to be true as it is false; same for CC)
+      // priorQUDanswers returns prior over answers given the state prior and PA
       var priorQUDanswers = answerDistributionPrior(goal,prior,PA);
       // posteriorQUDanswers gets distribution over answers from LL
       var posteriorQUDanswers = Infer({model: function(){
         var state = statePrior(prior)
-        // speaker requires the sampled state to be consisted with their PA 
+        // speaker requires the sampled state to be consistent with their PA 
         var stringPA = stringify(PA)
         var stringState = stringify(state)
         condition(stringPA.includes(stringState))
@@ -192,17 +186,14 @@ var speaker = function(goal,PA,prior) {
 var PL = function(interrogative,goalBias,prior) {
   Infer({model: function() {
     var goal = goalPrior(goalBias)
-//     print(goal)
     var PA = PAprior()
-//     print(PA)
     observe(speaker(goal,PA,prior), interrogative)
-//     return {goal: goal, PA}
     return PA
   }})
 }
 
 // lookupState samples the distribution over PAs returned by the pragmaticListener who
-// observed an interrogative and returns the distribution over CC and BEL
+// observed an interrogative and returns the distribution over PRE and notPOST
 
 var lookupState = function(interrogative,goalBias,prior) {
   Infer({model: function() {

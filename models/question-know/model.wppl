@@ -1,4 +1,4 @@
-///fold:
+// helper functions
 var KL = function(erpTrue, erpApprox){                       
   var values = erpTrue.support([]);                          
   return sum(map(                                            
@@ -11,8 +11,6 @@ var KL = function(erpTrue, erpApprox){
 };   
 
 var stringify = function(x){return JSON.stringify(x)}
-
-///
 
 // states
 
@@ -111,17 +109,12 @@ var answerDistributionPrior = function(goal,PA,prior) {
   var qud = goalLookup(goal);                                              
   return Infer({method: 'enumerate'}, function(){ 
     var sampledState = statePrior(prior)
-//     print(sampledState)
     var stringPA = stringify(PA)
     var stringState = stringify(sampledState)
     condition(stringPA.includes(stringState))
     return qud(sampledState);                                                
   });                                                                        
 };                                                                           
-
-// print("prior over answer")
-// viz.table(answerDistributionPrior("BEL",[{BEL: 1, CC: 1}, {BEL: 0, CC: 1}]))
-// viz.table(answerDistributionPrior("CC",[{BEL: 1, CC: 1}, {BEL: 0, CC: 1}]))
 
 // alpha 
 var alpha = 10;
@@ -136,15 +129,9 @@ var literalListener = cache(function(interrogative, world){
     var partition = meaning(interrogative)
     // is the world that I'm in, in the 'yes' cell of the partition?
     var inCell = partition(world)
-//         print(inCell)
     return inCell ? 'yes' : 'no'
   });                                                                         
 });  
-
-// viz(literalListener("does-cole-think?",worldState[0]))
-// viz(literalListener("does-cole-think?",worldState[1]))
-// viz(literalListener("does-cole-think?",worldState[2]))
-// viz(literalListener("does-cole-think?",worldState[3]))
 
 // speaker/questioner
 // has a question goal (sth they want to find out) and makes private assumption
@@ -156,11 +143,10 @@ var speaker = function(goal,PA,prior) {
   return Infer({model: function() {
     var interrogative = interrogativePrior();
     // LLdistribution
-    // distribution over LL answers to the interrogative, baed on sampled states 
+    // distribution over LL answers to the interrogative, based on sampled states 
     var LLdistribution = Infer({model: function(){
-      //       var sampledState = statePrior()
       var sampledState = statePrior(prior)
-      // speaker requires the sampled state to be consisted with their PA 
+      // speaker requires the sampled state to be consistent with their PA 
       var stringPA = stringify(PA)
       var stringState = stringify(sampledState)
       condition(stringPA.includes(stringState))
@@ -171,13 +157,12 @@ var speaker = function(goal,PA,prior) {
     // from a possible answer (compares prior over answers to posterior over
     // answers via KL divergence; returns size of divergence)
     var infGain = function(answer){
-      // priorQUDanswers returns prior over answers (currently flat: BEL
-      // is just as likely to be true as it is false; same for CC)
+      // priorQUDanswers returns prior over answers given the state prior and PA
       var priorQUDanswers = answerDistributionPrior(goal,PA,prior);
       // posteriorQUDanswers gets distribution over answers from LL
       var posteriorQUDanswers = Infer({model: function(){
         var state = statePrior(prior)
-        // speaker requires the sampled state to be consisted with their PA 
+        // speaker requires the sampled state to be consistent with their PA 
         var stringPA = stringify(PA)
         var stringState = stringify(state)
         condition(stringPA.includes(stringState))
@@ -186,7 +171,6 @@ var speaker = function(goal,PA,prior) {
       }});
       return KL(posteriorQUDanswers, priorQUDanswers);
     };
-//     print(expectation(LLdistribution, infGain))
     // expectation function passes the output of its first argument
     // into the function denoted by the second argument
     // so here: sample from the LLdistribution, pass the sample to infGain
@@ -194,50 +178,6 @@ var speaker = function(goal,PA,prior) {
     return interrogative;
   }});
 };  
-
-
-
-//  var LLdistribution = function(interrogative){
-//    return Infer({model: function(){
-//     var sampledState = statePrior()
-//       // speaker requires the sampled state to be consisted with their PA 
-// //     var stringPA = stringify(PA)
-// //     var stringState = stringify(sampledState)
-// //     condition(stringPA.includes(stringState))
-//       return sample(literalListener(interrogative, sampledState));
-//     }})
-//  }
-//  viz(LLdistribution("does-cole-know?"))
-//  viz(LLdistribution("does-cole-think?"))
-//  viz(LLdistribution("does-charley-speak?"))
-
-
-// var posteriorQUDanswers = function(interrogative,goal,answer){
-//   Infer({model: function(){
-//         var state = statePrior()
-//         // speaker requires the sampled state to be consisted with their PA 
-// //         var stringPA = stringify(PA)
-// //         var stringState = stringify(state)
-// //         condition(stringPA.includes(stringState))
-//         observe(literalListener(interrogative, state), answer)
-//         return goalLookup(goal)(state)
-//       }});
-// }
-
-// print("posterior over answers")
-// print("does-cole-think?, CC, yes")
-// viz(posteriorQUDanswers("does-charley-speak?","CC","yes"))
-// print("does-cole-think?, CC, no")
-// viz(posteriorQUDanswers("does-charley-speak?","CC","no"))
-
-// print("BEL goal")
-// // viz(speaker("BEL",worldState))
-// viz.table(speaker("BEL",[{BEL: 1, CC: 1}, {BEL: 0, CC: 1}]))
-// // viz.table(speaker("BEL",worldState))
-// print("CC goal")
-// // viz(speaker("CC",worldState))
-// viz.table(speaker("CC",[{BEL: 1, CC: 1}, {BEL: 0, CC: 1}]))
-// // viz.table(speaker("CC",worldState))
 
 // PL observes an interrogative and returns a distribution over PAs based on the
 // utility for the speaker of having uttered that interrogative to inquire about
@@ -248,14 +188,9 @@ var PL = function(interrogative,prior,qudBias) {
     var goal = goalPrior(qudBias)
     var PA = PAprior()
     observe(speaker(goal,PA,prior), interrogative)
-    //     return {goal: goal, PA}
     return PA
   }})
 }
-
-// viz.table(PL("does-cole-know?"))
-// viz.table(PL("does-cole-think?"))
-// viz.table(PL("does-charley-speak?"))
 
 // lookupState samples the distribution over PAs returned by the pragmaticListener who
 // observed an interrogative and returns the distribution over CC and BEL
@@ -270,7 +205,6 @@ var lookupState = function(interrogative,qudBias,prior) {
     var CC = state.CC
     var BEL = state.BEL
     return {CC, BEL}
-    // return CC
   }})
 }
 

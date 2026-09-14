@@ -10,14 +10,6 @@ var utterances = ["pos-know-pos-dance",
                   "neg-bare-pos-dance"
                   ]
 
-// higher .74, CCval = flip(0.59)
-// lower .58, CCval = flip(0.41)
-
-// utterance prior is uniform
-var utterancePrior = function() {
-  uniformDraw(utterances)
-}
-
 // cost: simple utterance is less costly than complex utterance
 // as in Scontras & Tonhauser (2026)
 var cost = function(utterance) {
@@ -66,12 +58,7 @@ var commonGround = [
   [{BEL: 1, CC: 0}, {BEL: 0, CC: 0}],
   // speaker observes bel = 1 or bel = 0
   [{BEL: 1, CC: 1}, {BEL: 1, CC: 0}],
-  [{BEL: 0, CC: 1}, {BEL: 0, CC: 0}],
-  // speaker has full belief about both parts
-//   [{BEL: 1, CC: 1}], 
-//   [{BEL: 1, CC: 0}],
-//   [{BEL: 0, CC: 1}],
-//   [{BEL: 0, CC: 0}]
+  [{BEL: 0, CC: 1}, {BEL: 0, CC: 0}]
 ]
 
 var CGPrior = function() {
@@ -84,13 +71,11 @@ var CGPrior = function() {
   })
 }
 
-
 // QUDs
 var qudFns = {
   ccQUD : function(state) {return {CC: state.CC}},
   mcQUD : function(state) {return {BEL: state.BEL}}
 }
-
 
 // Speaker optimality parameter
 var alpha = 10
@@ -112,7 +97,7 @@ var literalListener = function(utterance, cg, qud) {
     var state = uniformDraw(worldState)
     var qudFn = qudFns[qud]
     var qudAnswer = qudFn(state)
-    // LL requires the sampled state to be consisted with the cg passed down from the speaker
+    // LL requires the sampled state to be consistent with the cg passed down from the speaker
     var stringCG = stringify(cg)
     var stringState = stringify(state)
     condition(stringCG.includes(stringState))
@@ -146,11 +131,7 @@ var pragmaticListener = function(utterance, qudBias, prior) {
     var stringState = stringify(state)
     condition(stringCG.includes(stringState))
     observe(speaker(state, cg, qud), utterance)
-//     return {BEL: state.BEL, CC: state.CC, qud: qud}
-    // return state.BEL
     return {BEL: state.BEL, CC: state.CC}
-//     return {state: state, cg: cg}
-//     return {state:state, qud:qud}
   }})
 }
 
