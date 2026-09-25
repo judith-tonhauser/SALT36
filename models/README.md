@@ -1,6 +1,6 @@
 # RSA models
 
-WebPPL implementations of the four models in Section 3 of the paper. The negation model for *know* is the one in Scontras & Tonhauser (2025). Each folder contains `model.wppl` (the model), `model-evaluation.R` (the script that runs the model through `rwebppl` and writes the pragmatic-listener distribution), and `data/PL.csv` (that distribution).
+WebPPL implementations of the four models in Section 3 of the paper. The negation model for *know* is the one in Scontras & Tonhauser (2026), extended with the prior manipulation of Scontras & Tonhauser (2025). Each folder contains `model.wppl` (the model), `model-evaluation.R` (the script that runs the model through `rwebppl` and writes the pragmatic-listener distribution), and `data/PL.csv` (that distribution).
 
 | Folder | Section | Model |
 |---|---|---|
